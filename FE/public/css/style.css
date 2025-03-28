@@ -1,0 +1,131 @@
+.flex-text-wrap {
+  /* min-width: 0; -- use this or below to wrap text in flexbox*/
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+.filter-invert {
+  filter: invert(1);
+}
+
+/* #region Popup */
+.popup {
+  position: relative;
+}
+.popup-content {
+  display: none;
+  position: absolute;
+  padding: 0.5em;
+  top: 100%;
+  right: -2em;
+  min-width: 20em;
+  max-width: 30em;
+  max-height: 80vh;
+  background-color: white;
+  border: 1px solid gray;
+  box-shadow: 0 0 2px gray;
+}
+.popup-trigger {
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .popup:hover > .popup-trigger::before {
+    content: "";
+    position: absolute;
+    padding: 0.25em;
+    background-color: white;
+    border-top: 2px solid gray;
+    border-right: 1px solid gray;
+    transform: rotate(-45deg);
+    top: 88%;
+    right: 0.15em;
+    z-index: 1;
+  }
+  .popup:hover > .popup-content {
+    display: block;
+  }
+}
+
+/* #endregion */
+/* #region Product */
+.out-of-stock {
+  position: absolute;
+  color: rgba(var(--bs-danger-rgb), 1);
+  font-size: clamp(1em, 2vw, 1.5em);
+  font-weight: bold;
+  padding: 1em;
+  top: 45%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: var(--color-red-600);
+}
+/* #endregion */
+/* #region Cart */
+.cart-item {
+  display: flex;
+  padding: 0.25em;
+  align-items: center;
+}
+.cart-item-image {
+  height: 3.5em;
+}
+.badge-cart {
+  position: absolute;
+  background-color: rgba(var(--bs-danger-rgb), 1);
+  border-radius: var(--bs-border-radius-pill);
+  top: 0;
+  right: -50%;
+  z-index: 1;
+  font-size: 0.5em;
+}
+/* #endregion */
+
+/* #region Product Carousel */
+#productCarousel {
+  flex: 0 1 40%;
+  min-width: 20em;
+}
+#productCarousel + div {
+  flex: 1 1 50%;
+}
+#productCarousel .carousel-indicators {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+#productCarousel .carousel-indicators > a {
+  height: max-content !important;
+  width: 25% !important;
+  text-indent: 0 !important;
+}
+#productCarousel .carousel-indicators > a.active {
+  border: 1px solid black;
+}
+/* #endregion */
+/* #region Breadcrumb */
+.breadcrumb-item.active {
+  color: var(--bs-danger);
+}
+/* #endregion */
+
+/* #region Form */
+.form-control:focus {
+  border-color: black;
+  box-shadow: none;
+}
+.form-check-input:focus {
+  border-color: rgba(var(--bs-danger-rgb), 1);
+  box-shadow: none;
+}
+.form-check-input:checked {
+  border-color: rgba(var(--bs-danger-rgb), 1);
+  background-color: rgba(var(--bs-danger-rgb), 1);
+}
+
+/* #endregion */
+.trangtk {
+  background-color: ghostwhite;
+}
+.quenmk {
+  width: auto;
+  border: 1px solid black;
+  padding: 30px;
+}

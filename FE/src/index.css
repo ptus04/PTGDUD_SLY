@@ -1,0 +1,77 @@
+@import url("/css/style.css");
+@import url("/css/fontawesome/all.min.css");
+@import "tailwindcss";
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    visibility: visible;
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    visibility: visible;
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    visibility: visible;
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    visibility: visible;
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+@theme {
+  --animate-fade-in: fadeIn 1s ease-in-out;
+  --animate-fade-out: fadeOut 1s ease-in-out;
+  --animate-slide-in: slideIn 1s ease-in-out;
+  --animate-slide-out: slideOut 1s ease-in-out;
+  --animate-zoom-in: zoomIn 1s ease-in-out;
+  --animate-zoom-out: zoomOut 1s ease-in-out;
+}
