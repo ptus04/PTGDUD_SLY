@@ -1,13 +1,8 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -24,7 +19,7 @@ function App() {
           {/* Content */}
           <main className="flex-1 bg-gray-50 p-6">
             <Routes>
-              <Route path="/" element={<h1>Dashboard</h1>} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/customers" element={<h1>Customers</h1>} />
               <Route path="/products" element={<h1>Products</h1>} />
               <Route path="/orders" element={<h1>Orders</h1>} />
