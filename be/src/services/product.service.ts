@@ -2,20 +2,11 @@ import { ObjectId } from "mongodb";
 import { db } from "../configs/db";
 import Product from "../types/Product";
 
-const getAllProducts = async (limit: number) => {
+const getAllProducts = async (limit: number, isNew: boolean) => {
+  const query = isNew ? { isNew: true } : {};
   const products = await db()
     .collection<Product>("products")
-    .find()
-    .limit(limit)
-    .toArray();
-  return products;
-};
-
-const getNewProducts = async (limit: number) => {
-  const products = await db()
-    .collection<Product>("products")
-    .find({ isNew: true })
-    .sort({ updatedAt: -1 })
+    .find(query)
     .limit(limit)
     .toArray();
   return products;
@@ -30,6 +21,5 @@ const getProductById = async (pid: string) => {
 
 export default {
   getAllProducts,
-  getNewProducts,
   getProductById,
 };

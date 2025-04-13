@@ -1,3 +1,5 @@
+import { WithId } from "mongodb";
+
 type Product = {
   category: string[];
   title: string;
@@ -8,8 +10,10 @@ type Product = {
   description: string[];
   careInstructions: string[];
   inStock: number;
+  isNew?: boolean;
   createdAt: Date;
   updatedAt: Date;
 };
 
 export default Product;
+export type ProductWithId = WithId<Product>;
