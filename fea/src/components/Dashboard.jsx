@@ -1,4 +1,16 @@
 import React, { useEffect, useState } from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  Legend,
+} from "recharts";
 
 function Dashboard() {
   const [data, setData] = useState(null);
@@ -87,11 +99,20 @@ function Dashboard() {
               ))}
             </div>
           </div>
-          <div className="h-40 rounded-lg bg-blue-100">
-            <p className="pt-16 text-center text-gray-400">
-              {data.charts.totalSales.placeholder}
-            </p>
-          </div>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={data.charts.totalSales.data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#8884d8"
+                strokeWidth={2}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
 
         {/* Monthly Statistics Chart */}
@@ -104,11 +125,16 @@ function Dashboard() {
               Last 7 Days
             </button>
           </div>
-          <div className="h-40 rounded-lg bg-yellow-100">
-            <p className="pt-16 text-center text-gray-400">
-              {data.charts.monthlyStatistics.placeholder}
-            </p>
-          </div>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={data.charts.monthlyStatistics.data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="label" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="value" fill="#82ca9d" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
 
