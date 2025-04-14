@@ -43,7 +43,7 @@ function Dashboard() {
   return (
     <div className="bg-gray-50 p-6">
       {/* Top Stats */}
-      <div className="mb-6 grid grid-cols-4 gap-6">
+      <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
         {data.stats.map((stat) => (
           <div
             key={stat.id}
@@ -77,7 +77,7 @@ function Dashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Total Sales Chart */}
         <div className="rounded-lg bg-white p-6 shadow">
           <div className="mb-4 flex items-center justify-between">
@@ -139,7 +139,7 @@ function Dashboard() {
       </div>
 
       {/* Bottom Stats */}
-      <div className="mt-6 grid grid-cols-2 gap-6">
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
         {data.bottomStats.map((stat) => (
           <div
             key={stat.id}
