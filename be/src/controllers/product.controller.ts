@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import productService from "../services/product.service";
-import { validationResult } from "express-validator";
+import { matchedData, validationResult } from "express-validator";
 
 export const getProducts = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 10;
@@ -22,9 +22,8 @@ export const getProduct = async (req: Request, res: Response) => {
     return;
   }
 
-  const pid = req.params.pid;
-
-  const product = await productService.getProductById(pid);
+  const data = matchedData<{ pid: string }>(req);
+  const product = await productService.getProductById(data.pid);
   if (!product) {
     res.status(404).json({ message: "Product not found" });
     return;

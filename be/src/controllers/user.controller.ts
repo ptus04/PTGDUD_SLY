@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UserRegisterRequest, UserLoginRequest } from "../models/User.model";
 import userService from "../services/user.service";
 import { MongoError } from "mongodb";
-import { validationResult } from "express-validator";
+import { matchedData, validationResult } from "express-validator";
 
 export const register = async (req: Request, res: Response) => {
   const result = validationResult(req);
@@ -11,7 +11,7 @@ export const register = async (req: Request, res: Response) => {
     return;
   }
 
-  const user = req.body as UserRegisterRequest;
+  const user = matchedData<UserRegisterRequest>(req);
   try {
     const result = await userService.register(user);
     res.status(201).json({ uid: result.insertedId });
@@ -30,7 +30,7 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
 
-  const user = req.body as UserLoginRequest;
+  const user = matchedData<UserLoginRequest>(req);
   const data = await userService.login(user);
 
   if (!data) {
@@ -48,7 +48,8 @@ export const getUser = async (req: Request, res: Response) => {
     return;
   }
 
-  const uid = req.params.uid === "me" ? req._id : req.params.uid;
+  const data = matchedData<{ uid: string }>(req);
+  const uid = data.uid === "me" ? req._id : data.uid;
 
   const user = await userService.getUserById(uid);
   if (!user) {
