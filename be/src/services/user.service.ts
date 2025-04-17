@@ -1,59 +1,46 @@
 import crypto from "node:crypto";
-import config from "../configs/env";
 import jwt from "jsonwebtoken";
-import { db } from "../configs/db";
 import { ObjectId } from "mongodb";
-import User from "../types/User";
-import UserLoginRequest from "../dto/UserLoginRequest";
-import UserRegisterRequest from "../dto/UserRegisterRequest";
-import Role from "../enums/Role";
+import UserModel, {
+  User,
+  UserRegisterRequest,
+  UserLoginRequest,
+  UserLoginResponse,
+} from "../models/User.model";
 
-const register = async (user: UserRegisterRequest) => {
-  const hashedPassword = crypto
-    .createHash("sha256")
-    .update(user.password)
-    .digest("base64");
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY ?? "development_secret_key";
 
-  const result = await db().collection<User>("users").insertOne({
+const hash = (v: string) =>
+  crypto.createHash("sha256").update(v).digest("base64");
+
+const register = async (user: UserRegisterRequest) =>
+  await UserModel.insertOne({
     phone: user.phone,
     name: user.name,
-    password: hashedPassword,
+    password: hash(user.password),
     gender: user.gender,
     email: user.email,
     createdAt: new Date(),
     updatedAt: new Date(),
-    role: Role.CUSTOMER,
-  });
-
-  return result;
-};
+    role: "customer",
+  } as User);
 
 const login = async (user: UserLoginRequest) => {
-  const hashedPassword = crypto
-    .createHash("sha256")
-    .update(user.password)
-    .digest("base64");
-
-  const foundUser = await db().collection<User>("users").findOne({
+  const dbUser = await UserModel.findOne({
     phone: user.phone,
-    password: hashedPassword,
+    password: hash(user.password),
   });
-  if (!foundUser) return null;
+  if (!dbUser) {
+    return null;
+  }
 
-  const { _id, name, role } = foundUser;
-  const token = jwt.sign({ _id, role }, config.secretKey, { expiresIn: "1d" });
-  return { _id, name, role, token };
+  const { _id, name, role } = dbUser;
+  const token = jwt.sign({ _id, role }, JWT_SECRET_KEY, { expiresIn: "1d" });
+
+  return { _id, name, role, token } as UserLoginResponse;
 };
 
-const getUserById = async (uid: string) => {
-  const user = await db()
-    .collection<User>("users")
-    .findOne({ _id: new ObjectId(uid) });
-  return user;
-};
+const getUserById = async (uid: string) =>
+  await UserModel.findOne({ _id: new ObjectId(uid) });
 
-export default {
-  register,
-  login,
-  getUserById,
-};
+export default { register, login, getUserById };

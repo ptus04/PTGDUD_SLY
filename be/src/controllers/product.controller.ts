@@ -1,43 +1,34 @@
 import { Request, Response } from "express";
 import productService from "../services/product.service";
+import { validationResult } from "express-validator";
 
 export const getProducts = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 10;
-  const isNew = req.query.isNew === "true" ? true : false;
+  const isNew = Boolean(req.query.isNew);
 
-  try {
-    const products = await productService.getAllProducts(limit, isNew);
-    if (!products) {
-      res.status(404).json(products);
-      return;
-    }
-
-    res.status(200).json(products);
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({ error: error.message });
-    }
-  }
-};
-
-export const getProduct = async (req: Request, res: Response) => {
-  const pid = req.params.pid;
-  if (!pid) {
-    res.status(400).json({ error: "Product ID is required" });
+  const products = await productService.getAllProducts(limit, isNew);
+  if (!products || products.length === 0) {
+    res.status(404).json({ message: "No products found" });
     return;
   }
 
-  try {
-    const product = await productService.getProductById(pid);
-    if (!product) {
-      res.status(404).json(product);
-      return;
-    }
+  res.status(200).json(products);
+};
 
-    res.status(200).json(product);
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({ error: error.message });
-    }
+export const getProduct = async (req: Request, res: Response) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    res.status(400).json({ errors: result.array() });
+    return;
   }
+
+  const pid = req.params.pid;
+
+  const product = await productService.getProductById(pid);
+  if (!product) {
+    res.status(404).json({ message: "Product not found" });
+    return;
+  }
+
+  res.status(200).json(product);
 };

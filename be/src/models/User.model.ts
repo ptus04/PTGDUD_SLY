@@ -1,7 +1,7 @@
-import { WithId } from "mongodb";
-import Role from "../enums/Role";
+import { Filter, WithId } from "mongodb";
+import db from "../database";
 
-export default interface User {
+export interface User {
   phone: string;
   password: string;
   name: string;
@@ -14,7 +14,7 @@ export default interface User {
   dateOfBirth?: string;
   createdAt: Date;
   updatedAt: Date;
-  role: Role;
+  role: "customer" | "admin";
 }
 export type UserWithId = WithId<User>;
 export type UserWithoutPassword = Omit<UserWithId, "password">;
@@ -27,3 +27,13 @@ export type UserLoginRequest = Pick<User, "phone" | "password">;
 export type UserLoginResponse = Pick<UserWithId, "_id" | "name" | "role"> & {
   token: string;
 };
+
+export default class UserModel {
+  static async findOne(filter: Filter<User>) {
+    return await db().collection<User>("users").findOne(filter);
+  }
+
+  static async insertOne(user: User) {
+    return await db().collection<User>("users").insertOne(user);
+  }
+}

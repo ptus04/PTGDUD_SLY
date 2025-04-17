@@ -1,25 +1,10 @@
 import { ObjectId } from "mongodb";
-import { db } from "../configs/db";
-import Product from "../types/Product";
+import ProductModel from "../models/Product.model";
 
-const getAllProducts = async (limit: number, isNew: boolean) => {
-  const query = isNew ? { isNew: true } : {};
-  const products = await db()
-    .collection<Product>("products")
-    .find(query)
-    .limit(limit)
-    .toArray();
-  return products;
-};
+const getAllProducts = async (limit: number, isNew: boolean) =>
+  await ProductModel.find(isNew ? { isNew: true } : {}, limit);
 
-const getProductById = async (pid: string) => {
-  const product = await db()
-    .collection<Product>("products")
-    .findOne({ _id: new ObjectId(pid) });
-  return product;
-};
+const getProductById = async (pid: string) =>
+  await ProductModel.findOne({ _id: new ObjectId(pid) });
 
-export default {
-  getAllProducts,
-  getProductById,
-};
+export default { getAllProducts, getProductById };

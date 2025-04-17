@@ -1,6 +1,7 @@
-import config from "../configs/env";
 import { NextFunction, Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
+
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY ?? "development_secret_key";
 
 export const auth = (req: Request, res: Response, next: NextFunction) => {
   const token = req.header("Authorization")?.split(" ")[1];
@@ -10,11 +11,21 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    const decoded = jwt.verify(token, config.secretKey) as { uid: string };
-    req.uid = decoded.uid;
+    const decoded = jwt.verify(token, JWT_SECRET_KEY) as JwtPayload;
+    req._id = decoded._id;
+    req.role = decoded.role;
   } catch (error) {
-    res.status(401).json({ error: "Expired or invalid token." });
-    return;
+    if (error instanceof jwt.TokenExpiredError) {
+      res.status(401).json({ error: "Expired token." });
+      return;
+    }
+
+    if (error instanceof jwt.JsonWebTokenError) {
+      res.status(401).json({ error: "Invalid token." });
+      return;
+    }
+
+    console.log(error);
   }
 
   next();

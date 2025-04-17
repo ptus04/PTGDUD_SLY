@@ -1,15 +1,20 @@
 import express from "express";
-import cors from "./middlewares/cors.middleware";
+import cors from "cors";
+import morgan from "morgan";
+import responseTime from "response-time";
 import userRoutes from "./routes/user.routes";
 import productRoutes from "./routes/product.routes";
-import logRequest from "./middlewares/logger.middleware";
 
 const app = express();
-app.use(cors);
+app.set("trust proxy", 1);
+app.disable("x-powered-by");
+
+app.use(cors());
+app.use(morgan("common"));
+app.use(responseTime());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(logRequest);
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 
