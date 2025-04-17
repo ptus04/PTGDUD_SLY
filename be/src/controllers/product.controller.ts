@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import productService from "../services/product.service";
+import * as productService from "../services/product.service";
 import { matchedData, validationResult } from "express-validator";
 
 export const getProducts = async (req: Request, res: Response) => {
@@ -13,6 +13,18 @@ export const getProducts = async (req: Request, res: Response) => {
   }
 
   res.status(200).json(products);
+};
+
+export const getCarouselItems = async (req: Request, res: Response) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    res.status(400).json({ errors: result.array() });
+    return;
+  }
+
+  const data = matchedData<{ orientation: "landscape" | "portrait" }>(req);
+  const items = await productService.getCarouselItems(data.orientation);
+  res.status(200).json(items);
 };
 
 export const getProduct = async (req: Request, res: Response) => {

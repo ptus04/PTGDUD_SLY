@@ -32,4 +32,11 @@ export default class ProductModel {
   static async findOne(filter: Filter<Product>) {
     return await db().collection<Product>("products").findOne(filter);
   }
+
+  static async findCarouselItems(orientation: "landscape" | "portrait") {
+    return await db()
+      .collection<Product>("carousel")
+      .find({ orientation })
+      .toArray();
+  }
 }
