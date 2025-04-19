@@ -4,6 +4,7 @@ import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import Dashboard from "./components/Dashboard";
 import Customer from "./components/Customer";
+import Product from "./components/Product";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/customers" element={<Customer />} />
-              <Route path="/products" element={<h1>Products</h1>} />
+              <Route path="/products" element={<Product />} />
               <Route path="/orders" element={<h1>Orders</h1>} />
               <Route path="/invoice" element={<h1>Invoice</h1>} />
               <Route path="/login" element={<h1>Login</h1>} />
