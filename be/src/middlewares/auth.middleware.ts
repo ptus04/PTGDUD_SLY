@@ -4,8 +4,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY ?? "development_secret_key";
 
 export const auth = (req: Request, res: Response, next: NextFunction) => {
-  const token =
-    req.signedCookies["token"] ?? req.headers["authorization"]?.split(" ")[1];
+  const token = req.signedCookies["token"] ?? req.headers["authorization"]?.split(" ")[1];
   if (!token) {
     res.status(401).json({ error: "Unauthorized" });
     return;
@@ -18,15 +17,13 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
   } catch (error) {
     if (error instanceof jwt.TokenExpiredError) {
       res.status(401).json({ error: "Expired token." });
-      return;
-    }
-
-    if (error instanceof jwt.JsonWebTokenError) {
+    } else if (error instanceof jwt.JsonWebTokenError) {
       res.status(401).json({ error: "Invalid token." });
-      return;
+    } else if (error instanceof jwt.NotBeforeError) {
+      res.status(401).json({ error: "Token not active." });
+    } else if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
     }
-
-    console.log(error);
   }
 
   next();

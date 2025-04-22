@@ -1,10 +1,10 @@
-import express from "express";
+import cookieParser from "cookie-parser";
 import cors from "cors";
+import express from "express";
 import morgan from "morgan";
 import responseTime from "response-time";
-import userRoutes from "./routes/user.routes";
 import productRoutes from "./routes/product.routes";
-import cookieParser from "cookie-parser";
+import userRoutes from "./routes/user.routes";
 
 const COOKIES_SECRET = process.env.COOKIES_SECRET ?? "development_secret_key";
 

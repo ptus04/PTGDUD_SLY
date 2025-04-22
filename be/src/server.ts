@@ -3,8 +3,7 @@ import app from "./app";
 import { closeDatabase, initializeDatabase } from "./database";
 
 const PORT = process.env.PORT ?? 8080;
-const CONNECTION_STRING =
-  process.env.MONGODB_CONNECTION_STRING ?? "mongodb://localhost:27017/sly";
+const CONNECTION_STRING = process.env.MONGODB_CONNECTION_STRING ?? "mongodb://localhost:27017/sly";
 const DB_NAME = process.env.DB_NAME ?? "sly";
 
 const startServer = async () => {

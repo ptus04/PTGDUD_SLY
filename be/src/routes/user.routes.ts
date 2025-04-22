@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { auth } from "../middlewares/auth.middleware";
-import { getUser, login, register } from "../controllers/user.controller";
 import { body, param } from "express-validator";
+import { getUser, login, register } from "../controllers/user.controller";
+import { auth } from "../middlewares/auth.middleware";
+import handleBadRequest from "../utils/handleBadRequest";
 
 const registerValidator = [
   body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN"),
@@ -18,19 +19,20 @@ const loginValidator = [
 
 // "me" or uid with ObjectId format
 const getUserValidator = [
-  param("uid").custom((value) => {
+  param("id").custom((value) => {
     if (value !== "me" && !/^[0-9a-fA-F]{24}$/.test(value)) {
       throw new Error("Invalid value");
     }
+
     return true;
   }),
 ];
 
 const router = Router();
-router.post("/register", registerValidator, register);
-router.post("/login", loginValidator, login);
+router.post("/register", registerValidator, handleBadRequest, register);
+router.post("/login", loginValidator, handleBadRequest, login);
 
 router.use(auth);
-router.get("/:uid", getUserValidator, getUser);
+router.get("/:id", getUserValidator, handleBadRequest, getUser);
 
 export default router;

@@ -1,7 +1,4 @@
-import { Filter, WithId } from "mongodb";
-import db from "../database";
-
-export interface Product {
+type Product = {
   category: string[];
   title: string;
   price: number;
@@ -14,30 +11,6 @@ export interface Product {
   isNew?: boolean;
   createdAt: Date;
   updatedAt: Date;
-}
-export type ProductWithId = WithId<Product>;
-export type ProductWithIdString = WithId<Product & { _id: string }>;
+};
 
-export default class ProductModel {
-  static async find(
-    filter: Filter<Product>,
-    limit?: number
-  ): Promise<ProductWithId[]> {
-    return await db()
-      .collection<Product>("products")
-      .find(filter)
-      .limit(limit ?? 0)
-      .toArray();
-  }
-
-  static async findOne(filter: Filter<Product>) {
-    return await db().collection<Product>("products").findOne(filter);
-  }
-
-  static async findCarouselItems(orientation: "landscape" | "portrait") {
-    return await db()
-      .collection<Product>("carousel")
-      .find({ orientation })
-      .toArray();
-  }
-}
+export default Product;

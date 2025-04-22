@@ -1,70 +1,59 @@
 import { Request, Response } from "express";
-import { UserRegisterRequest, UserLoginRequest } from "../models/User.model";
-import userService from "../services/user.service";
+import { matchedData } from "express-validator";
 import { MongoError } from "mongodb";
-import { matchedData, validationResult } from "express-validator";
+import { UserLoginRequest, UserRegisterRequest } from "../models/User.model";
+import userService from "../services/user.service";
 
 export const register = async (req: Request, res: Response) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    res.status(400).json({ errors: result.array() });
-    return;
-  }
-
   const user = matchedData<UserRegisterRequest>(req);
+
   try {
-    const result = await userService.register(user);
-    res.status(201).json({ uid: result.insertedId });
+    await userService.register(user.phone, user.name, user.password, user.gender, user.email);
+
+    const data = await userService.login(user.phone, user.password);
+    afterAuth(res, data);
   } catch (error) {
     if (error instanceof MongoError && error.code === 11000) {
-      res.status(409).json({ error: "User already exists" });
-      return;
+      res.status(409).end();
+    } else if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
     }
   }
 };
 
 export const login = async (req: Request, res: Response) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    res.status(400).json({ errors: result.array() });
-    return;
-  }
-
   const user = matchedData<UserLoginRequest>(req);
-  const data = await userService.login(user);
+  const data = await userService.login(user.phone, user.password);
 
   if (!data) {
-    res.status(401).json({ error: "Invalid credentials" });
+    res.status(401).end();
     return;
   }
 
+  afterAuth(res, data);
+};
+
+const afterAuth = (res: Response, data: any) => {
   res
     .status(200)
     .cookie("token", data.token, {
       httpOnly: true,
       sameSite: "strict",
       signed: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7, // TODO: move to env
+      maxAge: 1000 * 60 * 60 * 24 * 7,
     })
     .json(data);
 };
 
 export const getUser = async (req: Request, res: Response) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    res.status(400).json({ errors: result.array() });
-    return;
-  }
+  const data = matchedData<{ id: string }>(req);
+  const id = data.id === "me" ? req._id : data.id;
 
-  const data = matchedData<{ uid: string }>(req);
-  const uid = data.uid === "me" ? req._id : data.uid;
-
-  const user = await userService.getUserById(uid);
+  const user = await userService.getUserById(id);
   if (!user) {
-    res.status(404).json({ error: "User not found" });
+    res.status(404).end();
     return;
   }
 
-  const { password, ...userWithoutPassword } = user;
-  res.status(200).json(userWithoutPassword);
+  res.status(200).json(user);
 };

@@ -1,11 +1,20 @@
 import { ObjectId } from "mongodb";
-import ProductModel from "../models/Product.model";
+import db from "../database";
+import Product from "../models/Product.model";
 
-export const getAllProducts = async (limit: number, isNew: boolean) =>
-  await ProductModel.find(isNew ? { isNew: true } : {}, limit);
+const getAllProducts = (limit: number, isNew: boolean) =>
+  db()
+    .collection<Product>("products")
+    .find(isNew ? { isNew: true } : {})
+    .limit(limit ?? 10)
+    .toArray();
 
-export const getCarouselItems = async (orientation: "landscape" | "portrait") =>
-  await ProductModel.findCarouselItems(orientation);
+const getProductById = (id: string) =>
+  db()
+    .collection<Product>("products")
+    .findOne({ _id: new ObjectId(id) });
 
-export const getProductById = async (pid: string) =>
-  await ProductModel.findOne({ _id: new ObjectId(pid) });
+const getCarouselItems = (orientation: "landscape" | "portrait") =>
+  db().collection<Product>("carousel").find({ orientation }).toArray();
+
+export default { getAllProducts, getProductById, getCarouselItems } as const;
