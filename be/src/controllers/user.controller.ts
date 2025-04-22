@@ -44,6 +44,7 @@ export const login = async (req: Request, res: Response) => {
       httpOnly: true,
       sameSite: "strict",
       signed: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7, // TODO: move to env
     })
     .json(data);
 };

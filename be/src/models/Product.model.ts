@@ -16,6 +16,7 @@ export interface Product {
   updatedAt: Date;
 }
 export type ProductWithId = WithId<Product>;
+export type ProductWithIdString = WithId<Product & { _id: string }>;
 
 export default class ProductModel {
   static async find(
