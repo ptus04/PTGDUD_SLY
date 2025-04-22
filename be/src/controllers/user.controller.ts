@@ -38,7 +38,14 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
 
-  res.status(200).json(data);
+  res
+    .status(200)
+    .cookie("token", data.token, {
+      httpOnly: true,
+      sameSite: "strict",
+      signed: true,
+    })
+    .json(data);
 };
 
 export const getUser = async (req: Request, res: Response) => {
