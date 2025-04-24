@@ -9,10 +9,10 @@ const getAllProducts = (limit: number, isNew: boolean) =>
     .limit(limit ?? 10)
     .toArray();
 
-const getProductById = (id: string) =>
+const getProductById = (productId: string) =>
   db()
     .collection<Product>("products")
-    .findOne({ _id: new ObjectId(id) });
+    .findOne({ _id: new ObjectId(productId) });
 
 const getCarouselItems = (orientation: "landscape" | "portrait") =>
   db().collection<Product>("carousel").find({ orientation }).toArray();

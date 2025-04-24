@@ -5,23 +5,22 @@ import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
 const registerValidator = [
-  body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN"),
-  body("password").isLength({ min: 8 }),
-  body("email").normalizeEmail().isEmail(),
-  body("name").notEmpty(),
-  body("gender").isBoolean(),
+  body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN").withMessage("Invalid phone number"),
+  body("password").isLength({ min: 8 }).withMessage("Password must be at least 8 characters long"),
+  body("email").normalizeEmail().isEmail().withMessage("Invalid email format"),
+  body("name").notEmpty().withMessage("Name is required"),
+  body("gender").isBoolean().withMessage("Gender must be a boolean"),
 ];
 
 const loginValidator = [
-  body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN"),
-  body("password").isLength({ min: 8 }),
+  body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN").withMessage("Invalid phone number"),
+  body("password").isLength({ min: 8 }).withMessage("Password must be at least 8 characters long"),
 ];
 
-// "me" or uid with ObjectId format
 const getUserValidator = [
   param("id").custom((value) => {
-    if (value !== "me" && !/^[0-9a-fA-F]{24}$/.test(value)) {
-      throw new Error("Invalid value");
+    if (!/(me)|([0-9a-fA-F]{24})/.test(value)) {
+      throw new Error("ID must be 'me' or a valid ObjectId format");
     }
 
     return true;

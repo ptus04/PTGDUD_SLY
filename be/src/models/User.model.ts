@@ -1,5 +1,3 @@
-import { WithId } from "mongodb";
-
 type User = {
   phone: string;
   password: string;

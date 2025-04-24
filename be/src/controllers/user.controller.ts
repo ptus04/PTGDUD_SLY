@@ -14,7 +14,7 @@ export const register = async (req: Request, res: Response) => {
     afterAuth(res, data);
   } catch (error) {
     if (error instanceof MongoError && error.code === 11000) {
-      res.status(409).end();
+      res.status(409).json({ error: "Phone number already exists." });
     } else if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     }
@@ -26,7 +26,7 @@ export const login = async (req: Request, res: Response) => {
   const data = await userService.login(user.phone, user.password);
 
   if (!data) {
-    res.status(401).end();
+    res.status(401).json({ error: "Invalid credentials" });
     return;
   }
 
@@ -51,7 +51,7 @@ export const getUser = async (req: Request, res: Response) => {
 
   const user = await userService.getUserById(id);
   if (!user) {
-    res.status(404).end();
+    res.status(404).json({ error: "User not found" });
     return;
   }
 

@@ -8,7 +8,7 @@ export const getProducts = async (req: Request, res: Response) => {
 
   const products = await productService.getAllProducts(limit, isNew);
   if (products.length === 0) {
-    res.status(404).end();
+    res.status(404).json({ error: "No products found" });
     return;
   }
 
@@ -26,7 +26,7 @@ export const getProduct = async (req: Request, res: Response) => {
   const product = await productService.getProductById(data.id);
 
   if (!product) {
-    res.status(404).end();
+    res.status(404).json({ error: "Product not found" });
     return;
   }
 

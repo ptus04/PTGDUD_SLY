@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import responseTime from "response-time";
+import cartRoutes from "./routes/cart.routes";
 import productRoutes from "./routes/product.routes";
 import userRoutes from "./routes/user.routes";
 
@@ -21,5 +22,6 @@ app.use(cookieParser(COOKIES_SECRET));
 
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
 
 export default app;
