@@ -1,50 +1,16 @@
-# React + TypeScript + Vite
+# SLY CLOTHING CLONE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=ptus04_PTGDUD_SLY)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
 
-Currently, two official plugins are available:
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
 
-## Expanding the ESLint configuration
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ptus04_PTGDUD_SLY&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ptus04_PTGDUD_SLY)
