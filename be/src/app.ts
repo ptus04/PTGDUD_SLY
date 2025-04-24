@@ -14,7 +14,7 @@ app.set("trust proxy", 1);
 app.disable("x-powered-by");
 
 app.use(cors());
-app.use(morgan("common"));
+app.use(morgan("dev"));
 app.use(responseTime());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
