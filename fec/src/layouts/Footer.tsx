@@ -32,12 +32,12 @@ const Footer = () => (
         </Link>
       </li>
       <li className="mx-auto p-2">
-        <Link className="transition-colors duration-100 hover:text-red-500" to="/terms-of-refunding">
+        <Link className="transition-colors duration-100 hover:text-red-500" to="/refund-policy">
           CHÍNH SÁCH ĐỔI TRẢ
         </Link>
       </li>
       <li className="mx-auto p-2">
-        <Link className="transition-colors duration-100 hover:text-red-500" to="/stores">
+        <Link className="transition-colors duration-100 hover:text-red-500" to="/about-us">
           HỆ THỐNG CỬA HÀNG
         </Link>
       </li>
@@ -53,14 +53,14 @@ const Footer = () => (
       <span>123 Đường ABC, Phường XYZ, Quận 123, TP. HCM</span>
       <br />
       <span>Điện thoại: </span>
-      <a className="transition-colors duration-100 hover:text-red-500" href="tel:+84868635209">
+      <Link className="transition-colors duration-100 hover:text-red-500" to="tel:+84868635209">
         +84 68635209
-      </a>
+      </Link>
       <br />
       <span>Email: </span>
-      <a className="transition-colors duration-100 hover:text-red-500" href="mailto:cs@sly.vn">
+      <Link className="transition-colors duration-100 hover:text-red-500" to="mailto:cs@sly.vn">
         cs@sly.vn
-      </a>
+      </Link>
     </address>
     <p>
       Copyright 2024&copy;{" "}

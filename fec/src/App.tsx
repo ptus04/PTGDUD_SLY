@@ -6,6 +6,10 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProductPage from "./pages/ProductPage";
 import RegisterPage from "./pages/RegisterPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import RefundPolicyPage from "./pages/RefundPolicyPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import PasswordRecoveryPage from "./pages/PasswordRecoveryPage";
 
 const App = () => {
   const [state, dispatch] = useReducer(appReducer, initialState);
@@ -19,6 +23,10 @@ const App = () => {
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="products/:id" element={<ProductPage />} />
+          <Route path="password-recovery" element={<PasswordRecoveryPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="refund-policy" element={<RefundPolicyPage />} />
+          <Route path="about-us" element={<AboutUsPage />} />
           <Route path="*" element={<p>Page Not Found</p>} />
         </Route>
       </Routes>

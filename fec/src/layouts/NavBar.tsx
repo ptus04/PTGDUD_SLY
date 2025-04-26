@@ -167,24 +167,24 @@ const NavBar = () => {
         <div className="mt-auto">
           <ul className="text-sm">
             <li className="p-0">
-              <a className="transition-colors duration-100 hover:text-red-500" href="./chinh-sach-bao-mat.html">
+              <Link className="transition-colors duration-100 hover:text-red-500" to="/refund-policy">
                 CHÍNH SÁCH ĐỔI TRẢ
-              </a>
+              </Link>
             </li>
             <li className="p-0">
-              <a className="transition-colors duration-100 hover:text-red-500" href="./chinh-sach-doi-tra.html">
+              <Link className="transition-colors duration-100 hover:text-red-500" to="/privacy-policy">
                 CHÍNH SÁCH BẢO MẬT
-              </a>
+              </Link>
             </li>
             <li className="p-0">
-              <a className="transition-colors duration-100 hover:text-red-500" href="./he-thong-cua-hang.html">
+              <Link className="transition-colors duration-100 hover:text-red-500" to="/about-us">
                 HỆ THỐNG CỬA HÀNG
-              </a>
+              </Link>
             </li>
             <li className="p-0">
-              <a className="transition-colors duration-100 hover:text-red-500" href="./so-do-website.html">
+              <Link className="transition-colors duration-100 hover:text-red-500" to="/sitemap">
                 SƠ ĐỒ WEBSITE
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="flex items-center justify-center gap-3">
@@ -200,9 +200,9 @@ const NavBar = () => {
           </div>
           <p className="mb-0 text-center">
             Copyright 2024&copy;{" "}
-            <a className="transition-colors duration-100 hover:text-red-500" href="/">
+            <Link className="transition-colors duration-100 hover:text-red-500" to="/">
               SLY
-            </a>
+            </Link>
           </p>
         </div>
       </div>
