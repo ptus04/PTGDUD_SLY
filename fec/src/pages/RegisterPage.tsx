@@ -118,7 +118,9 @@ const RegisterPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <PrimaryButton type="submit">ĐĂNG KÝ</PrimaryButton>
+        <PrimaryButton className="justify-center" type="submit">
+          ĐĂNG KÝ
+        </PrimaryButton>
 
         <p>
           <span>Đã có tài khoản? </span>

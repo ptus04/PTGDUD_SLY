@@ -44,7 +44,7 @@ const LoginPage = () => {
         className="mt-4 flex w-10/12 flex-col gap-4 rounded-md border border-gray-300 p-4 md:w-5/12 lg:w-3/12"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-center text-2xl font-semibold">ĐĂNG NHẬP</h2>
+        <h1 className="text-center text-2xl font-semibold">ĐĂNG NHẬP</h1>
 
         <RenderIf condition={!!error}>
           <p className="flex w-full items-center gap-2 rounded-md border border-red-400 bg-red-100 px-4 py-2 text-red-600">
@@ -78,13 +78,15 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <PrimaryButton type="submit">ĐĂNG NHẬP</PrimaryButton>
+        <PrimaryButton className="justify-center" type="submit">
+          ĐĂNG NHẬP
+        </PrimaryButton>
 
         <div className="flex flex-wrap justify-between">
           <Link className="duration-100 hover:text-red-500" to="/register">
             Đăng ký tài khoản
           </Link>
-          <Link className="duration-100 hover:text-red-500" to="/forgot-password">
+          <Link className="duration-100 hover:text-red-500" to="/password-recovery">
             Quên mật khẩu?
           </Link>
         </div>
