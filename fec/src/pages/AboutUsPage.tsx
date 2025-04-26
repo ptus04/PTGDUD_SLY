@@ -34,8 +34,8 @@ const AboutUsPage = () => {
         <Link to="/products" className="rounded-full border-2 border-black bg-white px-4 py-2">
           Kho hàng
         </Link>
-        <p className="mt-3 text-gray-600">112/23B Bạch Đằng, Phường 2, Tân Bình, Thành Phố Hồ Chí Minh</p>
-        <p className="mt-3 text-gray-600">09h00 đến 17h30 tất cả các ngày trong tuần</p>
+        <p>112/23B Bạch Đằng, Phường 2, Tân Bình, Thành Phố Hồ Chí Minh</p>
+        <p>09h00 đến 17h30 tất cả các ngày trong tuần</p>
         <Link className="hover:text-red-500" to="mailto:info@slyclothing.vn">
           info@slyclothing.vn
         </Link>
