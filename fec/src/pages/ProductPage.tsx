@@ -1,7 +1,7 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router";
-import AppContext from "../AppContext";
+import AppContext, { AppActionTypes } from "../AppContext";
 import PrimaryButton from "../components/PrimaryButton";
 import ProductCarousel from "../components/ProductCarousel";
 import RenderIf from "../components/RenderIf";
@@ -26,7 +26,7 @@ const ProductPage = () => {
         document.title = `${product.title} | SLY`;
       } catch (error) {
         if (!(error instanceof DOMException) && error instanceof Error) {
-          dispatch({ type: "SET_ERROR", payload: error.message });
+          dispatch({ type: AppActionTypes.SET_ERROR, payload: error.message });
         }
       } finally {
         setIsLoading(false);
