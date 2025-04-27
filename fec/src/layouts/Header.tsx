@@ -1,13 +1,17 @@
 import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import AppContext, { AppActionTypes } from "../AppContext";
+import AppContext from "../AppContext";
 import RenderIf from "../components/RenderIf";
+import useNavBar from "../hooks/useNavBar";
+import useQuery from "../hooks/useQuery";
 import { formatAsCurrency } from "../utils/formatters";
 
 const Header = () => {
   const location = useLocation();
   const [headerStyle, setHeaderStyle] = useState({});
-  const { state, dispatch } = useContext(AppContext);
+  const { state } = useContext(AppContext);
+  const { handleToggle } = useNavBar();
+  const handleSubmit = useQuery();
 
   const handleScroll = useCallback(() => {
     if (window.scrollY >= window.innerHeight)
@@ -40,20 +44,16 @@ const Header = () => {
     <header className="fixed z-10 flex w-full items-center justify-between px-4 py-2" style={headerStyle}>
       <div className="flex shrink grow basis-0 flex-row items-center gap-3">
         <button
+          className="cursor-pointer duration-200 hover:text-red-500"
           type="button"
-          className="cursor-pointer transition-colors duration-100 hover:text-red-500"
-          onClick={() => dispatch({ type: AppActionTypes.TOGGLE_NAVBAR })}
-          title="Mỏ menu"
+          title="Mở menu"
+          onClick={handleToggle}
         >
           <i className="fa fa-bars"></i>
         </button>
-        <form className="hidden md:flex">
-          <input className="border-b outline-none" type="search" name="search" placeholder="Nhập từ khóa" required />
-          <button
-            className="cursor-pointer px-1 py-1 transition-colors duration-100 hover:text-red-500"
-            type="submit"
-            title="Tìm kiếm"
-          >
+        <form className="hidden md:flex" onSubmit={handleSubmit}>
+          <input className="border-b px-3 py-1" type="search" name="query" placeholder="Nhập từ khóa" required />
+          <button className="cursor-pointer px-1 py-1 duration-100 hover:text-red-500" type="submit" title="Tìm kiếm">
             <i className="fa fa-search"></i>
           </button>
         </form>
