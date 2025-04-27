@@ -142,6 +142,7 @@ const ProductPage = () => {
                   <div key={s} className="flex w-20 gap-1">
                     <input
                       className="accent-red-500"
+                      id={s}
                       type="radio"
                       name="size"
                       value={s}
