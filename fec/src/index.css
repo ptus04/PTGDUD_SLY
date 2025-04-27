@@ -22,8 +22,8 @@
 }
 
 @theme {
-  --animate-fade-in: fadeIn 0.5s ease-in-out;
-  --animate-fade-out: fadeOut 0.5s ease-in-out;
+  --animate-fade-in: fadeIn 0.2s ease-in-out;
+  --animate-fade-out: fadeOut 0.2s ease-in-out;
 }
 
 ::-webkit-scrollbar,

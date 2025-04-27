@@ -1,210 +1,23 @@
-import { memo, useContext } from "react";
-import { Link } from "react-router";
-import AppContext, { AppActionTypes } from "../AppContext";
+import { memo } from "react";
+import ListCategory from "../components/layouts/ListCategory";
+import NavBarFooter from "../components/layouts/NavBarFooter";
+import NavBarHeader from "../components/layouts/NavBarHeader";
+import useNavBar from "../hooks/useNavBar";
 
 const NavBar = () => {
-  const context = useContext(AppContext);
+  const { isOpen, handleUnsafeToggle } = useNavBar();
 
   return (
     <nav
-      className={`fixed top-0 z-30 h-dvh w-full flex-col transition-all duration-200 ${context.state.isExpanded ? "bg-black/50" : "invisible"}`}
+      className={`fixed top-0 z-30 h-dvh w-full flex-col duration-200 ${isOpen ? "bg-black/50" : "invisible"}`}
+      onClickCapture={handleUnsafeToggle}
     >
       <div
-        className={`flex h-full w-full flex-col overflow-auto bg-white/75 px-4 py-2 backdrop-blur-lg duration-200 md:w-2/5 lg:w-1/5 ${context.state.isExpanded ? "" : "-translate-x-full"}`}
+        className={`flex h-full w-full flex-col gap-4 overflow-auto bg-white/75 px-4 py-2 backdrop-blur-md duration-200 md:w-2/5 lg:w-1/5 ${isOpen ? "" : "-translate-x-full"}`}
       >
-        <div className="flex items-center justify-between">
-          <form className="flex">
-            <button className="cursor-pointer duration-200 hover:text-red-500" type="submit" title="Tìm kiếm">
-              <i className="fa fa-search"></i>
-            </button>
-            <input
-              className="border-b px-2 py-1 outline-none"
-              type="search"
-              name="tuKhoa"
-              placeholder="Nhập từ khóa"
-              required
-            />
-          </form>
-          <button
-            className="aspect-square w-6 cursor-pointer duration-200 hover:bg-red-500 hover:text-white"
-            type="button"
-            title="Đóng menu"
-            onClick={() => context.dispatch({ type: AppActionTypes.TOGGLE_NAVBAR })}
-          >
-            <i className="fa fa-close"></i>
-          </button>
-        </div>
-
-        <ul className="mt-3 flex flex-col gap-4">
-          <li>
-            <details>
-              <summary className="flex cursor-pointer items-center gap-2">
-                <a className="font-bold" href="./tim-kiem.html?phanLoai=tops">
-                  TOPS
-                </a>
-                <span>
-                  <i className="fa fa-caret-right"></i>
-                </span>
-              </summary>
-
-              <ul className="m-2 flex flex-row gap-4">
-                <li className="text-sm">
-                  <a className="transition-colors duration-100 hover:text-red-500" href="./tim-kiem.html?phanLoai=tee">
-                    TEE
-                  </a>
-                </li>
-                <li className="text-sm">
-                  <a className="transition-colors duration-100 hover:text-red-500" href="./tim-kiem.html?phanLoai=polo">
-                    POLO
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-
-          <li>
-            <details>
-              <summary className="flex cursor-pointer items-center gap-2">
-                <a className="font-bold" href="./tim-kiem.html?phanLoai=outwear">
-                  OUTWEARS
-                </a>
-                <span>
-                  <i className="fa fa-caret-right"></i>
-                </span>
-              </summary>
-
-              <ul className="m-2 flex flex-row gap-4">
-                <li className="text-sm">
-                  <a
-                    className="transition-colors duration-100 hover:text-red-500"
-                    href="./tim-kiem.html?phanLoai=jackets"
-                  >
-                    JACKETS
-                  </a>
-                </li>
-                <li className="text-sm">
-                  <a
-                    className="transition-colors duration-100 hover:text-red-500"
-                    href="./tim-kiem.html?phanLoai=hoodies"
-                  >
-                    HOODIES
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-
-          <li>
-            <details>
-              <summary className="flex cursor-pointer items-center gap-2">
-                <a className="font-bold" href="./tim-kiem.html?phanLoai=bottoms">
-                  BOTTOMS
-                </a>
-                <span>
-                  <i className="fa fa-caret-right"></i>
-                </span>
-              </summary>
-
-              <ul className="m-2 flex flex-row gap-4">
-                <li className="text-sm">
-                  <a
-                    className="transition-colors duration-100 hover:text-red-500"
-                    href="./tim-kiem.html?phanLoai=shorts"
-                  >
-                    SHORTS
-                  </a>
-                </li>
-                <li className="text-sm">
-                  <a
-                    className="transition-colors duration-100 hover:text-red-500"
-                    href="./tim-kiem.html?phanLoai=pants"
-                  >
-                    PANTS
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-
-          <li>
-            <details>
-              <summary className="flex cursor-pointer items-center gap-2">
-                <a className="font-bold" href="./tim-kiem.html?phanLoai=accessories">
-                  ACCESSORIES
-                </a>
-                <span>
-                  <i className="fa fa-caret-right"></i>
-                </span>
-              </summary>
-
-              <ul className="m-2 flex flex-row gap-4">
-                <li className="text-sm">
-                  <a
-                    className="transition-colors duration-100 hover:text-red-500"
-                    href="./tim-kiem.html?phanLoai=wallets"
-                  >
-                    WALLETS
-                  </a>
-                </li>
-                <li className="text-sm">
-                  <a className="transition-colors duration-100 hover:text-red-500" href="./tim-kiem.html?phanLoai=caps">
-                    CAPS
-                  </a>
-                </li>
-                <li className="text-sm">
-                  <a
-                    className="transition-colors duration-100 hover:text-red-500"
-                    href="./tim-kiem.html?phanLoai=backpacks"
-                  >
-                    BACKPACKS
-                  </a>
-                </li>
-              </ul>
-            </details>
-          </li>
-        </ul>
-
-        <div className="mt-auto">
-          <ul className="text-sm">
-            <li className="p-0">
-              <Link className="transition-colors duration-100 hover:text-red-500" to="/refund-policy">
-                CHÍNH SÁCH ĐỔI TRẢ
-              </Link>
-            </li>
-            <li className="p-0">
-              <Link className="transition-colors duration-100 hover:text-red-500" to="/privacy-policy">
-                CHÍNH SÁCH BẢO MẬT
-              </Link>
-            </li>
-            <li className="p-0">
-              <Link className="transition-colors duration-100 hover:text-red-500" to="/about-us">
-                HỆ THỐNG CỬA HÀNG
-              </Link>
-            </li>
-            <li className="p-0">
-              <Link className="transition-colors duration-100 hover:text-red-500" to="/sitemap">
-                SƠ ĐỒ WEBSITE
-              </Link>
-            </li>
-          </ul>
-          <div className="flex items-center justify-center gap-3">
-            <Link className="transition-colors duration-100 hover:text-red-500" to="#" title="Facebook">
-              <i className="fa-brands fa-facebook"></i>
-            </Link>
-            <Link className="transition-colors duration-100 hover:text-red-500" to="#" title="TikTok">
-              <i className="fa-brands fa-tiktok"></i>
-            </Link>
-            <Link className="transition-colors duration-100 hover:text-red-500" to="#" title="Instagram">
-              <i className="fa-brands fa-instagram"></i>
-            </Link>
-          </div>
-          <p className="mb-0 text-center">
-            Copyright 2024&copy;{" "}
-            <Link className="transition-colors duration-100 hover:text-red-500" to="/">
-              SLY
-            </Link>
-          </p>
-        </div>
+        <NavBarHeader />
+        <ListCategory />
+        <NavBarFooter />
       </div>
     </nav>
   );

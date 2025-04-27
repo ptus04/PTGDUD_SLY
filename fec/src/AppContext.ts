@@ -70,8 +70,6 @@ export const setCart = (payload: CartPayload) => ({
 });
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
-  console.log("AppReducer", action.type, state, action);
-
   switch (action.type) {
     case AppActionTypes.TOGGLE_NAVBAR:
       return { ...state, isExpanded: !state.isExpanded };
