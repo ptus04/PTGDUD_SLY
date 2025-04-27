@@ -2,14 +2,14 @@ import { useMemo, useReducer } from "react";
 import { Route, Routes } from "react-router";
 import AppContext, { appReducer, initialState } from "./AppContext";
 import Layout from "./layouts";
+import AboutUsPage from "./pages/AboutUsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import ProductPage from "./pages/ProductPage";
-import RegisterPage from "./pages/RegisterPage";
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import RefundPolicyPage from "./pages/RefundPolicyPage";
-import AboutUsPage from "./pages/AboutUsPage";
 import PasswordRecoveryPage from "./pages/PasswordRecoveryPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import ProductPage from "./pages/ProductPage";
+import RefundPolicyPage from "./pages/RefundPolicyPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const App = () => {
   const [state, dispatch] = useReducer(appReducer, initialState);
