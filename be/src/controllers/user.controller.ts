@@ -8,7 +8,7 @@ export const register = async (req: Request, res: Response) => {
   const user = matchedData<UserRegisterRequest>(req);
 
   try {
-    await userService.register(user.phone, user.name, user.password, user.gender, user.email);
+    await userService.register(user.phone, user.name, user.password, user.gender);
 
     const data = await userService.login(user.phone, user.password);
     afterAuth(res, data);

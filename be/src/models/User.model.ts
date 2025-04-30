@@ -3,7 +3,6 @@ type User = {
   password: string;
   name: string;
   gender: boolean;
-  email?: string;
   address?: string;
   city?: string;
   district?: string;
@@ -13,7 +12,7 @@ type User = {
   updatedAt: Date;
   role: "customer" | "admin";
 };
-export type UserRegisterRequest = Pick<User, "phone" | "name" | "password" | "gender" | "email">;
+export type UserRegisterRequest = Pick<User, "phone" | "name" | "password" | "gender">;
 export type UserLoginRequest = Pick<User, "phone" | "password">;
 
 export default User;

@@ -20,7 +20,7 @@ const loginValidator = [
 const getUserValidator = [
   param("id").custom((value) => {
     if (!/(me)|([0-9a-fA-F]{24})/.test(value)) {
-      throw new Error("ID must be 'me' or a valid ObjectId format");
+      throw new Error("ID must be 'me' or a valid MongoDB ObjectId format");
     }
 
     return true;

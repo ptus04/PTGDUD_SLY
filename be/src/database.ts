@@ -7,6 +7,7 @@ const getDb = (): Db => {
   if (!db) {
     throw new Error("Database not initialized. Call initializeDatabase first.");
   }
+
   return db;
 };
 
@@ -17,11 +18,6 @@ export const initializeDatabase = async (connStr: string, dbName: string) => {
   if (!(await db.collection("users").indexExists("phone_1"))) {
     await db.collection("users").createIndex({ phone: 1 }, { unique: true });
     console.log("Index on phone created");
-  }
-
-  if (!(await db.collection("users").indexExists("email_1"))) {
-    await db.collection("users").createIndex({ email: 1 }, { unique: true });
-    console.log("Index on email created");
   }
 };
 

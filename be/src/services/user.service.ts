@@ -4,7 +4,7 @@ import User from "../models/User.model";
 import { hashToBase64 } from "../utils/hashing";
 import { generateUserToken } from "../utils/token";
 
-const register = async (phone: string, name: string, password: string, gender: boolean, email?: string) => {
+const register = async (phone: string, name: string, password: string, gender: boolean) => {
   const role = "customer";
   const hashedPassword = hashToBase64(password);
 
@@ -13,14 +13,14 @@ const register = async (phone: string, name: string, password: string, gender: b
     name,
     password: hashedPassword,
     gender,
-    email,
     createdAt: new Date(),
     updatedAt: new Date(),
     role,
   });
 
-  const token = generateUserToken(result.insertedId, name, role);
-  return { _id: result.insertedId, name, role, token };
+  const userId = result.insertedId;
+  const token = generateUserToken(userId, name, role);
+  return { _id: userId, name, role, token };
 };
 
 const login = async (phone: string, password: string) => {
@@ -34,9 +34,10 @@ const login = async (phone: string, password: string) => {
   return { _id: user._id, name: user.name, role: user.role, token };
 };
 
-const getUserById = (userId: string) =>
-  db()
+const getUserById = (userId: string) => {
+  return db()
     .collection<User>("users")
     .findOne({ _id: new ObjectId(userId) }, { projection: { password: 0 } });
+};
 
 export default { register, login, getUserById } as const;
