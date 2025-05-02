@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import db from "../database";
-import User from "../models/User.model";
+import User, { UserUpdateRequest } from "../models/User.model";
 import { hashToBase64 } from "../utils/hashing";
 import { generateUserToken } from "../utils/token";
 
@@ -40,4 +40,10 @@ const getUserById = (userId: string) => {
     .findOne({ _id: new ObjectId(userId) }, { projection: { password: 0 } });
 };
 
-export default { register, login, getUserById } as const;
+const updateUser = async (userId: string, userUpdated: UserUpdateRequest) => {
+  await db()
+    .collection<User>("users")
+    .updateOne({ _id: new ObjectId(userId) }, { $set: { ...userUpdated, updatedAt: new Date() } });
+};
+
+export default { register, login, getUserById, updateUser } as const;

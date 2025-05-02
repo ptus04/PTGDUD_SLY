@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body, param } from "express-validator";
-import { getUser, login, register } from "../controllers/user.controller";
+import { getUser, login, register, updateUser } from "../controllers/user.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
@@ -27,11 +27,23 @@ const getUserValidator = [
   }),
 ];
 
+const updateUserValidator = [
+  body("name").optional().notEmpty().withMessage("Name is not empty"),
+  body("phone").optional().isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN").withMessage("Invalid phone number"),
+  body("gender").optional().isBoolean().withMessage("Gender must be a boolean"),
+  body("city").optional().notEmpty().withMessage("City is not empty"),
+  body("district").optional().notEmpty().withMessage("District is not empty"),
+  body("ward").optional().notEmpty().withMessage("Ward is not empty"),
+  body("address").optional().notEmpty().withMessage("Address is not empty"),
+  body("dateOfBirth").optional().isISO8601().withMessage("Date of birth must be a valid ISO8601 date"),
+];
+
 const router = Router();
 router.post("/register", registerValidator, handleBadRequest, register);
 router.post("/login", loginValidator, handleBadRequest, login);
 
 router.use(auth);
+router.put("/me", updateUserValidator, handleBadRequest, updateUser);
 router.get("/:id", getUserValidator, handleBadRequest, getUser);
 
 export default router;

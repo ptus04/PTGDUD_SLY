@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { matchedData } from "express-validator";
 import { MongoError } from "mongodb";
-import { UserLoginRequest, UserRegisterRequest } from "../models/User.model";
+import { UserLoginRequest, UserRegisterRequest, UserUpdateRequest } from "../models/User.model";
 import userService from "../services/user.service";
 
 export const register = async (req: Request, res: Response) => {
@@ -56,4 +56,11 @@ export const getUser = async (req: Request, res: Response) => {
   }
 
   res.status(200).json(user);
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  const data = matchedData<UserUpdateRequest>(req, { onlyValidData: true });
+
+  await userService.updateUser(req._id, data);
+  res.status(200).json({ message: "User updated successfully", user: { ...data } });
 };

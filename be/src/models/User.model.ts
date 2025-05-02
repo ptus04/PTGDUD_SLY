@@ -3,10 +3,10 @@ type User = {
   password: string;
   name: string;
   gender: boolean;
-  address?: string;
   city?: string;
   district?: string;
   ward?: string;
+  address?: string;
   dateOfBirth?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -14,5 +14,6 @@ type User = {
 };
 export type UserRegisterRequest = Pick<User, "phone" | "name" | "password" | "gender">;
 export type UserLoginRequest = Pick<User, "phone" | "password">;
+export type UserUpdateRequest = Partial<Omit<User, "password" | "createdAt" | "updatedAt" | "role">>;
 
 export default User;
