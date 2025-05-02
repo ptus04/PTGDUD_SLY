@@ -1,42 +1,37 @@
-import { HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, memo } from "react";
+import { memo } from "react";
 
-type InputWithLabelProps = {
+type SelectWithLabelProps = {
   id: string;
   label: string;
-  type: HTMLInputTypeAttribute;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
-  autoComplete?: HTMLInputAutoCompleteAttribute;
   autoFocus?: boolean;
   required?: boolean;
   disabled?: boolean;
-  readOnly?: boolean;
-  pattern?: string;
   error?: string;
+  children?: React.ReactNode;
 };
 
-const InputWithLabel = (props: InputWithLabelProps) => (
+const SelectWithLabel = (props: SelectWithLabelProps) => (
   <div className={`flex flex-col gap-2 ${props.className ?? ""}`}>
     <label className="font-semibold" htmlFor={props.id}>
       {props.label}
     </label>
-    <input
+    <select
       className="peer w-full rounded-md border-1 border-gray-300 px-4 py-2 hover:border-red-500 focus:outline-red-500"
       id={props.id}
       name={props.id}
-      type={props.type}
       value={props.value}
-      autoComplete={props.autoComplete}
       autoFocus={props.autoFocus}
       required={props.required}
-      pattern={props.pattern}
       onChange={props.onChange}
       disabled={props.disabled}
-      readOnly={props.readOnly}
-    />
+    >
+      {props.children}
+    </select>
     <span className="hidden text-red-500 peer-invalid:block">{props.error}</span>
   </div>
 );
 
-export default memo(InputWithLabel);
+export default memo(SelectWithLabel);

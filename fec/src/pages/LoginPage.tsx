@@ -1,12 +1,12 @@
-import { memo, useCallback, useContext, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { Link } from "react-router";
-import AppContext, { AppActionTypes } from "../AppContext";
 import InputWithLabel from "../components/InputWithLabel";
 import PrimaryButton from "../components/PrimaryButton";
 import RenderIf from "../components/RenderIf";
+import useStore from "../store/useStore";
 
 const LoginPage = () => {
-  const context = useContext(AppContext);
+  const { dispatch } = useStore();
 
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -33,9 +33,9 @@ const LoginPage = () => {
         return;
       }
 
-      context.dispatch({ type: AppActionTypes.SET_SESSION, payload: session });
+      dispatch({ type: "SET_USER", payload: session });
     },
-    [password, phone, context],
+    [password, phone, dispatch],
   );
 
   return (

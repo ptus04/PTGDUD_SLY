@@ -1,29 +1,32 @@
-import { Fragment, memo } from "react";
+import { memo } from "react";
 
 type RadioSelectorProps = {
   groupName: string;
   options: string[];
-  onChange: (selected: string, selectedIndex: number) => void;
+  className?: string;
+  onChange?: (selected: string, selectedIndex: number) => void;
   selectedIndex?: number;
   required?: boolean;
+  disabled?: boolean;
   error?: string;
 };
 
 const RadioSelector = (props: RadioSelectorProps) => (
-  <div className="inline-flex flex-wrap gap-1">
+  <div className={`inline-flex flex-wrap gap-4 ${props.className ?? ""}`}>
     {props.options.map((option, index) => (
-      <Fragment key={option}>
+      <div key={option} className="flex items-center gap-1">
         <input
           className="peer accent-red-500 nth-[n+2]:ms-4"
           type="radio"
           id={props.groupName + index}
           name={props.groupName}
           required={props.required}
-          defaultChecked={index === props.selectedIndex}
-          onChange={() => props.onChange(option, index)}
+          checked={index === props.selectedIndex}
+          onChange={() => props.onChange?.(option, index)}
+          disabled={index !== props.selectedIndex ? props.disabled : false}
         />
         <label htmlFor={props.groupName + index}>{option}</label>
-      </Fragment>
+      </div>
     ))}
 
     <span className="ms-auto hidden text-red-500 peer-invalid:block">{props.error}</span>

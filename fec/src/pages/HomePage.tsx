@@ -1,12 +1,12 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
-import { useCallback, useContext, useEffect, useState } from "react";
-import AppContext, { AppActionTypes } from "../AppContext";
+import { useCallback, useEffect, useState } from "react";
+import FeaturedCarousel from "../components/FeaturedCarousel";
 import ProductCard from "../components/ProductCard";
 import RenderIf from "../components/RenderIf";
-import FeaturedCarousel from "../components/FeaturedCarousel";
+import useStore from "../store/useStore";
 
 const HomePage = () => {
-  const context = useContext(AppContext);
+  const { dispatch } = useStore();
   const [products, setProducts] = useState<ProductWithIdString[]>([]);
 
   const loadProducts = useCallback(
@@ -18,11 +18,11 @@ const HomePage = () => {
         setProducts(products);
       } catch (error) {
         if (!(error instanceof DOMException)) {
-          context.dispatch({ type: AppActionTypes.SET_ERROR, payload: (error as Error).message });
+          dispatch({ type: "SET_ERROR", payload: (error as Error).message });
         }
       }
     },
-    [context],
+    [dispatch],
   );
 
   useEffect(() => {

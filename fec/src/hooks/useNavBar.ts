@@ -1,29 +1,33 @@
-import React, { useCallback, useContext, useMemo } from "react";
-import AppContext, { AppActionTypes } from "../AppContext";
+import React, { useCallback, useMemo } from "react";
+import useStore from "../store/useStore";
 
 const useNavBar = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state, dispatch } = useStore();
 
-  const handleUnsafeToggle = useCallback(
+  const handleOpen = useCallback(() => {
+    dispatch({ type: "OPEN_NAV_BAR" });
+  }, [dispatch]);
+
+  const handleClose = useCallback(() => {
+    dispatch({ type: "CLOSE_NAV_BAR" });
+  }, [dispatch]);
+
+  const handleUnsafeClose = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       if (
         e.target === e.currentTarget ||
         e.target instanceof HTMLAnchorElement ||
         e.target instanceof HTMLButtonElement
       ) {
-        dispatch({ type: AppActionTypes.TOGGLE_NAVBAR });
+        dispatch({ type: "CLOSE_NAV_BAR" });
       }
     },
     [dispatch],
   );
 
-  const handleToggle = useCallback(() => {
-    dispatch({ type: AppActionTypes.TOGGLE_NAVBAR });
-  }, [dispatch]);
-
   return useMemo(
-    () => ({ isOpen: state.isExpanded, handleToggle, handleUnsafeToggle }),
-    [state.isExpanded, handleToggle, handleUnsafeToggle],
+    () => ({ isOpen: state.isExpanded, handleOpen, handleClose, handleUnsafeClose }),
+    [state.isExpanded, handleOpen, handleClose, handleUnsafeClose],
   );
 };
 

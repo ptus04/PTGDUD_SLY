@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 
 const RefundPolicyPage = () => {
   return (
-    <main className="container mx-auto px-4">
+    <main className="container mx-auto p-4">
       {/* Breadcrumbs navigation */}
       <nav className="text-sm text-gray-500">
         <ol className="flex gap-1">
@@ -35,8 +35,8 @@ const RefundPolicyPage = () => {
 
         <h2 className="text-xl font-bold">Các sản phẩm nguyên giá</h2>
         <p className="italic">
-          QUÝ KHÁCH vui lòng kiểm tra trước khi thanh toán SLY hỗ trợ đổi size trong vòng{" "}
-          <span className="font-bold">7 ngày</span>
+          <span className="font-bold">Quý khách</span> vui lòng kiểm tra trước khi thanh toán SLY hỗ trợ đổi size trong
+          vòng <span className="font-bold">7 ngày</span>
         </p>
         <ul>
           <li>

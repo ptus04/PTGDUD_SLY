@@ -8,12 +8,12 @@ const TITLE_MAP: Record<string, string> = {
   "/products": "Cửa hàng | SLY",
 };
 
-const useTitle = () => {
-  const location = useLocation();
+const useDocumentTitle = () => {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = TITLE_MAP[location.pathname] || "SLY";
-  }, [location.pathname]);
+    document.title = TITLE_MAP[pathname] || "SLY";
+  }, [pathname]);
 };
 
-export default useTitle;
+export default useDocumentTitle;

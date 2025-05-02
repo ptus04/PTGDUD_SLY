@@ -1,14 +1,15 @@
-import { useCallback, useContext, useEffect } from "react";
+import User from "@be/src/models/User.model";
+import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
-import AppContext, { AppActionTypes, AppState } from "../AppContext";
+import useStore from "../store/useStore";
 
 const useAuthentication = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state, dispatch } = useStore();
   const location = useLocation();
   const navigate = useNavigate();
   const params = useParams<{ redirectTo?: string }>();
 
-  const checkAuthentication = useCallback(
+  const getUser = useCallback(
     async (signal: AbortSignal) => {
       try {
         const res = await fetch("/api/users/me", { method: "GET", credentials: "include", signal });
@@ -16,14 +17,14 @@ const useAuthentication = () => {
           return;
         }
 
-        const user: NonNullable<AppState["session"]> = await res.json();
-        dispatch({ type: AppActionTypes.SET_SESSION, payload: user });
+        const user: NonNullable<User> = await res.json();
+        dispatch({ type: "SET_USER", payload: user });
       } catch (error) {
         if (error instanceof DOMException) {
           return;
         }
 
-        dispatch({ type: AppActionTypes.SET_ERROR, payload: (error as Error).message });
+        dispatch({ type: "SET_ERROR", payload: (error as Error).message });
       }
     },
     [dispatch],
@@ -31,17 +32,17 @@ const useAuthentication = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    checkAuthentication(controller.signal);
+    getUser(controller.signal);
 
     return () => controller.abort();
-  }, [checkAuthentication]);
+  }, [getUser]);
 
   useEffect(() => {
     const isAuthRoute = /\/(login|register)/.test(location.pathname);
-    if (isAuthRoute && state.session) {
+    if (isAuthRoute && state.user) {
       navigate(params.redirectTo ?? "/", { replace: true });
     }
-  }, [location.pathname, state.session, params.redirectTo, navigate]);
+  }, [location.pathname, state.user, params.redirectTo, navigate]);
 };
 
 export default useAuthentication;

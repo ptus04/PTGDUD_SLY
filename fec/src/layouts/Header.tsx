@@ -1,53 +1,25 @@
-import { memo, useCallback, useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
-import AppContext from "../AppContext";
+import { memo } from "react";
+import { Link } from "react-router";
 import RenderIf from "../components/RenderIf";
 import useNavBar from "../hooks/useNavBar";
-import useQuery from "../hooks/useQuery";
+import useProductQuery from "../hooks/useProductQuery";
+import useStore from "../store/useStore";
 import { formatAsCurrency } from "../utils/formatters";
+import CustomizedHeaderTag from "./CustomizedHeaderTag";
 
 const Header = () => {
-  const location = useLocation();
-  const [headerStyle, setHeaderStyle] = useState({});
-  const { state } = useContext(AppContext);
-  const { handleToggle } = useNavBar();
-  const handleSubmit = useQuery();
-
-  const handleScroll = useCallback(() => {
-    if (window.scrollY >= window.innerHeight)
-      setHeaderStyle({
-        backgroundColor: "white",
-        boxShadow: "0 0 5px gray",
-      });
-    else setHeaderStyle({});
-  }, [setHeaderStyle]);
-
-  useEffect(() => {
-    if (location.pathname === "/") {
-      window.addEventListener("scroll", handleScroll);
-    } else {
-      setHeaderStyle({
-        position: "sticky",
-        top: 0,
-        backgroundColor: "white",
-        boxShadow: "0 0 5px gray",
-      });
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      setHeaderStyle({});
-    };
-  }, [location.pathname, setHeaderStyle, handleScroll]);
+  const { state } = useStore();
+  const { handleOpen } = useNavBar();
+  const handleSubmit = useProductQuery();
 
   return (
-    <header className="fixed z-10 flex w-full items-center justify-between px-4 py-2" style={headerStyle}>
+    <CustomizedHeaderTag>
       <div className="flex shrink grow basis-0 flex-row items-center gap-3">
         <button
           className="cursor-pointer duration-200 hover:text-red-500"
           type="button"
           title="Mở menu"
-          onClick={handleToggle}
+          onClick={handleOpen}
         >
           <i className="fa fa-bars"></i>
         </button>
@@ -75,10 +47,13 @@ const Header = () => {
           >
             <i className="fa fa-bag-shopping"></i>
             <span className="hidden md:inline"> Giỏ hàng</span>
-            <span className="absolute -top-3/10 left-[0.5rem] w-4 rounded-full bg-red-500 text-center text-xs text-white">
-              {state.cart?.length}
-            </span>
+            <RenderIf condition={!!state.cart && state.cart.length > 0}>
+              <span className="absolute -top-3/10 left-[0.5rem] w-4 rounded-full bg-red-500 text-center text-xs text-white">
+                {state.cart?.length}
+              </span>
+            </RenderIf>
           </Link>
+
           <div className="absolute top-11/10 -right-8 hidden max-h-[80vh] max-w-[30rem] min-w-[20rem] overflow-auto border-2 border-gray-500 bg-white p-2 shadow group-hover:block">
             <RenderIf condition={!state.cart || state.cart.length === 0}>
               <p className="m-0 text-center">Chưa có sản phẩm trong giỏ hàng.</p>
@@ -117,12 +92,12 @@ const Header = () => {
           </div>
         </div>
 
-        <Link to="login">
+        <Link to={state.user ? "/account" : "/login"} className="cursor-pointer" title="Tài khoản">
           <i className="fa fa-user"></i>
-          <span className="hidden md:inline"> {state.session ? state.session.name : "Tài khoản"}</span>
+          <span className="hidden md:inline"> {state.user ? state.user.name : "Tài khoản"}</span>
         </Link>
       </div>
-    </header>
+    </CustomizedHeaderTag>
   );
 };
 

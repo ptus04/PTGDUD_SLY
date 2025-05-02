@@ -1,15 +1,15 @@
-import { useContext, useEffect } from "react";
-import AppContext, { AppActionTypes } from "../AppContext";
+import { useEffect } from "react";
+import useStore from "../store/useStore";
 
 const useCart = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state, dispatch } = useStore();
 
   useEffect(() => {
-    if (!state.session) {
+    if (!state.user) {
       const cart = localStorage.getItem("cart");
 
       if (cart) {
-        dispatch({ type: AppActionTypes.SET_CART, payload: JSON.parse(cart) });
+        dispatch({ type: "SET_CART", payload: JSON.parse(cart) });
       }
 
       // localStorage.setItem(
@@ -26,7 +26,7 @@ const useCart = () => {
       //   ]),
       // );
     }
-  }, [dispatch, state.session]);
+  }, [dispatch, state.user]);
 };
 
 export default useCart;

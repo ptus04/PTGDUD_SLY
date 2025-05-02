@@ -1,13 +1,13 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import { Link } from "react-router";
-import AppContext, { AppActionTypes } from "../AppContext";
 import InputWithLabel from "../components/InputWithLabel";
 import PrimaryButton from "../components/PrimaryButton";
 import RadioSelector from "../components/RadioSelector";
 import RenderIf from "../components/RenderIf";
+import useStore from "../store/useStore";
 
 const RegisterPage = () => {
-  const context = useContext(AppContext);
+  const { dispatch } = useStore();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -37,9 +37,9 @@ const RegisterPage = () => {
         return;
       }
 
-      context.dispatch({ type: AppActionTypes.SET_SESSION, payload: session });
+      dispatch({ type: "SET_USER", payload: session });
     },
-    [name, email, phone, password, gender, context],
+    [name, email, phone, password, gender, dispatch],
   );
 
   return (
