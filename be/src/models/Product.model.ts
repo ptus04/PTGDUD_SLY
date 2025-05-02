@@ -9,8 +9,8 @@ type Product = {
   careInstructions: string[];
   inStock: number;
   isNew?: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ProductWithIdString = Product & {
