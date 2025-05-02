@@ -32,9 +32,6 @@ const ProductCard = ({ product }: ProductCardProps) => (
     <RenderIf condition={!product.discount}>
       <p className="m-0 font-bold">{formatAsCurrency(product.price)}</p>
     </RenderIf>
-    <RenderIf condition={!product.discount}>
-      <p className="m-0 font-bold">{formatAsCurrency(product.price)}</p>
-    </RenderIf>
   </div>
 );
 
