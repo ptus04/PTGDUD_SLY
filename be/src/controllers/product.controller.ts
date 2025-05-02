@@ -5,8 +5,9 @@ import productService from "../services/product.service";
 export const getProducts = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 10;
   const isNew = Boolean(req.query.isNew);
+  const category = req.query.category as string | undefined;
 
-  const products = await productService.getAllProducts(limit, isNew);
+  const products = await productService.getAllProducts(limit, isNew, category);
   if (products.length === 0) {
     res.status(404).json({ error: "No products found" });
     return;

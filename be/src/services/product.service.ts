@@ -2,12 +2,14 @@ import { ObjectId } from "mongodb";
 import db from "../database";
 import Product from "../models/Product.model";
 
-const getAllProducts = (limit: number, isNew: boolean) =>
-  db()
+const getAllProducts = (limit: number, isNew: boolean, category?: string) => {
+  const filter = isNew ? { isNew: true } : {};
+  return db()
     .collection<Product>("products")
-    .find(isNew ? { isNew: true } : {})
+    .find({ ...filter, ...(category ? { category } : {}) })
     .limit(limit ?? 10)
     .toArray();
+};
 
 const getProductById = (productId: string) =>
   db()
