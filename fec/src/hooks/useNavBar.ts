@@ -5,11 +5,11 @@ const useNavBar = () => {
   const { state, dispatch } = useStore();
 
   const handleOpen = useCallback(() => {
-    dispatch({ type: "OPEN_NAV_BAR" });
+    dispatch({ type: "SET_NAV_BAR_STATE", payload: true });
   }, [dispatch]);
 
   const handleClose = useCallback(() => {
-    dispatch({ type: "CLOSE_NAV_BAR" });
+    dispatch({ type: "SET_NAV_BAR_STATE", payload: false });
   }, [dispatch]);
 
   const handleUnsafeClose = useCallback(
@@ -19,7 +19,7 @@ const useNavBar = () => {
         e.target instanceof HTMLAnchorElement ||
         e.target instanceof HTMLButtonElement
       ) {
-        dispatch({ type: "CLOSE_NAV_BAR" });
+        dispatch({ type: "SET_NAV_BAR_STATE", payload: false });
       }
     },
     [dispatch],

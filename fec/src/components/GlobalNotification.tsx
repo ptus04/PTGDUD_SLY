@@ -6,15 +6,15 @@ const GlobalNotification = () => {
   const { state, dispatch } = useStore();
 
   const unsetSuccess = useCallback(() => {
-    dispatch({ type: "UNSET_SUCCESS" });
+    dispatch({ type: "SET_SUCCESS", payload: undefined });
   }, [dispatch]);
 
   const unsetWarning = useCallback(() => {
-    dispatch({ type: "UNSET_WARNING" });
+    dispatch({ type: "SET_WARNING", payload: undefined });
   }, [dispatch]);
 
   const unsetError = useCallback(() => {
-    dispatch({ type: "UNSET_ERROR" });
+    dispatch({ type: "SET_ERROR", payload: undefined });
   }, [dispatch]);
 
   return (

@@ -105,7 +105,7 @@ const AccountPage = () => {
       return;
     }
 
-    dispatch({ type: "UNSET_USER" });
+    dispatch({ type: "SET_USER", payload: undefined });
     navigate("/", { replace: true });
   }, [dispatch, navigate]);
 
