@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react";
 import { Link } from "react-router";
+import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
-import PrimaryButton from "../components/PrimaryButton";
 import RenderIf from "../components/RenderIf";
 import useStore from "../store/useStore";
 
@@ -78,9 +78,9 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <PrimaryButton className="justify-center" type="submit">
+        <Button className="justify-center" preset="primary" type="submit">
           ĐĂNG NHẬP
-        </PrimaryButton>
+        </Button>
 
         <div className="flex flex-wrap justify-between">
           <Link className="duration-100 hover:text-red-500" to="/register">

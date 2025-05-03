@@ -1,7 +1,7 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo, useCallback, useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router";
-import PrimaryButton from "../components/PrimaryButton";
+import Button from "../components/Button";
 import ProductCarousel from "../components/ProductCarousel";
 import RenderIf from "../components/RenderIf";
 import useStore from "../store/useStore";
@@ -168,10 +168,10 @@ const ProductPage = () => {
               />
             </div>
 
-            <PrimaryButton type="button" className="mx-auto">
+            <Button type="button" preset="primary" className="mx-auto">
               <i className="fa fa-cart-plus"></i>
               <span>Thêm vào giỏ hàng</span>
-            </PrimaryButton>
+            </Button>
 
             <hr />
             <p className="text-center text-sm">

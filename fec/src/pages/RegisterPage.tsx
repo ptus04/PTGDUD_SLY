@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { Link } from "react-router";
+import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
-import PrimaryButton from "../components/PrimaryButton";
 import RadioSelector from "../components/RadioSelector";
 import RenderIf from "../components/RenderIf";
 import useStore from "../store/useStore";
@@ -118,9 +118,9 @@ const RegisterPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <PrimaryButton className="justify-center" type="submit">
+        <Button className="justify-center" preset="primary" type="submit">
           ĐĂNG KÝ
-        </PrimaryButton>
+        </Button>
 
         <p>
           <span>Đã có tài khoản? </span>

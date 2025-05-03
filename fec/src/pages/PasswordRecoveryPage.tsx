@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
+import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
-import PrimaryButton from "../components/PrimaryButton";
 import RenderIf from "../components/RenderIf";
 
 const PasswordRecoveryPage = () => {
@@ -35,9 +35,9 @@ const PasswordRecoveryPage = () => {
           onChange={(e) => setPhone(e.target.value)}
         />
 
-        <PrimaryButton className="justify-center" type="submit">
+        <Button className="justify-center" preset="primary" type="submit">
           Đặt lại mật khẩu
-        </PrimaryButton>
+        </Button>
       </form>
     </main>
   );
