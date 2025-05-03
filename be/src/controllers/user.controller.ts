@@ -39,7 +39,6 @@ const afterAuth = (res: Response, data: any) => {
     .cookie("token", data.token, {
       httpOnly: true,
       sameSite: "strict",
-      signed: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     })
     .json(data);
@@ -63,4 +62,8 @@ export const updateUser = async (req: Request, res: Response) => {
 
   await userService.updateUser(req._id, data);
   res.status(200).json({ message: "User updated successfully", user: { ...data } });
+};
+
+export const logout = async (req: Request, res: Response) => {
+  res.status(200).clearCookie("token").json({ message: "Logout successfully" });
 };

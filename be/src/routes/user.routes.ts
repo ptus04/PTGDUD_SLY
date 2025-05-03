@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { body, param } from "express-validator";
-import { getUser, login, register, updateUser } from "../controllers/user.controller";
+import { body, cookie, param } from "express-validator";
+import { getUser, login, logout, register, updateUser } from "../controllers/user.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
@@ -38,12 +38,15 @@ const updateUserValidator = [
   body("dateOfBirth").optional().isISO8601().withMessage("Date of birth must be a valid ISO8601 date"),
 ];
 
+const logoutValidator = [cookie("token").exists().withMessage("Token is required")];
+
 const router = Router();
 router.post("/register", registerValidator, handleBadRequest, register);
 router.post("/login", loginValidator, handleBadRequest, login);
 
 router.use(auth);
 router.put("/me", updateUserValidator, handleBadRequest, updateUser);
+router.get("/logout", logoutValidator, handleBadRequest, logout);
 router.get("/:id", getUserValidator, handleBadRequest, getUser);
 
 export default router;
