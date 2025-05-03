@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
 import RadioSelector from "../components/RadioSelector";
@@ -10,6 +10,7 @@ import useStore from "../store/useStore";
 
 const AccountPage = () => {
   const { state, dispatch } = useStore();
+  const navigate = useNavigate();
   const addresses = useAddress();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -90,6 +91,20 @@ const AccountPage = () => {
   const handleEdit = useCallback(() => {
     setIsEditing((prev) => !prev);
   }, []);
+
+  const handleLogout = useCallback(async () => {
+    const res = await fetch("/api/users/logout", {
+      method: "GET",
+      credentials: "include",
+    });
+    if (!res.ok) {
+      dispatch({ type: "SET_SUCCESS", payload: "Đăng xuất thành công" });
+      return;
+    }
+
+    dispatch({ type: "UNSET_USER" });
+    navigate("/", { replace: true });
+  }, [dispatch, navigate]);
 
   useEffect(() => {
     if (state.user) {
@@ -217,9 +232,9 @@ const AccountPage = () => {
               disabled={!isEditing}
             >
               <option value="">Chọn quận/huyện</option>
-              {city &&
-                addresses &&
-                Object.values(addresses[city])
+              {addresses &&
+                city &&
+                Object.values(addresses[city] ?? {})
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map((item) => (
                     <option key={item.name} value={item.name}>
@@ -239,9 +254,11 @@ const AccountPage = () => {
               disabled={!isEditing}
             >
               <option value="">Chọn phường/xã</option>
-              {district &&
-                addresses &&
-                Object.values(Object.values(addresses[city]).filter((item) => item.name === district)[0].wards)
+              {addresses &&
+                district &&
+                Object.values(
+                  Object.values(addresses[city] ?? {}).filter((item) => item.name === district)[0]?.wards ?? {},
+                )
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map((item) => (
                     <option key={item.name} value={item.name}>
@@ -290,7 +307,7 @@ const AccountPage = () => {
             </Link>
           </div>
 
-          <Button type="button">
+          <Button type="button" onClick={handleLogout}>
             <i className="fa fa-sign-out"></i> Đăng xuất
           </Button>
         </div>
