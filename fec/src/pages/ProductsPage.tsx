@@ -1,12 +1,13 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo, useCallback, useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useSearchParams } from "react-router";
 import Pagination from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import usePagination from "../hooks/usePagination";
 import useStore from "../store/useStore";
 
 const ProductsPage = () => {
+  const [params] = useSearchParams();
   const { dispatch } = useStore();
   const [products, setProducts] = useState<ProductWithIdString[]>([]);
   const { pages, currentPage, paginatedProducts, handlePageChange } = usePagination<ProductWithIdString>(products, 12);
@@ -45,17 +46,19 @@ const ProductsPage = () => {
 
   const fetchProducts = useCallback(async () => {
     try {
-      const response = await fetch("/api/products?limit=100");
-      if (!response.ok) {
-        throw new Error("Có lỗi xảy ra khi tải sản phẩm");
+      const category = params.get("category") ? `&category=${params.get("category")}` : "";
+      const query = params.get("query") ? `&query=${params.get("query")}` : "";
+      const res = await fetch(`/api/products?limit=150${category}${query}`);
+      if (res.status === 404) {
+        throw new Error("Không tìm thấy sản phẩm nào");
       }
 
-      const data = await response.json();
+      const data = await res.json();
       setProducts(data);
     } catch (error) {
       dispatch({ type: "SET_ERROR", payload: (error as Error).message });
     }
-  }, [dispatch]);
+  }, [dispatch, params]);
 
   useEffect(() => {
     fetchProducts();
