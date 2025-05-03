@@ -14,7 +14,7 @@ const NavBar = () => {
       onClickCapture={handleUnsafeClose}
     >
       <div
-        className={`flex h-full w-full flex-col gap-4 overflow-auto bg-white/75 px-4 py-2 backdrop-blur-md duration-200 md:w-2/5 lg:w-1/5 ${isOpen ? "" : "-translate-x-full"}`}
+        className={`flex h-full w-full flex-col gap-4 overflow-auto bg-white/75 px-4 py-2 shadow-md backdrop-blur-md duration-200 md:w-2/5 lg:w-1/5 ${isOpen ? "" : "-translate-x-full"}`}
       >
         {/* Header */}
         <div className="flex items-center justify-between">
