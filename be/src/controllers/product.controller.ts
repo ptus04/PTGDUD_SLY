@@ -3,11 +3,18 @@ import { matchedData } from "express-validator";
 import productService from "../services/product.service";
 
 export const getProducts = async (req: Request, res: Response) => {
-  const limit = parseInt(req.query.limit as string) || 10;
-  const isNew = Boolean(req.query.isNew);
-  const category = req.query.category as string | undefined;
+  const data = matchedData<{ limit: number; isNew: boolean; category: string | undefined; query: string | undefined }>(
+    req,
+    {
+      onlyValidData: true,
+    },
+  );
+  const limit = data.limit ?? 10;
+  const isNew = data.isNew;
+  const category = data.category;
+  const query = data.query ?? undefined;
 
-  const products = await productService.getAllProducts(limit, isNew, category);
+  const products = await productService.getProducts(limit, isNew, category, query);
   if (products.length === 0) {
     res.status(404).json({ error: "No products found" });
     return;
