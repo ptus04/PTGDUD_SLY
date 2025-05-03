@@ -31,7 +31,8 @@ const login = async (phone: string, password: string) => {
   }
 
   const token = generateUserToken(user._id, user.name, user.role);
-  return { _id: user._id, name: user.name, role: user.role, token };
+  const { password: userPassword, ...userWithoutPassword } = user;
+  return { ...userWithoutPassword, token };
 };
 
 const getUserById = (userId: string) => {
