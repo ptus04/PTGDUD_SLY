@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
+import ConfirmModal from "../components/ConfirmModal";
 import RadioSelector from "../components/RadioSelector";
 import RenderIf from "../components/RenderIf";
 import SelectWithLabel from "../components/SelectWithLabel";
@@ -13,6 +14,7 @@ const AccountPage = () => {
   const navigate = useNavigate();
   const addresses = useAddress();
   const [isEditing, setIsEditing] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const [name, setName] = useState("");
   const [gender, setGender] = useState(0);
@@ -93,6 +95,7 @@ const AccountPage = () => {
   }, []);
 
   const handleLogout = useCallback(async () => {
+    setShowLogoutModal(false);
     const res = await fetch("/api/users/logout", {
       method: "GET",
       credentials: "include",
@@ -121,6 +124,16 @@ const AccountPage = () => {
 
   return (
     <main className="container mx-auto flex flex-col gap-4 p-4">
+      {/* Logout confirmation modal */}
+      <ConfirmModal
+        title="Xác nhận Đăng xuất"
+        content="Bạn có chắc chắn muốn đăng xuất không?"
+        open={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onCancel={() => setShowLogoutModal(false)}
+        onAccept={handleLogout}
+      />
+
       {/* Breadcrumbs navigation */}
       <nav className="text-sm text-gray-500">
         <ol className="flex gap-1">
@@ -307,7 +320,7 @@ const AccountPage = () => {
             </Link>
           </div>
 
-          <Button type="button" onClick={handleLogout}>
+          <Button type="button" onClick={() => setShowLogoutModal(true)}>
             <i className="fa fa-sign-out"></i> Đăng xuất
           </Button>
         </div>
