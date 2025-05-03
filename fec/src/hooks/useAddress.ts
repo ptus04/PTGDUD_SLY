@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useStore from "../store/useStore";
 
 const useAddress = () => {
@@ -41,7 +41,7 @@ const useAddress = () => {
     return () => controller.abort();
   }, [getAddress]);
 
-  return useMemo(() => addresses, [addresses]);
+  return addresses;
 };
 
 export default useAddress;
