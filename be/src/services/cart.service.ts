@@ -1,22 +1,21 @@
 import { ObjectId } from "mongodb";
 import db from "../database";
 import Cart from "../models/Cart.model";
-import CartItem from "../models/CartItem.model";
 
-const getCartItems = async (userId: string) => {
-  const cart = await db()
+const getCartItems = (userId: string) => {
+  return db()
     .collection<Cart>("carts")
     .findOne({ _id: new ObjectId(userId) });
-
-  return cart ? cart.items : [];
 };
 
-const updateCartItems = async (userId: string, items: CartItem[]) => {
-  const result = await db()
+const updateCartItems = (userId: string, items: Cart["items"]) => {
+  return db()
     .collection<Cart>("carts")
-    .updateOne({ _id: new ObjectId(userId) }, { $set: { items } });
-
-  return result.matchedCount > 0 && result.modifiedCount > 0;
+    .updateOne(
+      { _id: new ObjectId(userId) },
+      { $set: { _id: new ObjectId(userId), items: items, updatedAt: new Date() } },
+      { upsert: true },
+    );
 };
 
 export default { getCartItems, updateCartItems } as const;

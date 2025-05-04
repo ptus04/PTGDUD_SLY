@@ -4,7 +4,7 @@ import { getCart, updateCart } from "../controllers/cart.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
-const updateCartValidator = [body("items").isArray().withMessage("Items must be an array")];
+const updateCartValidator = [body().isArray().withMessage("Body must be an array")];
 
 const router = Router();
 router.use(auth);
