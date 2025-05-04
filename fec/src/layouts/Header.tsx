@@ -6,11 +6,13 @@ import useProductQuery from "../hooks/useProductQuery";
 import useStore from "../store/useStore";
 import { formatAsCurrency } from "../utils/formatters";
 import CustomizedHeaderTag from "./CustomizedHeaderTag";
+import useCart from "../hooks/useCart";
 
 const Header = () => {
   const { state } = useStore();
   const { handleOpen } = useNavBar();
   const handleSubmit = useProductQuery();
+  const { handleRemoveFromCart } = useCart();
 
   return (
     <CustomizedHeaderTag>
@@ -47,34 +49,40 @@ const Header = () => {
           >
             <i className="fa fa-bag-shopping"></i>
             <span className="hidden md:inline"> Giỏ hàng</span>
-            <RenderIf condition={!!state.cart && state.cart.length > 0}>
+            {/* Show cart item count if cart is not empty */}
+            <RenderIf condition={!!state.cart && state.cart?.items.length > 0}>
               <span className="absolute -top-3/10 left-[0.5rem] w-4 rounded-full bg-red-500 text-center text-xs text-white">
-                {state.cart?.length}
+                {state.cart?.items.length}
               </span>
             </RenderIf>
           </Link>
 
           <div className="absolute top-11/10 -right-8 hidden max-h-[80vh] max-w-[30rem] min-w-[20rem] overflow-auto border-2 border-gray-500 bg-white p-2 shadow group-hover:block">
-            <RenderIf condition={!state.cart || state.cart.length === 0}>
+            <RenderIf condition={!state.cart || state.cart?.items.length === 0}>
               <p className="m-0 text-center">Chưa có sản phẩm trong giỏ hàng.</p>
             </RenderIf>
 
-            <RenderIf condition={!!state.cart && state.cart.length > 0}>
-              {state.cart?.map((product) => (
-                <div key={product._id} className="flex items-center p-1">
+            <RenderIf condition={!!state.cart && state.cart?.items.length > 0}>
+              {state.cart?.items.map((product) => (
+                <div key={product._id + product.size} className="flex items-center p-1">
                   <Link to={`/products/${product._id}`}>
                     <img className="h-14" src={`/img/${product.image}`} loading="lazy" alt={product.image} />
                   </Link>
                   <div className="ms-2 overflow-hidden">
                     <Link to={`/products/${product._id}`}>
-                      {product.title} ({product.size ?? ""})
+                      {product.title} {product.size ? `(${product.size})` : ""}
                     </Link>
                     <p>
                       {product.quantity} &times;
                       <span className="font-bold">{formatAsCurrency(product.price)}</span>
                     </p>
                   </div>
-                  <button className="ms-auto cursor-pointer" type="button" title="Xóa sản phẩm">
+                  <button
+                    className="ms-auto cursor-pointer"
+                    type="button"
+                    onClick={() => handleRemoveFromCart(product._id, product.size)}
+                    title="Xóa sản phẩm"
+                  >
                     <i className="fa fa-remove"></i>
                   </button>
                 </div>
@@ -85,7 +93,7 @@ const Header = () => {
               <div className="flex justify-between p-1 text-sm">
                 <p className="font-bold">Tạm tính:</p>
                 <p className="text-end font-bold">
-                  {formatAsCurrency(state.cart?.reduce((acc, p) => acc + p.price * p.quantity, 0) ?? 0)}
+                  {formatAsCurrency(state.cart?.items.reduce((acc, p) => acc + p.price * p.quantity, 0) ?? 0)}
                 </p>
               </div>
             </RenderIf>

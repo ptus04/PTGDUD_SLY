@@ -1,4 +1,4 @@
-import CartItem from "@be/src/models/CartItem.model";
+import Cart from "@be/src/models/Cart.model";
 import User from "@be/src/models/User.model";
 
 export type State = {
@@ -7,7 +7,7 @@ export type State = {
   success?: string;
   warning?: string;
   error?: string;
-  cart?: CartItem[];
+  cart?: Cart;
 };
 
 export const initialState: State = {
@@ -20,7 +20,7 @@ export type Action =
   | { type: "SET_SUCCESS"; payload: string | undefined }
   | { type: "SET_WARNING"; payload: string | undefined }
   | { type: "SET_ERROR"; payload: string | undefined }
-  | { type: "SET_CART"; payload: CartItem[] | undefined };
+  | { type: "SET_CART"; payload: Cart | undefined };
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {

@@ -4,6 +4,7 @@ import { Link, NavLink, useParams } from "react-router";
 import Button from "../components/Button";
 import ProductCarousel from "../components/ProductCarousel";
 import RenderIf from "../components/RenderIf";
+import useCart from "../hooks/useCart";
 import useStore from "../store/useStore";
 import { formatAsCurrency } from "../utils/formatters";
 
@@ -12,6 +13,24 @@ const ProductPage = () => {
   const params = useParams();
   const [product, setProduct] = useState<ProductWithIdString | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+  const { handleUpdateCart } = useCart();
+
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState<string | undefined>(undefined);
+
+  const handleUpdateSize = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSize(e.target.value);
+    },
+    [setSize],
+  );
+
+  const handleUpdateQuantity = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setQuantity(parseInt(e.target.value));
+    },
+    [setQuantity],
+  );
 
   const fetchProduct = useCallback(
     async (signal: AbortSignal) => {
@@ -34,6 +53,10 @@ const ProductPage = () => {
     },
     [params.id, dispatch],
   );
+
+  useEffect(() => {
+    setSize(product?.size ? product.size[0] : undefined);
+  }, [product?.size]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -147,7 +170,8 @@ const ProductPage = () => {
                       name="size"
                       value={s}
                       title={s}
-                      defaultChecked={i === 0}
+                      checked={s === size || (!s && i === 0)}
+                      onChange={handleUpdateSize}
                     />
                     <label htmlFor={s}>{s}</label>
                   </div>
@@ -163,12 +187,18 @@ const ProductPage = () => {
                 id="quantity"
                 name="quantity"
                 min="1"
-                defaultValue="1"
+                value={quantity}
+                onChange={handleUpdateQuantity}
                 title="Số lượng"
               />
             </div>
 
-            <Button type="button" preset="primary" className="mx-auto">
+            <Button
+              type="button"
+              preset="primary"
+              className="mx-auto"
+              onClick={() => handleUpdateCart(product!, quantity, size)}
+            >
               <i className="fa fa-cart-plus"></i>
               <span>Thêm vào giỏ hàng</span>
             </Button>
