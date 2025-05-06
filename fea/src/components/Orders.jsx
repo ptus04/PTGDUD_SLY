@@ -7,6 +7,16 @@ function Orders() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openMenuId, setOpenMenuId] = useState(null);
+
+  const toggleMenu = (orderId) => {
+    setOpenMenuId(openMenuId === orderId ? null : orderId);
+  };
+
+  const closeMenu = () => {
+    setOpenMenuId(null);
+  };
+
   // Fetch dữ liệu từ API thực tế
   useEffect(() => {
     setLoading(true);
@@ -316,55 +326,56 @@ function Orders() {
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
                           {order.paymentMethod}
                         </td>
+                        {/* Thao tác trạng thái */}
                         <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                          <div className="flex justify-end space-x-2">
+                          <div className="relative flex justify-end space-x-2">
                             <button
                               className="text-blue-600 hover:text-blue-900"
                               onClick={() => handleViewOrder(order)}
                             >
                               Xem
                             </button>
-                            <div className="group relative">
-                              <button className="text-gray-600 hover:text-gray-900">
-                                Trạng thái ▾
-                              </button>
-                              <div className="absolute right-0 z-10 mt-2 hidden w-48 rounded-md bg-white shadow-lg group-hover:block">
-                                <div className="py-1">
-                                  {/* <button
-                                    onClick={() =>
-                                      handleStatusChange(order.id, "processing")
-                                    }
-                                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                            {order.status === "processing" && (
+                              <div>
+                                <button
+                                  className="text-gray-600 hover:text-gray-900"
+                                  onClick={() => toggleMenu(order.id)}
+                                >
+                                  Trạng thái ▾
+                                </button>
+                                {openMenuId === order.id && (
+                                  <div
+                                    className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg"
+                                    onMouseLeave={closeMenu}
                                   >
-                                    Đang xử lý
-                                  </button> */}
-                                  {/* <button
-                                    onClick={() =>
-                                      handleStatusChange(order.id, "shipped")
-                                    }
-                                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    Đang giao
-                                  </button> */}
-                                  <button
-                                    onClick={() =>
-                                      handleStatusChange(order.id, "delivered")
-                                    }
-                                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    Xác nhận
-                                  </button>
-                                  <button
-                                    onClick={() =>
-                                      handleStatusChange(order.id, "canceled")
-                                    }
-                                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    Hủy
-                                  </button>
-                                </div>
+                                    <div className="py-1">
+                                      <button
+                                        onClick={() =>
+                                          handleStatusChange(
+                                            order.id,
+                                            "shipped",
+                                          )
+                                        }
+                                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                                      >
+                                        Xác nhận
+                                      </button>
+                                      <button
+                                        onClick={() =>
+                                          handleStatusChange(
+                                            order.id,
+                                            "canceled",
+                                          )
+                                        }
+                                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                                      >
+                                        Hủy
+                                      </button>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
-                            </div>
+                            )}
                           </div>
                         </td>
                       </tr>
