@@ -3,7 +3,7 @@ import "./index.css";
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
 import Dashboard from "./components/Dashboard";
-import Customer from "./components/Customer";
+import User from "./components/User";
 import Product from "./components/Product";
 import Orders from "./components/Orders";
 // import Invoices from "./components/Invoices";
@@ -26,7 +26,7 @@ function App() {
           <main className="flex-1 bg-gray-50 p-4 sm:p-6">
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/customers" element={<Customer />} />
+              <Route path="/users" element={<User />} />
               <Route path="/products" element={<Product />} />
               <Route path="/orders" element={<Orders></Orders>} />
               <Route path="/invoice" element={<h1>Invoices</h1>} />

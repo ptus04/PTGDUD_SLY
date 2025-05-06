@@ -80,24 +80,10 @@ function Dashboard() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Total Sales Chart */}
         <div className="rounded-lg bg-white p-6 shadow">
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4">
             <h3 className="text-lg font-semibold">
               {data.charts.totalSales.title}
             </h3>
-            <div className="flex space-x-2">
-              {data.charts.totalSales.options.map((option, index) => (
-                <button
-                  key={index}
-                  className={`rounded px-3 py-1 text-sm ${
-                    option === data.charts.totalSales.selected
-                      ? "bg-yellow-500 text-white"
-                      : "bg-gray-100 hover:bg-gray-200"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={data.charts.totalSales.data}>

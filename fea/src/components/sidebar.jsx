@@ -31,19 +31,15 @@ function Sidebar() {
         </li>
         <li>
           <Link
-            to="/customers"
+            to="/users"
             className={`flex items-center rounded-lg px-4 py-3 ${
-              location.pathname === "/customers"
+              location.pathname === "/users"
                 ? "bg-blue-100 text-blue-600"
                 : "text-gray-700 hover:bg-gray-200 hover:text-blue-600"
             }`}
           >
-            <img
-              src="/img/customer.png"
-              alt="Customers"
-              className="mr-3 h-6 w-6"
-            />
-            <span className="font-medium">Customers</span>
+            <img src="/img/customer.png" alt="Users" className="mr-3 h-6 w-6" />
+            <span className="font-medium">User</span>
           </Link>
         </li>
         <li>
