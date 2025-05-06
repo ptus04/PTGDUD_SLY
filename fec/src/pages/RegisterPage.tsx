@@ -27,7 +27,7 @@ const RegisterPage = () => {
       });
 
       if (res.status === 409) {
-        setError("Số điện thoại hoặc Email đã được sử dụng");
+        setError("Số điện thoại đã được sử dụng");
         return;
       }
 
