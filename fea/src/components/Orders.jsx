@@ -5,11 +5,13 @@ function Orders() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all"); // all, processing, shipped, delivered, canceled
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Fetch dữ liệu từ API thực tế
   useEffect(() => {
     setLoading(true);
-    fetch("https://run.mocky.io/v3/1502b649-6ee9-4343-85ca-49b182066188")
+    fetch("https://run.mocky.io/v3/725333cb-cd25-4129-9e35-a62721672628")
+      // fetch("/api/products")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -61,7 +63,10 @@ function Orders() {
       </span>
     );
   };
-
+  const handleViewOrder = (order) => {
+    setSelectedOrder(order);
+    setIsModalOpen(true);
+  };
   // Xử lý thay đổi trạng thái đơn hàng
   const handleStatusChange = (orderId, newStatus) => {
     // Trong thực tế, bạn sẽ gửi request cập nhật lên API
@@ -154,7 +159,7 @@ function Orders() {
                 />
               </div>
               <div className="flex gap-2">
-                <button className="flex items-center space-x-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
+                {/* <button className="flex items-center space-x-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
                   <svg
                     className="h-4 w-4"
                     fill="currentColor"
@@ -182,7 +187,7 @@ function Orders() {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                </button>
+                </button> */}
               </div>
             </div>
 
@@ -315,9 +320,7 @@ function Orders() {
                           <div className="flex justify-end space-x-2">
                             <button
                               className="text-blue-600 hover:text-blue-900"
-                              onClick={() =>
-                                alert(`Xem chi tiết đơn hàng ${order.id}`)
-                              }
+                              onClick={() => handleViewOrder(order)}
                             >
                               Xem
                             </button>
@@ -454,6 +457,58 @@ function Orders() {
           )}
         </div>
       </div>
+      {isModalOpen && selectedOrder && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-lg">
+            <h2 className="mb-4 text-xl font-bold">Chi tiết đơn hàng</h2>
+            <p className="mb-2 text-sm text-gray-600">
+              Mã đơn: <span className="font-medium">{selectedOrder.id}</span>
+            </p>
+            <p className="mb-4 text-sm text-gray-600">
+              Khách hàng:{" "}
+              <span className="font-medium">{selectedOrder.customer}</span>
+            </p>
+            <table className="w-full table-auto border-collapse border border-gray-200">
+              <thead>
+                <tr>
+                  <th className="border border-gray-200 px-4 py-2 text-left text-sm font-medium text-gray-600">
+                    Sản phẩm
+                  </th>
+                  <th className="border border-gray-200 px-4 py-2 text-left text-sm font-medium text-gray-600">
+                    Số lượng
+                  </th>
+                  <th className="border border-gray-200 px-4 py-2 text-left text-sm font-medium text-gray-600">
+                    Giá
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedOrder.items.map((item, index) => (
+                  <tr key={index}>
+                    <td className="border border-gray-200 px-4 py-2 text-sm">
+                      {item.name}
+                    </td>
+                    <td className="border border-gray-200 px-4 py-2 text-sm">
+                      {item.quantity}
+                    </td>
+                    <td className="border border-gray-200 px-4 py-2 text-sm">
+                      {item.price.toLocaleString("vi-VN")} đ
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="mt-4 flex justify-end">
+              <button
+                className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
