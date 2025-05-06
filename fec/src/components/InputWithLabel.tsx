@@ -4,8 +4,8 @@ type InputWithLabelProps = {
   id: string;
   label: string;
   type: HTMLInputTypeAttribute;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   autoComplete?: HTMLInputAutoCompleteAttribute;
   autoFocus?: boolean;
@@ -22,7 +22,7 @@ const InputWithLabel = (props: InputWithLabelProps) => (
       {props.label}
     </label>
     <input
-      className="peer w-full rounded-md border-1 border-gray-300 px-4 py-2 hover:border-red-500 focus:outline-red-500"
+      className="peer rounded-md border border-gray-300 px-4 py-2 hover:border-red-500 focus:outline-red-500"
       id={props.id}
       name={props.id}
       type={props.type}
