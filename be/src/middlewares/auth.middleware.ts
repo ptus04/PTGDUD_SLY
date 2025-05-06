@@ -10,7 +10,7 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
 
   const result = verifyUserToken(token);
   if (result.code) {
-    res.status(401).json({ error: "Unauthorized", message: result.error });
+    res.status(401).clearCookie("token").json({ error: "Unauthorized", message: result.error });
     return;
   }
 

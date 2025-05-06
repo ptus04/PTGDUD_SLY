@@ -90,7 +90,7 @@ export const resetPassword = async (req: Request, res: Response) => {
   const result = await userService.resetPassword(data.phone, data.otp, data.password);
 
   if (!result) {
-    res.status(400).json({ error: "Invalid OTP" });
+    res.status(403).json({ error: "Invalid OTP" });
     return;
   }
 
