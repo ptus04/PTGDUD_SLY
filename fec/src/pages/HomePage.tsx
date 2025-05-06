@@ -1,5 +1,5 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import Loading from "../components/Loading";
 import ProductCard from "../components/ProductCard";
@@ -42,7 +42,7 @@ const HomePage = () => {
 
       <RenderIf condition={!!products.length}>
         <main className="container mx-auto px-3 pt-5">
-          <h3 className="text-2xl">Sản phẩm mới</h3>
+          <h1 className="text-2xl">Sản phẩm mới</h1>
           <Loading isLoading={isLoading} />
           <div className="flex flex-wrap">{products?.map((p) => <ProductCard key={p._id} product={p} />)}</div>
         </main>
@@ -51,4 +51,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default memo(HomePage);
