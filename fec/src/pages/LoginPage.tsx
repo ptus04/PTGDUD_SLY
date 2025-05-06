@@ -6,6 +6,7 @@ import useForm from "../hooks/useForm";
 
 const LoginPage = () => {
   const { handleLoginSubmit } = useForm();
+
   return (
     <main className="flex flex-col items-center justify-center">
       <form
