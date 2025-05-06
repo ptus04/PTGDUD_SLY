@@ -19,6 +19,11 @@ export const initializeDatabase = async (connStr: string, dbName: string) => {
     await db.collection("users").createIndex({ phone: 1 }, { unique: true });
     console.log("Index on phone created");
   }
+
+  if (!(await db.collection("otps").indexExists("createdAt_1"))) {
+    await db.collection("otps").createIndex({ createdAt: 1 }, { expireAfterSeconds: 60 });
+    console.log("Index on OTP phone created");
+  }
 };
 
 export const closeDatabase = async () => {

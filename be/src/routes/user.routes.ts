@@ -1,6 +1,14 @@
 import { Router } from "express";
 import { body, cookie, param } from "express-validator";
-import { getUser, login, logout, register, updateUser } from "../controllers/user.controller";
+import {
+  getUser,
+  login,
+  logout,
+  register,
+  updateUser,
+  requestOtp,
+  resetPassword,
+} from "../controllers/user.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
@@ -39,9 +47,22 @@ const updateUserValidator = [
 
 const logoutValidator = [cookie("token").exists().withMessage("Token is required")];
 
+const requestOtpValidator = [
+  body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN").withMessage("Invalid phone number"),
+  body("action").isIn(["register", "reset-password"]).withMessage("Invalid action"),
+];
+
+const resetPasswordValidator = [
+  body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN").withMessage("Invalid phone number"),
+  body("otp").isLength({ min: 6, max: 6 }).withMessage("Invalid OTP"),
+  body("password").isLength({ min: 8 }).withMessage("Password must be at least 8 characters long"),
+];
+
 const router = Router();
 router.post("/register", registerValidator, handleBadRequest, register);
 router.post("/login", loginValidator, handleBadRequest, login);
+router.post("/otp", requestOtpValidator, handleBadRequest, requestOtp);
+router.post("/reset-password", resetPasswordValidator, handleBadRequest, resetPassword);
 
 router.use(auth);
 router.put("/me", updateUserValidator, handleBadRequest, updateUser);

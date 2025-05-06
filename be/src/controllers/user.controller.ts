@@ -67,3 +67,32 @@ export const updateUser = async (req: Request, res: Response) => {
 export const logout = async (req: Request, res: Response) => {
   res.status(200).clearCookie("token").json({ message: "Logout successfully" });
 };
+
+export const requestOtp = async (req: Request, res: Response) => {
+  const data = matchedData<{ phone: string; action: string }>(req);
+  const otp = await userService.sendOtp(data.phone, data.action);
+
+  if (!otp) {
+    res.status(404).json({ error: "Phone number not found" });
+    return;
+  }
+
+  if (otp.message === "OTP already sent") {
+    res.status(400).json({ error: "Please wait at least 60 seconds before requesting another OTP" });
+    return;
+  }
+
+  res.status(200).json({ message: "OTP sent successfully" });
+};
+
+export const resetPassword = async (req: Request, res: Response) => {
+  const data = matchedData<{ phone: string; otp: string; password: string }>(req);
+  const result = await userService.resetPassword(data.phone, data.otp, data.password);
+
+  if (!result) {
+    res.status(400).json({ error: "Invalid OTP" });
+    return;
+  }
+
+  res.status(200).json({ message: "Password reset successfully" });
+};

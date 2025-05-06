@@ -47,4 +47,39 @@ const updateUser = async (userId: string, userUpdated: UserUpdateRequest) => {
     .updateOne({ _id: new ObjectId(userId) }, { $set: { ...userUpdated, updatedAt: new Date() } });
 };
 
-export default { register, login, getUserById, updateUser } as const;
+const sendOtp = async (phone: string, action: string) => {
+  const user = await db().collection<User>("users").findOne({ phone });
+  if (!user) {
+    return null;
+  }
+
+  const existingOtp = await db().collection("otps").findOne({ phone });
+  if (existingOtp) {
+    return { message: "OTP already sent" };
+  }
+
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  await db().collection("otps").insertOne({ phone, otp, action, createdAt: new Date() });
+
+  // Simulate sending OTP via SMS
+  console.log(`Sending OTP ${otp} to phone ${phone}`);
+  return { message: "OTP sent successfully" };
+};
+
+const resetPassword = async (phone: string, otp: string, newPassword: string) => {
+  const otpRecord = await db().collection("otps").findOne({ phone, otp });
+  if (!otpRecord) {
+    return null;
+  }
+
+  const hashedPassword = hashToBase64(newPassword);
+  await db()
+    .collection<User>("users")
+    .updateOne({ phone }, { $set: { password: hashedPassword } });
+
+  await db().collection("otps").deleteOne({ phone, otp });
+
+  return { message: "Password reset successfully" };
+};
+
+export default { register, login, getUserById, updateUser, sendOtp, resetPassword } as const;
