@@ -5,6 +5,8 @@ import Header from "./components/header";
 import Dashboard from "./components/Dashboard";
 import Customer from "./components/Customer";
 import Product from "./components/Product";
+import Orders from "./components/Orders";
+// import Invoices from "./components/Invoices";
 
 function App() {
   return (
@@ -26,8 +28,8 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/customers" element={<Customer />} />
               <Route path="/products" element={<Product />} />
-              <Route path="/orders" element={<h1>Orders</h1>} />
-              <Route path="/invoice" element={<h1>Invoice</h1>} />
+              <Route path="/orders" element={<Orders></Orders>} />
+              <Route path="/invoice" element={<h1>Invoices</h1>} />
               <Route path="/login" element={<h1>Login</h1>} />
             </Routes>
           </main>
