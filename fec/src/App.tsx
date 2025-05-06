@@ -11,9 +11,9 @@ import RegisterPage from "./pages/RegisterPage";
 import StorePage from "./pages/StorePage";
 import UserPage from "./pages/UserPage";
 import StoreProvider from "./store/StoreProvider";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
-
   return (
     <StoreProvider>
       <Routes>
@@ -28,7 +28,7 @@ const App = () => {
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="refund-policy" element={<RefundPolicyPage />} />
           <Route path="about-us" element={<AboutUsPage />} />
-          <Route path="*" element={<p>Page Not Found</p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </StoreProvider>
