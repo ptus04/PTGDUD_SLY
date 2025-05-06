@@ -273,6 +273,7 @@ function Orders() {
 
             {/* Orders table */}
             {!loading && filteredOrders.length > 0 && (
+              // Sửa lỗi giao diện bảng để đảm bảo hiển thị đúng cách
               <div className="overflow-x-auto">
                 <table className="min-w-full rounded-lg bg-white shadow">
                   <thead className="bg-gray-50">
@@ -326,9 +327,8 @@ function Orders() {
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
                           {order.paymentMethod}
                         </td>
-                        {/* Thao tác trạng thái */}
                         <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                          <div className="relative flex justify-end space-x-2">
+                          <div className="flex justify-end space-x-2">
                             <button
                               className="text-blue-600 hover:text-blue-900"
                               onClick={() => handleViewOrder(order)}
@@ -336,7 +336,7 @@ function Orders() {
                               Xem
                             </button>
                             {order.status === "processing" && (
-                              <div>
+                              <div className="relative">
                                 <button
                                   className="text-gray-600 hover:text-gray-900"
                                   onClick={() => toggleMenu(order.id)}
