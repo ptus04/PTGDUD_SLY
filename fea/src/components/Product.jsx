@@ -30,7 +30,7 @@ function Product() {
   // Lấy danh sách sản phẩm cho trang hiện tại
   const currentProducts = sortedProducts.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
+    currentPage * itemsPerPage
   );
 
   // Hàm chuyển trang
@@ -96,7 +96,7 @@ function Product() {
   // Lọc sản phẩm dựa trên từ khóa tìm kiếm
   useEffect(() => {
     const filtered = products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()),
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSortedProducts(filtered);
   }, [searchTerm, products]);
@@ -107,7 +107,7 @@ function Product() {
     if (newMin <= newMax) {
       setPriceRange(newRange);
       const filtered = products.filter(
-        (product) => product.price >= newMin && product.price <= newMax,
+        (product) => product.price >= newMin && product.price <= newMax
       );
       setSortedProducts(filtered);
     }
@@ -118,7 +118,7 @@ function Product() {
     (product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
       product.price >= priceRange[0] &&
-      product.price <= priceRange[1],
+      product.price <= priceRange[1]
   );
 
   // Sự kiện sắp xếp theo giá (Cost)
@@ -130,7 +130,7 @@ function Product() {
   // Sự kiện sắp xếp theo thời gian cập nhật gần nhất (Newest)
   const sortByNewest = () => {
     const sorted = [...products].sort(
-      (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt),
+      (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
     );
     setSortedProducts(sorted);
   };
@@ -153,9 +153,9 @@ function Product() {
   const updateProduct = (updatedProduct) => {
     const timestamp = new Date().toISOString(); // Lấy thời gian hiện tại
     const updatedProducts = products.map((product) =>
-      product._id === updatedProduct._id
-        ? { ...updatedProduct, updatedAt: timestamp }
-        : product,
+      product._id === updatedProduct._id ?
+        { ...updatedProduct, updatedAt: timestamp }
+      : product
     );
     setProducts(updatedProducts);
     setSortedProducts(updatedProducts);
@@ -283,9 +283,9 @@ function Product() {
                 {/* Hình ảnh sản phẩm */}
                 <img
                   src={
-                    Array.isArray(product.images) && product.images[0]
-                      ? `img/${product.images[0]}`
-                      : "img/default-image.webp"
+                    Array.isArray(product.images) && product.images[0] ?
+                      `img/${product.images[0]}`
+                    : "img/default-image.webp"
                   } // Kiểm tra và sử dụng hình ảnh mặc định nếu không có hình ảnh
                   alt={product.title || "No Title"} // Kiểm tra tiêu đề
                   className="h-40 w-full rounded-lg object-cover"
@@ -299,9 +299,9 @@ function Product() {
                 {/* Giá sản phẩm */}
                 <div className="mt-2 flex items-center space-x-2">
                   <span className="text-lg font-bold text-red-500">
-                    {product.price
-                      ? product.price.toLocaleString("vi-VN") + " đ"
-                      : "Price not available"}{" "}
+                    {product.price ?
+                      product.price.toLocaleString("vi-VN") + " đ"
+                    : "Price not available"}{" "}
                   </span>
                 </div>
 
@@ -313,9 +313,9 @@ function Product() {
                 {/* Danh mục */}
                 <p className="mt-2 text-sm text-gray-500">
                   Categories:{" "}
-                  {Array.isArray(product.category)
-                    ? product.category.join(", ")
-                    : "No categories"}{" "}
+                  {Array.isArray(product.category) ?
+                    product.category.join(", ")
+                  : "No categories"}{" "}
                 </p>
 
                 {/* Nút chỉnh sửa */}
@@ -343,9 +343,9 @@ function Product() {
                 key={index + 1}
                 onClick={() => handlePageChange(index + 1)}
                 className={`rounded px-4 py-2 text-sm ${
-                  currentPage === index + 1
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 text-gray-600 hover:bg-gray-300"
+                  currentPage === index + 1 ?
+                    "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-600 hover:bg-gray-300"
                 }`}
               >
                 {index + 1}
@@ -539,9 +539,9 @@ function Product() {
                 <input
                   type="text"
                   value={
-                    Array.isArray(newProduct.category)
-                      ? newProduct.category.join(", ")
-                      : ""
+                    Array.isArray(newProduct.category) ?
+                      newProduct.category.join(", ")
+                    : ""
                   }
                   onChange={(e) =>
                     setNewProduct({
