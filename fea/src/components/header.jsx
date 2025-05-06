@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Header() {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+    if (!isFullscreen) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+    console.log("Fullscreen toggled");
+  };
+
   return (
     <header className="flex items-center justify-between bg-white p-4 shadow">
       {/* Search Bar */}
@@ -21,17 +33,11 @@ function Header() {
 
       {/* Right Icons */}
       <div className="flex items-center space-x-6">
-        {/* Dark Mode Toggle */}
-        <button className="text-gray-600 transition duration-300 ease-in-out hover:text-blue-600 hover:shadow-lg">
-          <img
-            src="/img/night-mode.png"
-            alt="Dark Mode"
-            className="h-6 w-6 transition-transform duration-300 ease-in-out hover:scale-125"
-          />
-        </button>
-
         {/* Fullscreen Toggle */}
-        <button className="text-gray-600 transition duration-300 ease-in-out hover:text-blue-600 hover:shadow-lg">
+        <button
+          onClick={toggleFullscreen}
+          className="text-gray-600 transition duration-300 ease-in-out hover:text-blue-600 hover:shadow-lg"
+        >
           <img
             src="/img/fullscreen.png"
             alt="Fullscreen"
