@@ -1,0 +1,1663 @@
+[
+  {
+    "category": ["tops", "tee"],
+    "title": "Tan STU4WAYS Tee",
+    "price": 315000,
+    "images": ["stu4way_w.webp", "stu4way_w1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 4 chiều, 250gsm",
+      "Chi tiết: In lụa thấm liền mạch, bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 42,
+    "createdAt": "2024-05-15T10:23:00Z",
+    "updatedAt": "2024-11-20T14:45:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "White Car-toon 300GSM Tee",
+    "price": 335000,
+    "images": ["cartoon_white45.webp", "cartoon_white451.webp", "cartoon_white453.webp", "cartoon_white452.webp"],
+    "discount": 0.04,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 300gsm",
+      "Chi tiết: In lụa thấm liền mạch, bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 67,
+    "isNew": true,
+    "createdAt": "2024-07-10T08:15:00Z",
+    "updatedAt": "2025-01-12T16:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Drake Feelings Tee",
+    "price": 288000,
+    "images": ["drake_w.webp", "drake_w1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In phồng, bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 53,
+    "isNew": true,
+    "createdAt": "2024-03-22T11:45:00Z",
+    "updatedAt": "2024-09-18T09:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "White Big Solid Tee",
+    "price": 342000,
+    "images": ["bigsolid_white.webp", "bigsolid_w1.webp", "bigsolid.webp", "bigsolid1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm liền mạch, bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 89,
+    "createdAt": "2024-06-10T12:00:00Z",
+    "updatedAt": "2024-12-15T18:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Big Solid Tee",
+    "price": 342000,
+    "images": [
+      "bigsolid_black.webp",
+      "bigsolid_b1.webp",
+      "bigsolid.webp",
+      "bigsolid2.webp",
+      "bigsolid3.webp",
+      "bigsolid4.webp",
+      "bigsolid5.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm liền mạch, bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 34,
+    "createdAt": "2024-04-05T09:45:00Z",
+    "updatedAt": "2024-10-10T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black SLYSLEEP Tee",
+    "price": 315000,
+    "images": [
+      "slysleep.webp",
+      "slysleep1.webp",
+      "slysleep2.webp",
+      "slysleep3.webp",
+      "slysleep4.webp",
+      "slysleep5.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In phồng, bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 76,
+    "createdAt": "2024-02-20T14:30:00Z",
+    "updatedAt": "2024-08-25T10:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Washed Black SS Pocket Tee",
+    "price": 342000,
+    "images": ["pocket_45.webp", "pocket_451.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 21,
+    "createdAt": "2024-01-15T11:00:00Z",
+    "updatedAt": "2024-07-20T16:45:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Washed Black Holy Cross Tee",
+    "price": 342000,
+    "images": ["holycross_452.webp", "holycross_453.webp", "holycross_457.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Chi tiết: In lụa phồng đặc biệt",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 48,
+    "createdAt": "2024-03-10T13:15:00Z",
+    "updatedAt": "2024-09-15T17:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Grey West Dream Tee",
+    "price": 342000,
+    "images": [
+      "westdream_45.webp",
+      "westdream_451.webp",
+      "westdream_452.webp",
+      "westdream_453.webp",
+      "westdream_454.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 62,
+    "createdAt": "2024-04-25T10:45:00Z",
+    "updatedAt": "2024-10-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Flared Tee",
+    "price": 315000,
+    "images": ["flared.webp", "flared1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 37,
+    "createdAt": "2024-05-05T12:30:00Z",
+    "updatedAt": "2024-11-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "White Airbrush Tee",
+    "price": 315000,
+    "images": ["airbrush.webp", "airbrush1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 50,
+    "createdAt": "2024-06-15T14:00:00Z",
+    "updatedAt": "2024-12-20T19:45:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Washed Grey FBS Tee",
+    "price": 342000,
+    "images": [
+      "fbs_w.webp",
+      "fbs_w4.webp",
+      "fbs_w1.webp",
+      "fbs_w5.webp",
+      "fbs_w6.webp",
+      "fbs_w7.webp",
+      "fbs_w8.webp",
+      "fbs_w9.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ + Xử lý sơn highlight",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 29,
+    "createdAt": "2024-07-10T08:15:00Z",
+    "updatedAt": "2025-01-12T16:30:00Z"
+  },
+  {
+    "category": ["bottoms", "shorts"],
+    "title": "Black Daily Short",
+    "price": 342000,
+    "images": ["short_black.webp", "short_black1.webp", "short_black3.webp", "short_black2.webp", "short_black4.webp"],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua 380GSM",
+      "Chi tiết: Logo kim loại + ráp rập",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 73,
+    "createdAt": "2024-08-05T09:45:00Z",
+    "updatedAt": "2025-02-10T15:00:00Z"
+  },
+  {
+    "category": ["bottoms", "shorts"],
+    "title": "Pepper Daily Short",
+    "price": 342000,
+    "images": ["short_pepper.webp", "short_pepper1.webp", "short_pepper2.webp", "short_pepper3.webp"],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua 380GSM",
+      "Chi tiết: Logo kim loại + ráp rập",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 65,
+    "createdAt": "2024-09-10T13:15:00Z",
+    "updatedAt": "2025-03-15T17:30:00Z"
+  },
+  {
+    "category": ["bottoms", "shorts"],
+    "title": "Coca Mocha Daily Short",
+    "price": 342000,
+    "images": ["short_coca.webp", "short_coca1.webp", "short_coca2.webp", "short_coca3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua 380GSM",
+      "Chi tiết: Logo kim loại + ráp rập",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 58,
+    "createdAt": "2024-10-25T10:45:00Z",
+    "updatedAt": "2025-04-30T15:00:00Z"
+  },
+  {
+    "category": ["bottoms", "pants"],
+    "title": "Sanddrift Washed Canvas Double Knee Pant",
+    "price": 495000,
+    "images": [
+      "db_knee_w2-1.webp",
+      "db_knee_w3-1.webp",
+      "db_knee_w13.webp",
+      "db_knee_w4-1.webp",
+      "db_knee_w5.webp",
+      "db_knee_w8.webp",
+      "db_knee_w9.webp",
+      "db_knee_w10.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Washed Canvas",
+      "Chi tiết: In decal bền bỉ + núc kim loại",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 47,
+    "isNew": true,
+    "createdAt": "2024-11-05T12:30:00Z",
+    "updatedAt": "2025-05-10T18:15:00Z"
+  },
+  {
+    "category": ["bottoms", "pants"],
+    "title": "Black Washed Canvas Double Knee Pant",
+    "price": 495000,
+    "images": [
+      "db_knee_w.webp",
+      "db_knee_w1.webp",
+      "db_knee_w13.webp",
+      "db_knee_w7.webp",
+      "db_knee_w6.webp",
+      "db_knee_w11.webp",
+      "db_knee_w12.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Washed Canvas",
+      "Chi tiết: In decal bền bỉ + núc kim loại",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 39,
+    "createdAt": "2024-12-15T14:00:00Z",
+    "updatedAt": "2025-06-20T19:45:00Z"
+  },
+  {
+    "category": ["bottoms", "pants"],
+    "title": "Pepper Daily Sweatpants",
+    "price": 405000,
+    "images": [
+      "sweatpants_grey.webp",
+      "sweatpants_grey1.webp",
+      "sweatpants.webp",
+      "sweatpants2.webp",
+      "sweatpants1.webp",
+      "sweatpants_grey2.webp",
+      "sweatpants_grey3.webp",
+      "sweatpants_grey4.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua 380GSM",
+      "Chi tiết: In lụa bền bỉ + Logo kim loại",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 31,
+    "createdAt": "2025-01-10T08:15:00Z",
+    "updatedAt": "2025-07-12T16:30:00Z"
+  },
+  {
+    "category": ["bottoms", "pants"],
+    "title": "Coca Mocha Daily Sweatpants",
+    "price": 405000,
+    "images": [
+      "sweatpants_brown.webp",
+      "sweatpants_brown1.webp",
+      "sweatpants.webp",
+      "sweatpants2.webp",
+      "sweatpants1.webp",
+      "sweatpants_brown2.webp",
+      "sweatpants_brown3.webp",
+      "sweatpants_brown4.webp"
+    ],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua 380GSM",
+      "Chi tiết: In lụa bền bỉ + Logo kim loại",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 24,
+    "createdAt": "2025-02-05T09:45:00Z",
+    "updatedAt": "2025-08-10T15:00:00Z"
+  },
+  {
+    "category": ["bottoms", "pants"],
+    "title": "Black Daily Sweatpants",
+    "price": 405000,
+    "images": [
+      "sweatpants_black.webp",
+      "sweatpants_black1.webp",
+      "sweatpants.webp",
+      "sweatpants2.webp",
+      "sweatpants1.webp",
+      "sweatpants_black2.webp",
+      "sweatpants_black3.webp",
+      "sweatpants_black4.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua 380GSM",
+      "Chi tiết: In lụa bền bỉ + Logo kim loại",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 17,
+    "isNew": true,
+    "createdAt": "2025-03-10T13:15:00Z",
+    "updatedAt": "2025-09-15T17:30:00Z"
+  },
+  {
+    "category": ["bottoms", "pants"],
+    "title": "Fire Long Denim Jorts",
+    "price": 495000,
+    "images": [
+      "jorts_w.webp",
+      "jorts_w1.webp",
+      "jorts_w4.webp",
+      "jorts_w2.webp",
+      "jorts_w5.webp",
+      "jorts_w3.webp",
+      "jorts_w7.webp",
+      "jorts_w8.webp",
+      "jorts_w6.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L"],
+    "description": [
+      "Chất liệu: Denim washed, 13oz",
+      "Chi tiết: Hoạt tiết dập nổi cùng kĩ thuật in kéo lụa bền bỉ",
+      "Kiểu dáng: Form Regular Jorts phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 10,
+    "createdAt": "2025-04-25T10:45:00Z",
+    "updatedAt": "2025-10-30T15:00:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Washed Green Patch Logo Oversized Hoodie",
+    "price": 495000,
+    "images": ["p_hoodie45.webp", "p_hoodie451.webp", "p_hoodie453.webp", "p_hoodie452.webp"],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Nỉ chân cua Cotton 380GSM",
+      "Họa tiết: Thêu đắp vải",
+      "Chi tiết: Logo kim loại",
+      "Kiểu dáng: Form Oversized Hoodie hiện đại cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 83,
+    "createdAt": "2025-05-05T12:30:00Z",
+    "updatedAt": "2025-11-10T18:15:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Antimon Denim Zipped Hoodie",
+    "price": 621000,
+    "images": [
+      "antimon_hd.webp",
+      "antimon_hd1.webp",
+      "antimon_hd2.webp",
+      "antimon_hd8.webp",
+      "antimon_hd9.webp",
+      "antimon_hd3.webp",
+      "antimon_hd4.webp",
+      "antimon_hd5.webp",
+      "antimon_hd7.webp",
+      "antimon_hd6.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Denim 13oz",
+      "Khoá: Zip 2 chiều YKK",
+      "Chi tiết: Logo + núc kim loại",
+      "Kiểu dáng: Form Boxy Hoodie hiện đại cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 76,
+    "createdAt": "2025-06-15T14:00:00Z",
+    "updatedAt": "2025-12-20T19:45:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Grey Washed Well Done Raglan Hoodie",
+    "price": 531000,
+    "images": [
+      "well_grey.webp",
+      "well_grey1.webp",
+      "well_black6.webp",
+      "well_black5.webp",
+      "well_black4.webp",
+      "well_grey2.webp",
+      "well_grey3.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Washed Cotton 380GSM",
+      "Họa tiết: Hình in lụa bền bỉ",
+      "Chi tiết: Logo + núc kim loại",
+      "Kiểu dáng: Form Raglan Hoodie hiện đại cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 69,
+    "createdAt": "2025-07-10T08:15:00Z",
+    "updatedAt": "2026-01-12T16:30:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Core Black Washed Well Done Raglan Hoodie",
+    "price": 531000,
+    "images": ["well_black.webp", "well_black1.webp", "well_black4.webp", "well_black5.webp", "well_black6.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Washed Cotton 380GSM",
+      "Họa tiết: Hình in lụa bền bỉ",
+      "Chi tiết: Logo + núc kim loại",
+      "Kiểu dáng: Form Raglan Hoodie hiện đại cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 62,
+    "isNew": true,
+    "createdAt": "2025-08-05T09:45:00Z",
+    "updatedAt": "2026-02-10T15:00:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Washed Laminator Boxy Hoodie",
+    "price": 621000,
+    "images": [
+      "laminator_hoodiee5.webp",
+      "laminator_hoodiee6.webp",
+      "laminator_hoodiee21.webp",
+      "taped_hoodie.webp",
+      "taped_hoodie1.webp",
+      "taped_hoodie2.webp"
+    ],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Washed Cotton 380GSM",
+      "Họa tiết: Hình têu phồng + ép nhiệt bền bỉ",
+      "Kiểu dáng: Form Boxy Hoodie hiện đại cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 55,
+    "createdAt": "2025-09-10T13:15:00Z",
+    "updatedAt": "2026-03-15T17:30:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Tan Solid Fullzip Hoodie",
+    "price": 441000,
+    "images": [
+      "solid_ziptan_neww.webp",
+      "solid_ziptan_neww1.webp",
+      "solid_ziptan_neww2.webp",
+      "solid_ziptan_neww3.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": ["Chất Liệu: Nỉ Chân Cua", "Họa tiết: Hình in cao su", "Kiểu dáng: Regular fit."],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 48,
+    "createdAt": "2025-10-25T10:45:00Z",
+    "updatedAt": "2026-04-30T15:00:00Z"
+  },
+  {
+    "category": ["outwear", "jackets"],
+    "title": "Black SLYTEAM Jacket",
+    "price": 275000,
+    "images": [
+      "Black-Slyteam-Jacket-Front.jpg",
+      "Black-Slyteam-Jacket-Back.jpg",
+      "Black-Slyteam-Jacket-Front.webp",
+      "black_jacket_dt.webp"
+    ],
+    "discount": 0.5,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Dù Micro Cao Cấp",
+      "Họa tiết: Thêu Zigzag Double Leather",
+      "Màu sắc: 2 màu ( Đen, Trắng )",
+      "Kiểu dáng: Form Regular hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 41,
+    "createdAt": "2025-11-05T12:30:00Z",
+    "updatedAt": "2026-05-10T18:15:00Z"
+  },
+  {
+    "category": ["outwear", "jackets"],
+    "title": "White SLYTEAM Jacket",
+    "price": 275000,
+    "images": [
+      "White-Slyteam-Jacket-Front.jpg",
+      "White-Slyteam-Jacket-Back-1.jpg",
+      "white_jacket_dt7.webp",
+      "white_jacket_dt3.webp",
+      "white_jacket_dt6.webp",
+      "white_jacket_dt2.webp",
+      "white_jacket_dt1.webp",
+      "white_jacket_dt.webp"
+    ],
+    "discount": 0.5,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Dù Micro Cao Cấp",
+      "Họa tiết: Thêu Zigzag Double Leather",
+      "Màu sắc: 2 màu ( Đen, Trắng )",
+      "Kiểu dáng: Form Regular hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 34,
+    "createdAt": "2025-12-15T14:00:00Z",
+    "updatedAt": "2026-06-20T19:45:00Z"
+  },
+  {
+    "category": ["outwear", "hoodies"],
+    "title": "Mocha Eminence Hoodie Zip",
+    "price": 495000,
+    "images": [
+      "em_neww_mochaa.webp",
+      "em_neww_mochaa1.webp",
+      "em_new_mocha4.webp",
+      "em_new_mocha2.webp",
+      "em_new_mocha5.webp",
+      "em_new_mocha3.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất Liệu: Nỉ chân cua",
+      "Họa tiết: In lụa",
+      "Chi tiết: đặc biệt được in camay",
+      "Kiểu dáng: Regular fit."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 27,
+    "createdAt": "2026-01-10T08:15:00Z",
+    "updatedAt": "2026-07-12T16:30:00Z"
+  },
+  {
+    "category": ["accessories", "backpacks"],
+    "title": "Cream Antimon Casual Backpack",
+    "price": 495000,
+    "images": [
+      "casual_w2.webp",
+      "casual_w3.webp",
+      "casual_w8.webp",
+      "casual_w7.webp",
+      "casual_w6.webp",
+      "casual_w9.webp",
+      "casual_w10.webp",
+      "casual_w12.webp",
+      "casual_w11.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất liệu: Vải canvas bền bỉ",
+      "Chi tiết: Logo Antimin sang trọng",
+      "Khoá kéo YKK - SLY",
+      "Đặc tính: Độ bền lâu dài, khả năng chống trầy xước cao, khó bị xé rách.",
+      "Kiểu dáng: Form Casual phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 20,
+    "createdAt": "2026-02-05T09:45:00Z",
+    "updatedAt": "2026-08-10T15:00:00Z"
+  },
+  {
+    "category": ["accessories", "backpacks"],
+    "title": "Black Antimon Casual Backpack",
+    "price": 495000,
+    "images": [
+      "casual_w.webp",
+      "casual_w1.webp",
+      "casual_w8.webp",
+      "casual_w4.webp",
+      "casual_w5.webp",
+      "casual_w9.webp",
+      "casual_w10.webp",
+      "casual_w12.webp",
+      "casual_w11.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất liệu: Vải canvas bền bỉ",
+      "Chi tiết: Logo Antimin sang trọng",
+      "Khoá kéo YKK - SLY",
+      "Đặc tính: Độ bền lâu dài, khả năng chống trầy xước cao, khó bị xé rách.",
+      "Kiểu dáng: Form Casual phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 13,
+    "createdAt": "2026-03-10T13:15:00Z",
+    "updatedAt": "2026-09-15T17:30:00Z"
+  },
+  {
+    "category": ["accessories", "wallets"],
+    "title": "Long Original Nappa Wallet",
+    "price": 441000,
+    "images": [
+      "long_logo_wallet45.webp",
+      "long_logo_wallet452.webp",
+      "long_logo_wallet451.webp",
+      "long_logo_wallet453.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất Liệu: Da Nappa cao cấp",
+      "Chi tiết: Dập nổi Ví da được sơn mài góc cạnh tăng tính thẩm mỹ",
+      "Kích thước: 9.5 × 18 x 2cm",
+      "Ví dài gồm: + 9 ngăn nhỏ + 4 ngăn lớn"
+    ],
+    "careInstructions": [],
+    "inStock": 6,
+    "isNew": true,
+    "createdAt": "2026-04-25T10:45:00Z",
+    "updatedAt": "2026-10-30T15:00:00Z"
+  },
+  {
+    "category": ["accessories", "wallets"],
+    "title": "Short Original Nappa Wallet",
+    "price": 405000,
+    "images": [
+      "short_logo_wallet-1.webp",
+      "short_logo_wallet1-1.webp",
+      "short_logo_wallet2.webp",
+      "short_logo_wallet3.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất Liệu: Da Nappa cao cấp",
+      "Chi tiết: Dập nổi Ví da được sơn mài góc cạnh tăng tính thẩm mỹ",
+      "Kích thước: 11×9x2cm",
+      "Ví ngắn gồm: + 8 ngăn nhỏ + 2 ngăn lớn"
+    ],
+    "careInstructions": [],
+    "inStock": 9,
+    "createdAt": "2026-05-05T12:30:00Z",
+    "updatedAt": "2026-11-10T18:15:00Z"
+  },
+  {
+    "category": ["accessories", "backpacks"],
+    "title": "Black SLYSTAR Cordura Backpack",
+    "price": 531000,
+    "images": [
+      "backpack_w.webp",
+      "backpack_w1.webp",
+      "backpack_w8.webp",
+      "backpack_w2.webp",
+      "backpack_w7.webp",
+      "backpack_w3.webp",
+      "backpack_w9.webp",
+      "backpack_w4.webp",
+      "backpack_w5.webp",
+      "backpack_w6.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất liệu: Cordura 600D",
+      "Chi tiết: In lụa, thêu, in trên mặt lưới Khóa kéo: YKK",
+      "Đặc tính: Độ bền lâu dài, khả năng chống trầy xước cao, khó bị xé rách, kháng nước tốt."
+    ],
+    "careInstructions": ["Hạn chế giặt máy, nên giặt tay", "Nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."],
+    "inStock": 12,
+    "createdAt": "2026-06-15T14:00:00Z",
+    "updatedAt": "2026-12-20T19:45:00Z"
+  },
+  {
+    "category": ["accessories", "wallets"],
+    "title": "Short Nappa Wallet",
+    "price": 95000,
+    "images": [
+      "9B4E134F-C935-4CC6-9D9C-07833E24E2A3.webp",
+      "AAA27D17-92C3-4EE7-B536-10F23FE8F331.webp",
+      "E115E80B-6C14-46C5-82E2-04AD01B2CD25.webp",
+      "E7AE5357-0465-4E19-9B01-612FA51ADF07.webp",
+      "D35A1737-4F67-4CB2-87CF-9EDCA97FBC1E.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất Liệu: Da Nappa cao cấp",
+      "Chi tiết: Dập nổi Ví da được sơn mài góc cạnh tăng tính thẩm mỹ",
+      "Kích thước: 11×8x2cm",
+      "Ví ngắn gồm: + 6 ngăn nhỏ + 1 ngăn lớn"
+    ],
+    "careInstructions": [],
+    "inStock": 0,
+    "createdAt": "2026-07-10T08:15:00Z",
+    "updatedAt": "2027-01-12T16:30:00Z"
+  },
+  {
+    "category": ["accessories", "wallets"],
+    "title": "Long Nappa Wallet",
+    "price": 522000,
+    "images": [
+      "A43CAFC5-3DC4-412B-AF1E-4ACEE107CADB.webp",
+      "2BEDF489-E692-412D-BAEF-9CA4309C1C68.webp",
+      "22D12513-F313-4BBA-9056-E5532C08A34E.webp",
+      "0647C926-F507-486B-B75D-348AE82B046A.webp",
+      "9D82B020-013C-467F-883E-06B8A0ADA148.webp",
+      "ED0C8FEC-F431-4307-BEB0-1D722A594D03.webp",
+      "644D848A-6E35-4292-AD0A-CFA1A6F9590E.webp",
+      "2659E9E1-6378-40FD-A6F1-B6B6493CAFBA.webp"
+    ],
+    "discount": 0.1,
+    "description": [
+      "Chất Liệu: Da Nappa cao cấp",
+      "Chi tiết: Dập nổi Ví da được sơn mài góc cạnh tăng tính thẩm mỹ",
+      "Kích thước: 18×10x2.5c",
+      "Ví dài gồm: + 6 ngăn nhỏ + 3 ngăn lớn + Ngăn chung ở giữa + Móc da Nappa"
+    ],
+    "careInstructions": [],
+    "inStock": 8,
+    "createdAt": "2026-08-05T09:45:00Z",
+    "updatedAt": "2027-02-10T15:00:00Z"
+  },
+  {
+    "category": ["accessories", "caps"],
+    "title": "White SLYSTAR Cap",
+    "price": 95000,
+    "images": ["white_cap.webp", "white_cap1.webp", "white_cap2.webp", "white_cap3.webp"],
+    "discount": 0.5,
+    "description": ["Chất liệu: Vải kaki", "Họa tiết: Thêu", "Kiểu dáng: Form Regular mềm phù hợp cho cả nam và nữ"],
+    "careInstructions": ["Hạn chế giặt máy, nên giặt tay"],
+    "inStock": 11,
+    "isNew": true,
+    "createdAt": "2026-09-10T13:15:00Z",
+    "updatedAt": "2027-03-15T17:30:00Z"
+  },
+  {
+    "category": ["accessories", "caps"],
+    "title": "Mocha SLYSTAR Cap",
+    "price": 95000,
+    "images": ["mocha_cap.webp", "mocha_cap1.webp", "mocha_cap2.webp", "mocha_cap3.webp"],
+    "discount": 0.5,
+    "description": ["Chất liệu: Vải kaki", "Họa tiết: Thêu", "Kiểu dáng: Form Regular mềm phù hợp cho cả nam và nữ"],
+    "careInstructions": ["Hạn chế giặt máy, nên giặt tay"],
+    "inStock": 14,
+    "createdAt": "2026-10-25T10:45:00Z",
+    "updatedAt": "2027-04-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Washed Brown Wild Tee",
+    "price": 351000,
+    "images": ["vie_w.webp", "vie_w2-1.webp", "vie_w1.webp", "vie_w3-1.webp", "vie_w4.webp", "vie_w5.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ + xử lý may đắp lazer",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 17,
+    "createdAt": "2026-11-05T12:30:00Z",
+    "updatedAt": "2027-05-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Washed Black Humble Tee",
+    "price": 315000,
+    "images": [
+      "humble-1.webp",
+      "humble3-1.webp",
+      "humble1-1.webp",
+      "humble4-1.webp",
+      "humble7-1.webp",
+      "humble8-1.webp",
+      "humble5-1.webp",
+      "humble6-1.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 20,
+    "createdAt": "2026-12-15T14:00:00Z",
+    "updatedAt": "2027-06-20T19:45:00Z"
+  },
+  {
+    "category": ["tops", "polo"],
+    "title": "Cream Hidden Polo",
+    "price": 342000,
+    "images": [
+      "hidden_polo.webp",
+      "hidden_polo1.webp",
+      "hidden_polo2.webp",
+      "hidden_polo5.webp",
+      "hidden_polo3.webp",
+      "hidden_polo6.webp",
+      "hidden_polo4.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Spandex Crocodile ( Cotton cá sấu )",
+      "Họa tiết: In lụa bền bỉ",
+      "Kiểu dáng: Form Oversize phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 23,
+    "createdAt": "2027-01-10T08:15:00Z",
+    "updatedAt": "2027-07-12T16:30:00Z"
+  },
+  {
+    "category": ["tops", "polo"],
+    "title": "Black Observing Polo",
+    "price": 351000,
+    "images": [
+      "observing_w.webp",
+      "observing_w1.webp",
+      "observing_w4.webp",
+      "observing_w2.webp",
+      "observing_w6.webp",
+      "observing_w3.webp",
+      "observing_w5.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In trame bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 26,
+    "createdAt": "2027-02-05T09:45:00Z",
+    "updatedAt": "2027-08-10T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "SKULL WIDE BATWING SLEEVE TEE",
+    "price": 315000,
+    "images": ["skull_w.webp", "skull_w1.webp", "skull_w2.webp", "skull_w3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ, các thành phần được phối rập tỉ mỉ",
+      "Kiểu dáng: Form rộng tay cánh dơi phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 29,
+    "createdAt": "2027-03-10T13:15:00Z",
+    "updatedAt": "2027-09-15T17:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Heartsteel Tee",
+    "price": 288000,
+    "images": ["heartsteel_45.webp", "heartsteel_451.webp", "heartsteel_458.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: Thêu bền bỉ, in cao thành chắc chắn",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 32,
+    "isNew": true,
+    "createdAt": "2027-04-25T10:45:00Z",
+    "updatedAt": "2027-10-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Gradient Antimon Washed Tee",
+    "price": 265500,
+    "images": ["antimon_45.webp", "antimon_451.webp", "antimon_452.webp", "antimon_453.webp"],
+    "discount": 0.1,
+    "size": ["S", "M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Chi tiết: Logo kim loại",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ *",
+      "Vì nhuộm chuyển sắc thủ công nên màu áo sẽ có sự chênh lệch màu đôi chút giữa các áo."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 0,
+    "createdAt": "2027-05-05T12:30:00Z",
+    "updatedAt": "2027-11-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Offwhite Casual Washed Tee",
+    "price": 288000,
+    "images": ["offwhite_washed.webp", "offwhite_washed1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Họa tiết: Logo nhung ép nhiệt",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 35,
+    "createdAt": "2027-06-15T14:00:00Z",
+    "updatedAt": "2027-12-20T19:45:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Casual Washed Tee",
+    "price": 288000,
+    "images": ["black_washed.webp", "black_washed1.webp", "black_washed2.webp", "black_washed3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Họa tiết: Logo nhung ép nhiệt",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 38,
+    "createdAt": "2028-01-10T08:15:00Z",
+    "updatedAt": "2028-07-12T16:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Brown Casual Washed Tee",
+    "price": 288000,
+    "images": ["brown_washed.webp", "brown_washed1.webp", "brown_washed2.webp", "brown_washed3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Họa tiết: Logo nhung ép nhiệt",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 41,
+    "createdAt": "2028-02-05T09:45:00Z",
+    "updatedAt": "2028-08-10T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Dark Grey Casual Washed Tee",
+    "price": 288000,
+    "images": ["grey_washed.webp", "grey_washed1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều washed, 250gsm",
+      "Họa tiết: Logo nhung ép nhiệt",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 44,
+    "createdAt": "2028-03-10T13:15:00Z",
+    "updatedAt": "2028-09-15T17:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "LODESTAR WIDE TEE",
+    "price": 315000,
+    "images": ["lodestar_45.webp", "lodestar_451.webp", "lodestar_454.webp", "lodestar_455.webp", "lodestar_456.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular Wide phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 47,
+    "createdAt": "2028-04-25T10:45:00Z",
+    "updatedAt": "2028-10-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Anti War Tee",
+    "price": 351000,
+    "images": [
+      "anti_war_45.webp",
+      "anti_war_451.webp",
+      "anti_war_454.webp",
+      "anti_war_452.webp",
+      "anti_war_455.webp",
+      "anti_war_453.webp",
+      "anti_war_456.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Chi tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 50,
+    "createdAt": "2028-05-05T12:30:00Z",
+    "updatedAt": "2028-11-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Cut N Shew Washed Tee",
+    "price": 351000,
+    "images": ["cns_web.webp", "cns_web1.webp", "cns_web2.webp", "cns_web3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Xử lý wash + may rã rập",
+      "Chi tiết: bắn laser",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 53,
+    "createdAt": "2028-06-15T14:00:00Z",
+    "updatedAt": "2028-12-20T19:45:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "White Ducking Mood Tee",
+    "price": 315000,
+    "images": ["ducking_tee.webp", "ducking_tee2.webp", "ducking_tee1.webp", "ducking_tee3.webp", "ducking_tee5.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 4 chiều, 250gsm",
+      "Thành phần: 95% cotton, 5% spandex",
+      "Họa tiết: In lụa thấm bền bỉ, sắc nét",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 56,
+    "createdAt": "2028-07-10T08:15:00Z",
+    "updatedAt": "2029-01-12T16:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Cream Spider Dot Tee",
+    "price": 342000,
+    "images": [
+      "spider_dot_w7.webp",
+      "spider_dot_w8.webp",
+      "spider_dot_w4.webp",
+      "spider_dot_w5.webp",
+      "spider_dot_w6.webp",
+      "spider_dot_w3.webp",
+      "spider_dot_w2.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa thấm bền bỉ, sắc nét",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 59,
+    "createdAt": "2028-08-05T09:45:00Z",
+    "updatedAt": "2029-02-10T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Brusque Tee",
+    "price": 315000,
+    "images": [
+      "brusque_w.webp",
+      "brusque_w1.webp",
+      "brusque_w5.webp",
+      "brusque_w6.webp",
+      "brusque_w2.webp",
+      "brusque_w3.webp",
+      "brusque_w4.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 62,
+    "createdAt": "2028-09-10T13:15:00Z",
+    "updatedAt": "2029-03-15T17:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Cream Cash Tee",
+    "price": 315000,
+    "images": ["cash_455.webp", "cash_452.webp", "cash_453.webp", "cash_456.webp", "cash_454.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa thấm, chi tiết thêu bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 65,
+    "createdAt": "2028-10-25T10:45:00Z",
+    "updatedAt": "2029-04-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black SonDoong Tee",
+    "price": 315000,
+    "images": ["sondoongg.webp", "sondoongg1.webp", "sondoong3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 68,
+    "isNew": true,
+    "createdAt": "2028-11-05T12:30:00Z",
+    "updatedAt": "2029-05-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "White Classic Car Tee",
+    "price": 315000,
+    "images": [
+      "classic_white_w-scaled.webp",
+      "classic_white_w9.webp",
+      "classic_white_w1-scaled.webp",
+      "classic_white_w8.webp",
+      "classic_white_w4.webp",
+      "classic_white_w7.webp",
+      "classic_white_w5.webp",
+      "classic_white_w6.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 71,
+    "createdAt": "2028-12-15T14:00:00Z",
+    "updatedAt": "2029-06-20T19:45:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Classic Car Tee",
+    "price": 315000,
+    "images": [
+      "classic_black_w-scaled.webp",
+      "classic_black_w1-scaled.webp",
+      "classic_black_w4.webp",
+      "classic_black_w5.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa thấm bền bỉ",
+      "Kiểu dáng: Form Regular phù hợp cho cả nam và nữ"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 74,
+    "createdAt": "2029-01-10T08:15:00Z",
+    "updatedAt": "2029-07-12T16:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Cream STUDIO Tee Ver 2",
+    "price": 315000,
+    "images": ["cream.webp", "cream1.webp", "cream2.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa bền bỉ",
+      "Kiểu dáng: Form Regular, tay áo cánh dơi"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 77,
+    "createdAt": "2029-02-05T09:45:00Z",
+    "updatedAt": "2029-08-10T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black STUDIO Tee Ver 2",
+    "price": 315000,
+    "images": ["black.webp", "black1.webp", "black2.webp"],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa bền bỉ",
+      "Kiểu dáng: Form Regular, tay áo cánh dơi"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 80,
+    "createdAt": "2029-03-10T13:15:00Z",
+    "updatedAt": "2029-09-15T17:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Grey STUDIO Tee Ver 2",
+    "price": 315000,
+    "images": ["grey.webp", "grey1.webp", "grey5.webp", "grey4.webp", "grey3.webp", "grey2.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Cotton 2 chiều, 250gsm",
+      "Họa tiết: In lụa bền bỉ",
+      "Kiểu dáng: Form Regular, tay áo cánh dơi"
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 83,
+    "createdAt": "2029-04-25T10:45:00Z",
+    "updatedAt": "2029-10-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "polo"],
+    "title": "Grey Mini Logo Polo",
+    "price": 270000,
+    "images": ["pgreyy.webp", "pgreyy1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: Thêu",
+      "Kiểu dáng: Form Regular Fit hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 0,
+    "createdAt": "2029-05-05T12:30:00Z",
+    "updatedAt": "2029-11-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "polo"],
+    "title": "Cream Mini Logo Polo",
+    "price": 315000,
+    "images": ["pcreamm.webp", "pcreamm1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: Thêu",
+      "Kiểu dáng: Form Regular Fit hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 86,
+    "createdAt": "2029-06-15T14:00:00Z",
+    "updatedAt": "2029-12-20T19:45:00Z"
+  },
+  {
+    "category": ["tops", "polo"],
+    "title": "Black Mini Logo Polo",
+    "price": 270000,
+    "images": ["pblackk.webp", "pblack1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: Thêu",
+      "Kiểu dáng: Form Regular Fit hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 0,
+    "isNew": true,
+    "createdAt": "2030-01-10T08:15:00Z",
+    "updatedAt": "2030-07-12T16:30:00Z"
+  },
+  {
+    "category": ["tops", "polo"],
+    "title": "White Mini Logo Polo",
+    "price": 270000,
+    "images": ["pwhitee.webp", "pwhite1.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: Thêu",
+      "Kiểu dáng: Form Regular Fit hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 0,
+    "createdAt": "2030-02-05T09:45:00Z",
+    "updatedAt": "2030-08-10T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Peanut Solid Tee",
+    "price": 288000,
+    "images": ["solid_peanutt.webp", "solid_peanutt1.webp", "solid_peanutt2.webp", "solid_peanutt3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: In lụa",
+      "Kiểu dáng: Form Regular hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 89,
+    "createdAt": "2030-03-10T13:15:00Z",
+    "updatedAt": "2030-09-15T17:30:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Navy Solid Tee",
+    "price": 288000,
+    "images": ["solid_navyyy.webp", "solid_navyyy1.webp", "solid_navy2.webp", "solid_navy3.webp"],
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: In lụa",
+      "Kiểu dáng: Form Regular hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 92,
+    "createdAt": "2030-04-25T10:45:00Z",
+    "updatedAt": "2030-10-30T15:00:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "Black Solid Tee",
+    "price": 288000,
+    "images": ["solid_blackkk.webp", "solid_blackkk1.webp", "solid_black2.webp", "solid_black3.webp"],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: In lụa",
+      "Kiểu dáng: Form Regular hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 95,
+    "createdAt": "2030-05-05T12:30:00Z",
+    "updatedAt": "2030-11-10T18:15:00Z"
+  },
+  {
+    "category": ["tops", "tee"],
+    "title": "White Solid Tee",
+    "price": 288000,
+    "images": [
+      "solid_whiteee.webp",
+      "solid_whiteee1.webp",
+      "solid_white451.webp",
+      "solid_white45.webp",
+      "solid_white2.webp",
+      "solid_white3.webp"
+    ],
+    "discount": 0.1,
+    "size": ["M", "L", "XL"],
+    "description": [
+      "Chất liệu: Chất liệu: 100% Cotton Chính Phẩm 2 chiều, định lượng 250gsm",
+      "Họa tiết: In lụa",
+      "Kiểu dáng: Form Regular hiện đại phù hợp cho cả Nam lẫn Nữ."
+    ],
+    "careInstructions": [
+      "Hạn chế giặt máy, nên giặt tay",
+      "Lộn trái khi giặt, nên phơi nơi nắng nhẹ, tránh ánh nắng trực tiếp."
+    ],
+    "inStock": 98,
+    "createdAt": "2030-06-15T14:00:00Z",
+    "updatedAt": "2030-12-20T19:45:00Z"
+  }
+]
