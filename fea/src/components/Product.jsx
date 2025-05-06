@@ -11,16 +11,36 @@ function Product() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // Modal thêm sản phẩm
   const [editingProduct, setEditingProduct] = useState(null);
   const [newProduct, setNewProduct] = useState({
-    id: "",
-    name: "",
+    _id: "",
+    category: [],
+    title: "",
     price: 0,
-    oldPrice: 0,
-    discount: 0,
-    soldOut: false,
-    image: "",
+    images: [],
+    size: [],
+    description: [],
+    careInstructions: [],
+    inStock: 0,
   });
+  const [currentPage, setCurrentPage] = useState(1); // State cho trang hiện tại
+  const itemsPerPage = 12; // Số sản phẩm mỗi trang
 
-  // Lấy dữ liệu từ localStorage khi component được mount
+  // Tính toán số trang
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+
+  // Lấy danh sách sản phẩm cho trang hiện tại
+  const currentProducts = sortedProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
+  // Hàm chuyển trang
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  // Lấy dữ liệu từ API hoặc localStorage
   useEffect(() => {
     const storedProducts = localStorage.getItem("products");
     if (storedProducts) {
@@ -28,31 +48,39 @@ function Product() {
       setProducts(parsedProducts);
       setSortedProducts(parsedProducts);
 
-      // Tính giá trị biên cho Price Range
+      // Tính toán giá trị minPrice và maxPrice từ dữ liệu localStorage
       const prices = parsedProducts.map((product) => product.price);
-      const min = Math.floor(Math.min(...prices) / 10000) * 10000;
-      const max = Math.ceil(Math.max(...prices) / 10000) * 10000;
+      const min = Math.floor(Math.min(...prices) / 10000) * 10000; // Làm tròn xuống
+      const max = Math.ceil(Math.max(...prices) / 10000) * 10000; // Làm tròn lên
       setMinPrice(min);
       setMaxPrice(max);
       setPriceRange([min, max]);
     } else {
-      // Fetch dữ liệu từ API nếu localStorage không có dữ liệu
-      fetch("https://res.cloudinary.com/dqyqckhcd/raw/upload/product.json")
-        .then((response) => response.json())
+      const apiUrl = "/api/products?limit=1000"; // Đảm bảo tham số limit được truyền đúng
+      fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to fetch products: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((data) => {
-          setProducts(data.products);
-          setSortedProducts(data.products);
+          console.log("API Response:", data); // Ghi log phản hồi API để kiểm tra
+          if (data.length < 10) {
+            console.warn("API returned fewer products than expected.");
+          }
+          setProducts(data);
+          setSortedProducts(data);
 
-          // Tính giá trị biên cho Price Range
-          const prices = data.products.map((product) => product.price);
-          const min = Math.floor(Math.min(...prices) / 10000) * 10000;
-          const max = Math.ceil(Math.max(...prices) / 10000) * 10000;
+          // Tính toán giá trị minPrice và maxPrice từ dữ liệu API
+          const prices = data.map((product) => product.price);
+          const min = Math.floor(Math.min(...prices) / 10000) * 10000; // Làm tròn xuống
+          const max = Math.ceil(Math.max(...prices) / 10000) * 10000; // Làm tròn lên
           setMinPrice(min);
           setMaxPrice(max);
           setPriceRange([min, max]);
 
-          // Lưu dữ liệu vào localStorage
-          localStorage.setItem("products", JSON.stringify(data.products));
+          localStorage.setItem("products", JSON.stringify(data));
         })
         .catch((error) => console.error("Error fetching products:", error));
     }
@@ -65,10 +93,30 @@ function Product() {
     }
   }, [products]);
 
+  // Lọc sản phẩm dựa trên từ khóa tìm kiếm
+  useEffect(() => {
+    const filtered = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+    setSortedProducts(filtered);
+  }, [searchTerm, products]);
+
+  // Hàm xử lý thay đổi giá trị thanh trượt và đảm bảo min không vượt quá max
+  const handlePriceRangeChange = (newRange) => {
+    const [newMin, newMax] = newRange;
+    if (newMin <= newMax) {
+      setPriceRange(newRange);
+      const filtered = products.filter(
+        (product) => product.price >= newMin && product.price <= newMax,
+      );
+      setSortedProducts(filtered);
+    }
+  };
+
   // Lọc sản phẩm dựa trên từ khóa tìm kiếm và Price Range
   const filteredProducts = sortedProducts.filter(
     (product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
       product.price >= priceRange[0] &&
       product.price <= priceRange[1],
   );
@@ -79,10 +127,39 @@ function Product() {
     setSortedProducts(sorted);
   };
 
-  // Sự kiện sắp xếp theo ID (Newest)
+  // Sự kiện sắp xếp theo thời gian cập nhật gần nhất (Newest)
   const sortByNewest = () => {
-    const sorted = [...products].sort((a, b) => b.id - a.id);
+    const sorted = [...products].sort(
+      (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt),
+    );
     setSortedProducts(sorted);
+  };
+
+  // Hàm thêm sản phẩm mới
+  const addNewProduct = (newProduct) => {
+    const timestamp = new Date().toISOString(); // Lấy thời gian hiện tại
+    const productWithTimestamps = {
+      ...newProduct,
+      createdAt: timestamp,
+      updatedAt: timestamp,
+    };
+    const updatedProducts = [...products, productWithTimestamps];
+    setProducts(updatedProducts);
+    setSortedProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+  };
+
+  // Hàm cập nhật sản phẩm
+  const updateProduct = (updatedProduct) => {
+    const timestamp = new Date().toISOString(); // Lấy thời gian hiện tại
+    const updatedProducts = products.map((product) =>
+      product._id === updatedProduct._id
+        ? { ...updatedProduct, updatedAt: timestamp }
+        : product,
+    );
+    setProducts(updatedProducts);
+    setSortedProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
   };
 
   // Mở modal chỉnh sửa sản phẩm
@@ -140,7 +217,7 @@ function Product() {
               step="10000"
               value={priceRange[0]}
               onChange={(e) =>
-                setPriceRange([Number(e.target.value), priceRange[1]])
+                handlePriceRangeChange([Number(e.target.value), priceRange[1]])
               }
               className="mt-2 w-full"
             />
@@ -151,7 +228,7 @@ function Product() {
               step="10000"
               value={priceRange[1]}
               onChange={(e) =>
-                setPriceRange([priceRange[0], Number(e.target.value)])
+                handlePriceRangeChange([priceRange[0], Number(e.target.value)])
               }
               className="mt-2 w-full"
             />
@@ -198,50 +275,50 @@ function Product() {
 
           {/* Product Grid */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {filteredProducts.map((product) => (
+            {currentProducts.map((product) => (
               <div
-                key={product.id}
+                key={product._id}
                 className="relative flex flex-col justify-between rounded-lg bg-white p-4 shadow transition hover:shadow-lg"
               >
-                {/* Discount Badge */}
-                {product.discount && (
-                  <div className="absolute left-2 top-2 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
-                    -{product.discount}%
-                  </div>
-                )}
-
-                {/* Sold Out Badge */}
-                {product.soldOut && (
-                  <div className="absolute right-2 top-2 rounded bg-red-500 px-2 py-1 text-xs font-bold text-white">
-                    HẾT HÀNG
-                  </div>
-                )}
-
-                {/* Product Image */}
+                {/* Hình ảnh sản phẩm */}
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={
+                    Array.isArray(product.images) && product.images[0]
+                      ? `img/${product.images[0]}`
+                      : "img/default-image.webp"
+                  } // Kiểm tra và sử dụng hình ảnh mặc định nếu không có hình ảnh
+                  alt={product.title || "No Title"} // Kiểm tra tiêu đề
                   className="h-40 w-full rounded-lg object-cover"
                 />
 
-                {/* Product Name */}
+                {/* Tên sản phẩm */}
                 <h3 className="mt-4 line-clamp-2 h-10 text-sm font-semibold">
-                  {product.name}
+                  {product.title || "Untitled Product"}
                 </h3>
 
-                {/* Price */}
+                {/* Giá sản phẩm */}
                 <div className="mt-2 flex items-center space-x-2">
-                  {product.oldPrice && (
-                    <span className="text-sm text-gray-500 line-through">
-                      {product.oldPrice.toLocaleString("vi-VN")} đ
-                    </span>
-                  )}
                   <span className="text-lg font-bold text-red-500">
-                    {product.price.toLocaleString("vi-VN")} đ
+                    {product.price
+                      ? product.price.toLocaleString("vi-VN") + " đ"
+                      : "Price not available"}{" "}
                   </span>
                 </div>
 
-                {/* Edit Button */}
+                {/* Tồn kho */}
+                <p className="mt-2 text-sm text-gray-500">
+                  In Stock: {product.inStock || 0}
+                </p>
+
+                {/* Danh mục */}
+                <p className="mt-2 text-sm text-gray-500">
+                  Categories:{" "}
+                  {Array.isArray(product.category)
+                    ? product.category.join(", ")
+                    : "No categories"}{" "}
+                </p>
+
+                {/* Nút chỉnh sửa */}
                 <button
                   onClick={() => handleEditProduct(product)}
                   className="mt-4 w-full rounded-lg bg-yellow-500 px-4 py-2 text-sm text-white hover:bg-yellow-600"
@@ -250,6 +327,37 @@ function Product() {
                 </button>
               </div>
             ))}
+          </div>
+
+          {/* Pagination */}
+          <div className="mt-6 flex justify-center space-x-2">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="rounded bg-gray-200 px-4 py-2 text-sm text-gray-600 hover:bg-gray-300 disabled:opacity-50"
+            >
+              Previous
+            </button>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => handlePageChange(index + 1)}
+                className={`rounded px-4 py-2 text-sm ${
+                  currentPage === index + 1
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 text-gray-600 hover:bg-gray-300"
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="rounded bg-gray-200 px-4 py-2 text-sm text-gray-600 hover:bg-gray-300 disabled:opacity-50"
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>
@@ -263,101 +371,78 @@ function Product() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  // Lưu thay đổi
-                  const updatedProducts = products.map((product) =>
-                    product.id === editingProduct.id ? editingProduct : product,
-                  );
-                  setProducts(updatedProducts);
-                  setSortedProducts(updatedProducts);
+                  updateProduct(editingProduct);
                   closeModal();
                 }}
               >
                 {/* Tên sản phẩm */}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Product Name
+                    Title
                   </label>
                   <input
                     type="text"
-                    value={editingProduct.name}
+                    value={editingProduct.title}
                     onChange={(e) =>
                       setEditingProduct({
                         ...editingProduct,
-                        name: e.target.value,
+                        title: e.target.value,
                       })
                     }
                     className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
-                {/* Giá gốc */}
+                {/* Giá sản phẩm */}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Original Price
+                    Price
                   </label>
                   <input
                     type="number"
-                    value={editingProduct.oldPrice || ""}
+                    value={editingProduct.price}
                     onChange={(e) =>
                       setEditingProduct({
                         ...editingProduct,
-                        oldPrice: Number(e.target.value),
+                        price: Number(e.target.value),
                       })
                     }
                     className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
-                {/* Discount */}
+                {/* Tồn kho */}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Discount (%)
+                    In Stock
                   </label>
                   <input
                     type="number"
-                    value={editingProduct.discount || ""}
+                    value={editingProduct.inStock}
                     onChange={(e) =>
                       setEditingProduct({
                         ...editingProduct,
-                        discount: Number(e.target.value),
+                        inStock: Number(e.target.value),
                       })
                     }
                     className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
-                {/* Sold Out */}
+                {/* Danh mục */}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Sold Out
-                  </label>
-                  <select
-                    value={editingProduct.soldOut ? "true" : "false"}
-                    onChange={(e) =>
-                      setEditingProduct({
-                        ...editingProduct,
-                        soldOut: e.target.value === "true",
-                      })
-                    }
-                    className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
-                  </select>
-                </div>
-
-                {/* Link hình ảnh */}
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Image URL
+                    Categories
                   </label>
                   <input
                     type="text"
-                    value={editingProduct.image || ""}
+                    value={editingProduct.category.join(", ")}
                     onChange={(e) =>
                       setEditingProduct({
                         ...editingProduct,
-                        image: e.target.value,
+                        category: e.target.value
+                          .split(",")
+                          .map((cat) => cat.trim()),
                       })
                     }
                     className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -373,7 +458,6 @@ function Product() {
                 </button>
               </form>
             )}
-            {/* Nút đóng */}
             <button
               onClick={closeModal}
               className="mt-4 w-full rounded-lg bg-red-500 px-4 py-2 text-sm text-white hover:bg-red-600"
@@ -392,114 +476,80 @@ function Product() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                // Thêm sản phẩm mới vào danh sách
-                setProducts([...products, newProduct]);
-                setSortedProducts([...products, newProduct]);
+                addNewProduct(newProduct);
                 closeAddModal();
               }}
             >
               {/* Tên sản phẩm */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Product Name
+                  Title
                 </label>
                 <input
                   type="text"
-                  value={newProduct.name}
+                  value={newProduct.title}
                   onChange={(e) =>
-                    setNewProduct({ ...newProduct, name: e.target.value })
+                    setNewProduct({ ...newProduct, title: e.target.value })
                   }
                   className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
-              {/* Giá gốc */}
+              {/* Giá sản phẩm */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Original Price
-                </label>
-                <input
-                  type="number"
-                  value={newProduct.oldPrice}
-                  onChange={(e) => {
-                    const oldPrice = Number(e.target.value);
-                    const discount = newProduct.discount;
-                    const price = oldPrice - (oldPrice * discount) / 100;
-                    setNewProduct({
-                      ...newProduct,
-                      oldPrice,
-                      price: Math.max(price, 0), // Đảm bảo giá không âm
-                    });
-                  }}
-                  className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              {/* Discount */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Discount (%)
-                </label>
-                <input
-                  type="number"
-                  value={newProduct.discount}
-                  onChange={(e) => {
-                    const discount = Number(e.target.value);
-                    const oldPrice = newProduct.oldPrice;
-                    const price = oldPrice - (oldPrice * discount) / 100;
-                    setNewProduct({
-                      ...newProduct,
-                      discount,
-                      price: Math.max(price, 0), // Đảm bảo giá không âm
-                    });
-                  }}
-                  className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              {/* Giá bán */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Price (Auto-calculated)
+                  Price
                 </label>
                 <input
                   type="number"
                   value={newProduct.price}
-                  readOnly
-                  className="mt-1 w-full rounded-lg border bg-gray-100 px-4 py-2 text-sm focus:outline-none"
-                />
-              </div>
-
-              {/* Sold Out */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Sold Out
-                </label>
-                <select
-                  value={newProduct.soldOut ? "true" : "false"}
                   onChange={(e) =>
                     setNewProduct({
                       ...newProduct,
-                      soldOut: e.target.value === "true",
+                      price: Number(e.target.value),
                     })
                   }
                   className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="false">No</option>
-                  <option value="true">Yes</option>
-                </select>
+                />
               </div>
 
-              {/* Link hình ảnh */}
+              {/* Tồn kho */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Image URL
+                  In Stock
+                </label>
+                <input
+                  type="number"
+                  value={newProduct.inStock}
+                  onChange={(e) =>
+                    setNewProduct({
+                      ...newProduct,
+                      inStock: Number(e.target.value),
+                    })
+                  }
+                  className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              {/* Danh mục */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Categories
                 </label>
                 <input
                   type="text"
-                  value={newProduct.image}
+                  value={
+                    Array.isArray(newProduct.category)
+                      ? newProduct.category.join(", ")
+                      : ""
+                  }
                   onChange={(e) =>
-                    setNewProduct({ ...newProduct, image: e.target.value })
+                    setNewProduct({
+                      ...newProduct,
+                      category: e.target.value
+                        .split(",")
+                        .map((cat) => cat.trim()),
+                    })
                   }
                   className="mt-1 w-full rounded-lg border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
@@ -513,7 +563,6 @@ function Product() {
                 Add Product
               </button>
             </form>
-            {/* Nút đóng */}
             <button
               onClick={closeAddModal}
               className="mt-4 w-full rounded-lg bg-red-500 px-4 py-2 text-sm text-white hover:bg-red-600"
