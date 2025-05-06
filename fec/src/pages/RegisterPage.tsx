@@ -1,64 +1,16 @@
-import { useCallback } from "react";
 import { Link } from "react-router";
 import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
-import useStore from "../store/useStore";
-
-const errorMessages: Record<string, string> = {
-  phone: "Số điện thoại không hợp lệ",
-  password: "Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất một chữ cái, một số và một ký tự đặc biệt.",
-  name: "Tên không được để trống",
-  gender: "Giới tính chưa được chọn",
-};
+import useForm from "../hooks/useForm";
 
 const RegisterPage = () => {
-  const { dispatch } = useStore();
-
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const formData = new FormData(e.currentTarget);
-
-      const res = await fetch("/api/users/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          phone: formData.get("phone"),
-          password: formData.get("password"),
-          gender: !!formData.get("gender"),
-        }),
-      });
-
-      if (res.status === 409) {
-        dispatch({ type: "SET_ERROR", payload: "Số điện thoại đã được sử dụng" });
-        return;
-      }
-
-      const session = await res.json();
-      if ("errors" in session) {
-        const errors = [];
-        for (const error of session["errors"]) {
-          errors.push(errorMessages[error["path"]]);
-        }
-        dispatch({ type: "SET_ERROR", payload: `Đăng ký tài khoản thất bại: ${errors.join(", ")}` });
-        return;
-      }
-
-      dispatch({ type: "SET_USER", payload: session });
-
-      dispatch({ type: "SET_SUCCESS", payload: undefined });
-      dispatch({ type: "SET_WARNING", payload: undefined });
-      dispatch({ type: "SET_ERROR", payload: undefined });
-    },
-    [dispatch],
-  );
+  const { handleRegisterSubmit } = useForm();
 
   return (
     <main className="flex flex-col items-center justify-center">
       <form
         className="mt-4 flex w-10/12 flex-col gap-4 rounded-md border border-gray-300 p-4 md:w-5/12 lg:w-3/12"
-        onSubmit={handleSubmit}
+        onSubmit={handleRegisterSubmit}
       >
         <h2 className="text-center text-2xl font-semibold">ĐĂNG KÝ TÀI KHOẢN</h2>
 
