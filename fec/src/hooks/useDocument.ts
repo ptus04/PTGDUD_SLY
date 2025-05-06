@@ -9,6 +9,7 @@ const TITLE_MAP: Record<string, string> = {
   "/password-recovery": "Khôi phục mật khẩu | SLY",
   "/products": "Cửa hàng | SLY",
   "/user": "Thông tin người dùng | SLY",
+  "/cart": "Giỏ hàng | SLY",
   "/about-us": "Hệ thống cửa hàng | SLY",
   "/privacy-policy": "Chính sách bảo mật | SLY",
   "/refund-policy": "Chính sách đổi trả | SLY",

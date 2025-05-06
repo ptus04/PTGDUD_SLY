@@ -18,7 +18,7 @@ const presets = {
 const Button = (props: ButtonProps) => {
   return (
     <button
-      className={`flex cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold duration-200 focus:outline-offset-2 focus:outline-red-500 ${props.className} ${presets[props.preset ?? "primary"]}`}
+      className={`flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold duration-200 focus:outline-offset-2 focus:outline-red-500 ${props.className} ${presets[props.preset ?? "primary"]} ${props.disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
       type={props.type}
       onClick={props.onClick}
       disabled={props.disabled}

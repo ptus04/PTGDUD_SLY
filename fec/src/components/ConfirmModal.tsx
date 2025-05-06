@@ -10,7 +10,7 @@ interface LogoutConfirmModalProps {
   acceptText?: string;
   onClose: () => void;
   onCancel?: () => void;
-  onAccept?: () => void;
+  onConfirm?: () => void;
 }
 
 const ConfirmModal = (props: LogoutConfirmModalProps) => {
@@ -37,8 +37,8 @@ const ConfirmModal = (props: LogoutConfirmModalProps) => {
                 {props.cancelText ?? "Hủy"}
               </Button>
             </RenderIf>
-            <RenderIf condition={!!props.onAccept}>
-              <Button type="button" preset="primary" onClick={props.onAccept}>
+            <RenderIf condition={!!props.onConfirm}>
+              <Button type="button" preset="primary" onClick={props.onConfirm}>
                 {props.acceptText ?? "Ok"}
               </Button>
             </RenderIf>

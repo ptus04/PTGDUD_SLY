@@ -4,7 +4,7 @@ type SelectWithLabelProps = {
   id: string;
   label: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
   autoFocus?: boolean;
   required?: boolean;

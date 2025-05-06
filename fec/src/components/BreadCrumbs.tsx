@@ -53,11 +53,7 @@ const Breadcrumbs = (props: BreadCrumbsProps) => {
 
           <RenderIf condition={!!query}>
             <li>
-              <NavLink
-                className="after:text-gray-500 after:content-['_/_'] hover:text-red-500"
-                to={`/products/?${category ? "category=" + category : ""}&query=${query}`}
-                end
-              >
+              <NavLink to={`/products/?${category ? "category=" + category : ""}&query=${query}`}>
                 Tìm kiếm: {query}
               </NavLink>
             </li>
@@ -86,6 +82,18 @@ const Breadcrumbs = (props: BreadCrumbsProps) => {
           <li>
             <NavLink to="/user">Thông tin tài khoản</NavLink>
           </li>
+        </RenderIf>
+
+        <RenderIf condition={/\/cart/.test(location.pathname)}>
+          <li className="after:text-gray-500 after:content-['_/_'] hover:text-red-500">
+            <NavLink to="/cart">Giỏ hàng</NavLink>
+          </li>
+
+          <RenderIf condition={/\/cart\/checkout/.test(location.pathname)}>
+            <li>
+              <NavLink to="/cart">Thanh toán</NavLink>
+            </li>
+          </RenderIf>
         </RenderIf>
       </ol>
     </nav>

@@ -142,7 +142,7 @@ const UserPage = () => {
         acceptText="Đăng xuất"
         onClose={() => setShowLogoutModal(false)}
         onCancel={() => setShowLogoutModal(false)}
-        onAccept={handleLogout}
+        onConfirm={handleLogout}
       />
 
       <BreadCrumbs />

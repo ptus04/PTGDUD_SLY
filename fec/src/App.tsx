@@ -1,8 +1,11 @@
 import { Route, Routes } from "react-router";
 import Layout from "./layouts/Layout";
 import AboutUsPage from "./pages/AboutUsPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import PageNotFound from "./pages/PageNotFound";
 import PasswordRecoveryPage from "./pages/PasswordRecoveryPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import ProductPage from "./pages/ProductPage";
@@ -11,7 +14,6 @@ import RegisterPage from "./pages/RegisterPage";
 import StorePage from "./pages/StorePage";
 import UserPage from "./pages/UserPage";
 import StoreProvider from "./store/StoreProvider";
-import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="user" element={<UserPage />} />
           <Route path="products" element={<StorePage />} />
           <Route path="products/:id" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="cart/checkout" element={<CheckoutPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="refund-policy" element={<RefundPolicyPage />} />
           <Route path="about-us" element={<AboutUsPage />} />

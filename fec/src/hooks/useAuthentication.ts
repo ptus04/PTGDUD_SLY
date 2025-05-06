@@ -43,7 +43,7 @@ const useAuthentication = () => {
       navigate(params.redirectTo ?? "/", { replace: true });
     }
 
-    const isAccountOrCartRoute = /\/(account|cart)/.test(location.pathname);
+    const isAccountOrCartRoute = /\/(account|checkout)/.test(location.pathname);
     if (isAccountOrCartRoute && !state.user) {
       navigate("/login", { replace: true });
     }

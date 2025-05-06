@@ -72,7 +72,6 @@ const ProductPage = () => {
       <BreadCrumbs product={product} />
       <Loading isLoading={isLoading} />
 
-      {/* Product not found */}
       <RenderIf condition={!isLoading && !product}>
         <div className="flex justify-center gap-4">
           <h2 className="text-center text-6xl font-bold text-gray-500">
@@ -175,6 +174,7 @@ const ProductPage = () => {
               type="button"
               preset="primary"
               className="mx-auto"
+              disabled={!product?.inStock}
               onClick={() => handleUpdateCart(product!, quantity, size)}
             >
               <i className="fa fa-cart-plus"></i>

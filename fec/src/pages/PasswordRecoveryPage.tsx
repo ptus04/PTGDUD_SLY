@@ -1,11 +1,16 @@
 import { memo, useCallback, useState } from "react";
+import { useNavigate } from "react-router";
 import Button from "../components/Button";
+import ConfirmModal from "../components/ConfirmModal";
 import InputWithLabel from "../components/InputWithLabel";
 import useStore from "../store/useStore";
 
 const PasswordRecoveryPage = () => {
+  const navigate = useNavigate();
   const { dispatch } = useStore();
   const [phone, setPhone] = useState("");
+  const [timeRemaining, setTimeRemaining] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handlePhoneChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.currentTarget.value);
@@ -20,14 +25,31 @@ const PasswordRecoveryPage = () => {
       const res = await fetch("/api/users/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone }),
+        body: JSON.stringify({ phone, action: "reset-password" }),
       });
       if (res.status === 404) {
         dispatch({ type: "SET_ERROR", payload: "Số điện thoại không tồn tại" });
         return;
       }
+      if (res.status === 400) {
+        dispatch({ type: "SET_ERROR", payload: "Vui lòng đợi ít nhất 60 giây trước khi yêu cầu mã mới" });
+        return;
+      }
 
       dispatch({ type: "SET_SUCCESS", payload: "Mã OTP đã được gửi đến số điện thoại của bạn" });
+      setTimeRemaining(60);
+
+      const interval = setInterval(() => {
+        setTimeRemaining((prev) => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(interval);
     } catch (error) {
       dispatch({ type: "SET_ERROR", payload: (error as Error).message });
     }
@@ -46,12 +68,12 @@ const PasswordRecoveryPage = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phone, otp, password }),
         });
-        if (res.status === 400) {
+        if (res.status === 403) {
           dispatch({ type: "SET_ERROR", payload: "Mã OTP không hợp lệ" });
           return;
         }
 
-        dispatch({ type: "SET_SUCCESS", payload: "Mật khẩu đã được đặt lại thành công" });
+        setIsModalOpen(true);
       } catch (error) {
         dispatch({ type: "SET_ERROR", payload: (error as Error).message });
       }
@@ -61,30 +83,39 @@ const PasswordRecoveryPage = () => {
 
   return (
     <main className="flex flex-col items-center justify-center">
+      <ConfirmModal
+        title="Đặt lại mật khẩu thành công"
+        content={`Mật khẩu của tài khoản ${phone} đã được thay đổi thành công!`}
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={() => {
+          setIsModalOpen(false);
+          navigate("/login", { replace: true });
+        }}
+      />
+
       <form
         className="mt-4 flex w-10/12 flex-col gap-4 rounded-md border border-gray-300 p-4 md:w-5/12 lg:w-3/12"
         onSubmit={handleFormSubmit}
       >
         <h1 className="text-center text-2xl font-semibold">Quên mật khẩu?</h1>
 
-        <div className="flex items-center justify-between">
-          <InputWithLabel
-            className="grow"
-            id="phone"
-            label="Số điện thoại"
-            type="tel"
-            value={phone}
-            autoComplete="tel"
-            autoFocus
-            required
-            pattern="^0[2-9]\d{8}$"
-            error="Số điện thoại không hợp lệ"
-            onChange={handlePhoneChange}
-          />
-          <Button preset="tertiary" onClick={handleOTPRequest}>
-            Gửi mã OTP
-          </Button>
-        </div>
+        <InputWithLabel
+          className="grow"
+          id="phone"
+          label="Số điện thoại"
+          type="tel"
+          value={phone}
+          autoComplete="tel"
+          autoFocus
+          required
+          pattern="^0[2-9]\d{8}$"
+          error="Số điện thoại không hợp lệ"
+          onChange={handlePhoneChange}
+        />
+        <Button type="button" preset="secondary" onClick={handleOTPRequest} disabled={timeRemaining > 0}>
+          {timeRemaining ? "Gửi mã OTP " + timeRemaining + "s" : "Gửi mã OTP"}
+        </Button>
 
         <InputWithLabel
           id="otp"

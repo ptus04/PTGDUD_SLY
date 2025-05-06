@@ -43,6 +43,27 @@ const useCart = () => {
     [state.user, dispatch],
   );
 
+  const syncCart = useCallback(async () => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+    dispatch({ type: "SET_CART", payload: state.cart });
+
+    if (state.user) {
+      try {
+        const res = await fetch("/api/cart", {
+          method: "PUT",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(state.cart?.items),
+        });
+        if (!res.ok) {
+          throw new Error("Không thể đồng bộ giỏ hàng với máy chủ.");
+        }
+      } catch (error) {
+        dispatch({ type: "SET_ERROR", payload: (error as Error).message });
+      }
+    }
+  }, [dispatch, state.cart, state.user]);
+
   const handleUpdateCart = useCallback(
     async (product: ProductWithIdString, quantity: number, size?: string) => {
       const existingProduct = state.cart?.items.find((item) => item._id === product._id && item.size === size);
@@ -58,26 +79,10 @@ const useCart = () => {
           image: product.images[0],
         });
       }
-      localStorage.setItem("cart", JSON.stringify(state.cart));
-      dispatch({ type: "SET_CART", payload: state.cart });
 
-      if (state.user) {
-        try {
-          const res = await fetch("/api/cart", {
-            method: "PUT",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(state.cart?.items),
-          });
-          if (!res.ok) {
-            throw new Error("Không thể đồng bộ giỏ hàng với máy chủ.");
-          }
-        } catch (error) {
-          dispatch({ type: "SET_ERROR", payload: (error as Error).message });
-        }
-      }
+      syncCart();
     },
-    [state.cart, state.user, dispatch],
+    [state.cart, syncCart],
   );
 
   const handleRemoveFromCart = useCallback(
@@ -88,26 +93,10 @@ const useCart = () => {
       }
 
       cart.items = state.cart?.items.filter((item) => item._id !== productId || item.size !== size) ?? [];
-      localStorage.setItem("cart", JSON.stringify(cart));
-      dispatch({ type: "SET_CART", payload: cart });
 
-      if (state.user) {
-        try {
-          const res = await fetch("/api/cart", {
-            method: "PUT",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(state.cart?.items),
-          });
-          if (!res.ok) {
-            throw new Error("Không thể đồng bộ giỏ hàng với máy chủ.");
-          }
-        } catch (error) {
-          dispatch({ type: "SET_ERROR", payload: (error as Error).message });
-        }
-      }
+      syncCart();
     },
-    [state.cart, state.user, dispatch],
+    [state.cart, syncCart],
   );
 
   useEffect(() => {
@@ -117,7 +106,7 @@ const useCart = () => {
     return () => controller.abort();
   }, [getCart]);
 
-  return { handleUpdateCart, handleRemoveFromCart };
+  return { handleUpdateCart, handleRemoveFromCart, syncCart };
 };
 
 export default useCart;
