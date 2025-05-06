@@ -5,7 +5,9 @@ import Order from "../models/Order.model";
 const getOrders = (userId: string) => {
   return db().collection<Order>("orders").find({ userId }).sort({ createdAt: -1 }).toArray();
 };
-
+const getAllOrders = () => {
+  return db().collection<Order>("orders").find({}).sort({ createdAt: -1 }).toArray();
+};
 const getOrder = (orderId: string) => {
   return db()
     .collection<Order>("orders")
@@ -34,4 +36,4 @@ const cancelOrder = (orderId: string, userId: string, reason: string) => {
     );
 };
 
-export default { getOrders, getOrder, createOrder, cancelOrder } as const;
+export default { getOrders, getAllOrders, getOrder, createOrder, cancelOrder } as const;

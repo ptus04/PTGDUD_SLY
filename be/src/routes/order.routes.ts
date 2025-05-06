@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body, param } from "express-validator";
-import { cancelOrder, createOrder, getOrder, getOrders } from "../controllers/order.controller";
+import { cancelOrder, createOrder, getAllOrders, getOrder, getOrders } from "../controllers/order.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
@@ -29,6 +29,7 @@ const cancelOrderValidator = [
 ];
 
 const router = Router();
+router.get("/", getAllOrders);
 router.use(auth);
 router.get("/", getOrders);
 router.post("/", createOrderValidator, handleBadRequest, createOrder);

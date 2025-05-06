@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all"); // all, processing, shipped, delivered, canceled
+  const [filter, setFilter] = useState("all"); // all, pending, accepted, shipping, delivered, cancelled
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,8 +20,7 @@ function Orders() {
   // Fetch dữ liệu từ API thực tế
   useEffect(() => {
     setLoading(true);
-    fetch("https://run.mocky.io/v3/725333cb-cd25-4129-9e35-a62721672628")
-      // fetch("/api/products")
+    fetch("/api/orders")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -44,25 +43,28 @@ function Orders() {
     .filter(
       (order) =>
         searchQuery === "" ||
-        order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        order.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        order.email.toLowerCase().includes(searchQuery.toLowerCase()),
+        order.userId.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.shippingAddress.name
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
     );
 
   // Hiển thị trạng thái đơn hàng
   const getStatusBadge = (status) => {
     const statusStyles = {
-      processing: "bg-blue-100 text-blue-800",
-      shipped: "bg-yellow-100 text-yellow-800",
+      pending: "bg-gray-100 text-gray-800",
+      accepted: "bg-blue-100 text-blue-800",
+      shipping: "bg-yellow-100 text-yellow-800",
       delivered: "bg-green-100 text-green-800",
-      canceled: "bg-red-100 text-red-800",
+      cancelled: "bg-red-100 text-red-800",
     };
 
     const statusText = {
-      processing: "Chờ xác nhận",
-      shipped: "Đang giao hàng",
+      pending: "Chờ xử lý",
+      accepted: "Đã xác nhận",
+      shipping: "Đang giao hàng",
       delivered: "Đã giao hàng",
-      canceled: "Đã hủy",
+      cancelled: "Đã hủy",
     };
 
     return (
@@ -73,21 +75,21 @@ function Orders() {
       </span>
     );
   };
+
   const handleViewOrder = (order) => {
     setSelectedOrder(order);
     setIsModalOpen(true);
   };
+
   // Xử lý thay đổi trạng thái đơn hàng
   const handleStatusChange = (orderId, newStatus) => {
-    // Trong thực tế, bạn sẽ gửi request cập nhật lên API
-    // Tạm thời cập nhật ở phía client
     setOrders(
       orders.map((order) => {
         if (order.id === orderId) {
           return { ...order, status: newStatus };
         }
         return order;
-      }),
+      })
     );
   };
 
@@ -100,7 +102,7 @@ function Orders() {
       </div>
 
       <div className="flex flex-col gap-6 md:flex-row">
-        {/* Sidebar - Fixed height and position */}
+        {/* Sidebar */}
         <div className="w-full rounded-lg bg-white p-4 shadow md:sticky md:top-6 md:w-1/4 md:self-start">
           <div className="mt-1 rounded-lg bg-blue-50 p-4">
             <h4 className="font-medium text-blue-800">Thống kê nhanh</h4>
@@ -110,15 +112,15 @@ function Orders() {
                 <span className="font-bold">{orders.length}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Chờ xác nhận:</span>
+                <span className="text-sm text-gray-600">Chờ xử lý:</span>
                 <span className="font-bold">
-                  {orders.filter((o) => o.status === "processing").length}
+                  {orders.filter((o) => o.status === "pending").length}
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Đang giao:</span>
                 <span className="font-bold">
-                  {orders.filter((o) => o.status === "shipped").length}
+                  {orders.filter((o) => o.status === "shipping").length}
                 </span>
               </div>
               <div className="flex items-center justify-between">
@@ -130,14 +132,14 @@ function Orders() {
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Đã hủy:</span>
                 <span className="font-bold">
-                  {orders.filter((o) => o.status === "canceled").length}
+                  {orders.filter((o) => o.status === "cancelled").length}
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Main Content - Make sure it has a minimum height to avoid layout shifts */}
+        {/* Main Content */}
         <div className="flex-1">
           {/* Search and Filter */}
           <div className="mb-6 flex flex-col gap-4">
@@ -168,37 +170,6 @@ function Orders() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <div className="flex gap-2">
-                {/* <button className="flex items-center space-x-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
-                  <svg
-                    className="h-4 w-4"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span>Thêm đơn hàng</span>
-                </button>
-                <button className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-100">
-                  <svg
-                    className="h-4 w-4 text-gray-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </button> */}
-              </div>
             </div>
 
             {/* Filter tabs */}
@@ -210,14 +181,14 @@ function Orders() {
                 Tất cả
               </button>
               <button
-                onClick={() => setFilter("processing")}
-                className={`px-4 py-2 text-sm ${filter === "processing" ? "border-b-2 border-blue-500 font-medium text-blue-600" : "text-gray-500"}`}
+                onClick={() => setFilter("pending")}
+                className={`px-4 py-2 text-sm ${filter === "pending" ? "border-b-2 border-blue-500 font-medium text-blue-600" : "text-gray-500"}`}
               >
-                Chờ xác nhận
+                Chờ xử lý
               </button>
               <button
-                onClick={() => setFilter("shipped")}
-                className={`px-4 py-2 text-sm ${filter === "shipped" ? "border-b-2 border-blue-500 font-medium text-blue-600" : "text-gray-500"}`}
+                onClick={() => setFilter("shipping")}
+                className={`px-4 py-2 text-sm ${filter === "shipping" ? "border-b-2 border-blue-500 font-medium text-blue-600" : "text-gray-500"}`}
               >
                 Đang giao
               </button>
@@ -228,163 +199,123 @@ function Orders() {
                 Đã giao
               </button>
               <button
-                onClick={() => setFilter("canceled")}
-                className={`px-4 py-2 text-sm ${filter === "canceled" ? "border-b-2 border-blue-500 font-medium text-blue-600" : "text-gray-500"}`}
+                onClick={() => setFilter("cancelled")}
+                className={`px-4 py-2 text-sm ${filter === "cancelled" ? "border-b-2 border-blue-500 font-medium text-blue-600" : "text-gray-500"}`}
               >
                 Đã hủy
               </button>
             </div>
           </div>
 
-          {/* Content container with minimum height to prevent layout shifts */}
-          <div className="min-h-[400px]">
-            {/* Loading state */}
-            {loading && (
-              <div className="py-8 text-center">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-r-transparent"></div>
-                <p className="mt-2 text-gray-500">Đang tải đơn hàng...</p>
-              </div>
-            )}
-
-            {/* Empty state */}
-            {!loading && filteredOrders.length === 0 && (
-              <div className="rounded-lg bg-white py-8 text-center shadow">
-                <svg
-                  className="mx-auto h-12 w-12 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <h3 className="mt-2 text-sm font-medium text-gray-900">
-                  Không tìm thấy đơn hàng
-                </h3>
-                <p className="mt-1 text-sm text-gray-500">
-                  Không có đơn hàng nào phù hợp với bộ lọc hiện tại.
-                </p>
-              </div>
-            )}
-
-            {/* Orders table */}
-            {!loading && filteredOrders.length > 0 && (
-              // Sửa lỗi giao diện bảng để đảm bảo hiển thị đúng cách
-              <div className="overflow-x-auto">
-                <table className="min-w-full rounded-lg bg-white shadow">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Mã đơn
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Ngày đặt
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Khách hàng
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Tổng tiền
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Trạng thái
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Thanh toán
-                      </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
-                        Thao tác
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {filteredOrders.map((order) => (
-                      <tr key={order.id} className="hover:bg-gray-50">
-                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-blue-600">
-                          {order.id}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                          {new Date(order.date).toLocaleDateString("vi-VN")}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          <div className="text-sm font-medium text-gray-900">
-                            {order.customer}
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            {order.email}
-                          </div>
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                          {order.total.toLocaleString("vi-VN")} đ
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          {getStatusBadge(order.status)}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                          {order.paymentMethod}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                          <div className="flex justify-end space-x-2">
-                            <button
-                              className="text-blue-600 hover:text-blue-900"
-                              onClick={() => handleViewOrder(order)}
-                            >
-                              Xem
-                            </button>
-                            {order.status === "processing" && (
-                              <div className="relative">
-                                <button
-                                  className="text-gray-600 hover:text-gray-900"
-                                  onClick={() => toggleMenu(order.id)}
+          {/* Orders table */}
+          {!loading && filteredOrders.length > 0 && (
+            <div className="overflow-x-auto">
+              <table className="min-w-full rounded-lg bg-white shadow">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Mã đơn
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Ngày đặt
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Khách hàng
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Tổng tiền
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Trạng thái
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Thanh toán
+                    </th>
+                    <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
+                      Thao tác
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {filteredOrders.map((order) => (
+                    <tr key={order.id} className="hover:bg-gray-50">
+                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-blue-600">
+                        {order.id}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                        {new Date(order.orderDate).toLocaleDateString("vi-VN")}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="text-sm font-medium text-gray-900">
+                          {order.shippingAddress.name}
+                        </div>
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                        {order.items
+                          .reduce(
+                            (acc, curr) => acc + curr.price * curr.quantity,
+                            0
+                          )
+                          .toLocaleString("vi-VN")}{" "}
+                        đ
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        {getStatusBadge(order.status)}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                        {order.paymentMethod}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                        <div className="flex justify-end space-x-2">
+                          <button
+                            className="text-blue-600 hover:text-blue-900"
+                            onClick={() => handleViewOrder(order)}
+                          >
+                            Xem
+                          </button>
+                          {order.status === "processing" && (
+                            <div className="relative">
+                              <button
+                                className="text-gray-600 hover:text-gray-900"
+                                onClick={() => toggleMenu(order.id)}
+                              >
+                                Trạng thái ▾
+                              </button>
+                              {openMenuId === order.id && (
+                                <div
+                                  className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg"
+                                  onMouseLeave={closeMenu}
                                 >
-                                  Trạng thái ▾
-                                </button>
-                                {openMenuId === order.id && (
-                                  <div
-                                    className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg"
-                                    onMouseLeave={closeMenu}
-                                  >
-                                    <div className="py-1">
-                                      <button
-                                        onClick={() =>
-                                          handleStatusChange(
-                                            order.id,
-                                            "shipped",
-                                          )
-                                        }
-                                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                      >
-                                        Xác nhận
-                                      </button>
-                                      <button
-                                        onClick={() =>
-                                          handleStatusChange(
-                                            order.id,
-                                            "canceled",
-                                          )
-                                        }
-                                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                      >
-                                        Hủy
-                                      </button>
-                                    </div>
+                                  <div className="py-1">
+                                    <button
+                                      onClick={() =>
+                                        handleStatusChange(order.id, "shipped")
+                                      }
+                                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                                    >
+                                      Xác nhận
+                                    </button>
+                                    <button
+                                      onClick={() =>
+                                        handleStatusChange(order.id, "canceled")
+                                      }
+                                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                                    >
+                                      Hủy
+                                    </button>
                                   </div>
-                                )}
-                              </div>
-                            )}
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
           {/* Pagination */}
           {!loading && filteredOrders.length > 0 && (

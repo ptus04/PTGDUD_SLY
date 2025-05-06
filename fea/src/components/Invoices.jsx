@@ -11,6 +11,7 @@ function Invoices() {
     setLoading(true);
     // Thay thế URL API bằng API thực tế của bạn
     fetch("https://run.mocky.io/v3/725333cb-cd25-4129-9e35-a62721672628")
+      // fetch("/api/orders")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -61,7 +62,7 @@ function Invoices() {
         invoice.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
         invoice.orderId.toLowerCase().includes(searchQuery.toLowerCase()) ||
         invoice.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        invoice.email.toLowerCase().includes(searchQuery.toLowerCase()),
+        invoice.email.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
   // Hiển thị trạng thái hóa đơn
@@ -99,7 +100,7 @@ function Invoices() {
           return { ...invoice, status: newStatus };
         }
         return invoice;
-      }),
+      })
     );
   };
 
@@ -391,7 +392,7 @@ function Invoices() {
                         </td>
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
                           {new Date(invoice.issueDate).toLocaleDateString(
-                            "vi-VN",
+                            "vi-VN"
                           )}
                         </td>
                         {/* <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
