@@ -7,7 +7,6 @@ import handleBadRequest from "../utils/handleBadRequest";
 const registerValidator = [
   body("phone").isLength({ min: 10, max: 10 }).isMobilePhone("vi-VN").withMessage("Invalid phone number"),
   body("password").isLength({ min: 8 }).withMessage("Password must be at least 8 characters long"),
-  body("email").normalizeEmail().isEmail().withMessage("Invalid email format"),
   body("name").notEmpty().withMessage("Name is required"),
   body("gender").isBoolean().withMessage("Gender must be a boolean"),
 ];
