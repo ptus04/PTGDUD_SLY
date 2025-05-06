@@ -50,10 +50,6 @@ const useForm = () => {
       }
 
       dispatch({ type: "SET_USER", payload: session });
-
-      dispatch({ type: "SET_SUCCESS", payload: undefined });
-      dispatch({ type: "SET_WARNING", payload: undefined });
-      dispatch({ type: "SET_ERROR", payload: undefined });
     },
     [dispatch, handleErrors],
   );
@@ -84,10 +80,6 @@ const useForm = () => {
       }
 
       dispatch({ type: "SET_USER", payload: session });
-
-      dispatch({ type: "SET_SUCCESS", payload: undefined });
-      dispatch({ type: "SET_WARNING", payload: undefined });
-      dispatch({ type: "SET_ERROR", payload: undefined });
     },
     [dispatch, handleErrors],
   );
