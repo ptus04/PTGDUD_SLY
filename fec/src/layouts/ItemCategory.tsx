@@ -18,7 +18,7 @@ const ItemCategory = ({ name, subCategories }: CategoryProps) => {
         <ul className="flex gap-4 ms-2">
           {subCategories.map((subCategory) => (
             <li key={subCategory} className="text-sm">
-              <Link className="duration-200 hover:text-red-500" to={`./products?category=${subCategory.toLowerCase()}`}>
+              <Link className="duration-200 hover:text-red-500" to={`./products/?category=${subCategory.toLowerCase()}`}>
                 {subCategory.toUpperCase()}
               </Link>
             </li>

@@ -5,8 +5,10 @@ import useAuthentication from "../hooks/useAuthentication";
 import Footer from "./Footer";
 import Header from "./Header";
 import NavBar from "./NavBar";
+import useDocument from "../hooks/useDocument";
 
 const Layout = () => {
+  useDocument();
   useAuthentication();
 
   return (

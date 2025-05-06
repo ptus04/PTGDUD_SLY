@@ -11,8 +11,8 @@ import useCart from "../hooks/useCart";
 const Header = () => {
   const { state } = useStore();
   const { handleOpen } = useNavBar();
-  const handleSubmit = useProductQuery();
   const { handleRemoveFromCart } = useCart();
+  const handleSubmit = useProductQuery();
 
   return (
     <CustomizedHeaderTag>
@@ -100,7 +100,7 @@ const Header = () => {
           </div>
         </div>
 
-        <Link to={state.user ? "/account" : "/login"} className="cursor-pointer" title="Tài khoản">
+        <Link to={state.user ? "/user" : "/login"} className="cursor-pointer" title="Tài khoản">
           <i className="fa fa-user"></i>
           <span className="hidden md:inline"> {state.user ? state.user.name : "Tài khoản"}</span>
         </Link>
