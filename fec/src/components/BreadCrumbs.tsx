@@ -70,9 +70,21 @@ const Breadcrumbs = (props: BreadCrumbsProps) => {
           </li>
         </RenderIf>
 
-        <RenderIf condition={/\/contact-us/.test(location.pathname)}>
+        <RenderIf condition={/\/privacy-policy/.test(location.pathname)}>
           <li>
-            <NavLink to="/contact-us">Liên hệ</NavLink>
+            <NavLink to="/privacy-policy">Chính sách bảo mật</NavLink>
+          </li>
+        </RenderIf>
+
+        <RenderIf condition={/\/refund-policy/.test(location.pathname)}>
+          <li>
+            <NavLink to="/refund-policy">Chính sách đổi trả</NavLink>
+          </li>
+        </RenderIf>
+
+        <RenderIf condition={/\/user/.test(location.pathname)}>
+          <li>
+            <NavLink to="/user">Thông tin tài khoản</NavLink>
           </li>
         </RenderIf>
       </ol>

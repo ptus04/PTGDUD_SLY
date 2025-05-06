@@ -1,20 +1,18 @@
 import { Route, Routes } from "react-router";
-import StoreProvider from "./store/StoreProvider";
 import Layout from "./layouts/Layout";
 import AboutUsPage from "./pages/AboutUsPage";
-import AccountPage from "./pages/AccountPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PasswordRecoveryPage from "./pages/PasswordRecoveryPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import ProductPage from "./pages/ProductPage";
-import ProductsPage from "./pages/ProductsPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import RegisterPage from "./pages/RegisterPage";
-import useDocumentTitle from "./hooks/useDocumentTitle";
+import StorePage from "./pages/StorePage";
+import UserPage from "./pages/UserPage";
+import StoreProvider from "./store/StoreProvider";
 
 const App = () => {
-  useDocumentTitle();
 
   return (
     <StoreProvider>
@@ -24,8 +22,8 @@ const App = () => {
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="password-recovery" element={<PasswordRecoveryPage />} />
-          <Route path="account" element={<AccountPage />} />
-          <Route path="products" element={<ProductsPage />} />
+          <Route path="user" element={<UserPage />} />
+          <Route path="products" element={<StorePage />} />
           <Route path="products/:id" element={<ProductPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="refund-policy" element={<RefundPolicyPage />} />

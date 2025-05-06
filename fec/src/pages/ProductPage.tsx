@@ -1,7 +1,9 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo, useCallback, useEffect, useState } from "react";
-import { Link, NavLink, useParams } from "react-router";
+import { Link, useParams } from "react-router";
+import BreadCrumbs from "../components/BreadCrumbs";
 import Button from "../components/Button";
+import Loading from "../components/Loading";
 import ProductCarousel from "../components/ProductCarousel";
 import RenderIf from "../components/RenderIf";
 import useCart from "../hooks/useCart";
@@ -67,32 +69,8 @@ const ProductPage = () => {
 
   return (
     <main className="container mx-auto flex flex-col gap-4 p-4">
-      {/* Breadcrumbs navigation */}
-      <nav className="text-sm text-gray-500">
-        <ol className="flex gap-1">
-          <li>
-            <NavLink className="after:text-gray-500 after:content-['_/_'] hover:text-red-500" to="/">
-              Trang chủ
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              className={`after:text-gray-500 hover:text-red-500 ${product ? "after:content-['_/_']" : ""}`}
-              to="/products"
-              end
-            >
-              Cửa hàng
-            </NavLink>
-          </li>
-
-          <RenderIf condition={!!product}>
-            <li>
-              <NavLink to={`/products/${product?._id}`}>{product?.title}</NavLink>
-            </li>
-          </RenderIf>
-        </ol>
-      </nav>
+      <BreadCrumbs product={product} />
+      <Loading isLoading={isLoading} />
 
       {/* Product not found */}
       <RenderIf condition={!isLoading && !product}>

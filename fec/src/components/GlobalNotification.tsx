@@ -21,7 +21,7 @@ const GlobalNotification = () => {
     <>
       <RenderIf condition={!!state.error}>
         <div
-          className={`m-2 flex justify-between rounded-md border border-red-400 bg-red-100 px-4 py-2 text-red-600`}
+          className="m-2 flex justify-between rounded-md border border-red-400 bg-red-100 px-4 py-2 text-red-600"
           role="alert"
           aria-live="assertive"
         >
@@ -44,7 +44,7 @@ const GlobalNotification = () => {
 
       <RenderIf condition={!!state.warning}>
         <div
-          className={`m-2 flex justify-between rounded-md border border-yellow-400 bg-yellow-100 px-4 py-2 text-yellow-600`}
+          className="m-2 flex justify-between rounded-md border border-yellow-400 bg-yellow-100 px-4 py-2 text-yellow-600"
           role="alert"
           aria-live="assertive"
         >
@@ -67,7 +67,7 @@ const GlobalNotification = () => {
 
       <RenderIf condition={!!state.success}>
         <div
-          className={`m-2 flex justify-between rounded-md border border-green-400 bg-green-100 px-4 py-2 text-green-600`}
+          className="m-2 flex justify-between rounded-md border border-green-400 bg-green-100 px-4 py-2 text-green-600"
           role="alert"
           aria-live="assertive"
         >

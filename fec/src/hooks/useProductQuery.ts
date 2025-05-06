@@ -1,21 +1,26 @@
 import { useCallback } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 const useProductQuery = () => {
+  const [params] = useSearchParams();
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      const query = new FormData(e.currentTarget).get("query") as string;
-      if (!query.trim()) {
+      const formData = new FormData(e.currentTarget);
+      const queryStr = formData.get("query") as string;
+      if (queryStr.trim() === "") {
         return;
       }
 
-      navigate(`/products?query=${encodeURIComponent(query)}`);
+      const category = params.get("category") ? `&category=${params.get("category")}` : "";
+      const query = `&query=${encodeURIComponent(queryStr)}`;
+      const limit = params.get("limit") ? `&limit=${params.get("limit")}` : "";
+      navigate(`/products/?${category}${query}${limit}`);
     },
-    [navigate],
+    [navigate, params],
   );
 
   return handleSubmit;
