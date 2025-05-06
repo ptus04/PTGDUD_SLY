@@ -2,12 +2,13 @@ import { Router } from "express";
 import { body, cookie, param } from "express-validator";
 import {
   getUser,
+  getUsers,
   login,
   logout,
   register,
-  updateUser,
   requestOtp,
   resetPassword,
+  updateUser,
 } from "../controllers/user.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
@@ -59,6 +60,7 @@ const resetPasswordValidator = [
 ];
 
 const router = Router();
+router.get("/", getUsers);
 router.post("/register", registerValidator, handleBadRequest, register);
 router.post("/login", loginValidator, handleBadRequest, login);
 router.post("/otp", requestOtpValidator, handleBadRequest, requestOtp);
