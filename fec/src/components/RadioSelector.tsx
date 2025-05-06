@@ -16,7 +16,7 @@ const RadioSelector = (props: RadioSelectorProps) => (
     {props.options.map((option, index) => (
       <div key={option} className="flex items-center gap-1">
         <input
-          className="peer accent-red-500 nth-[n+2]:ms-4"
+          className="peer accent-red-500 nth-[n+2]:ms-4 focus:outline-red-500"
           type="radio"
           id={props.groupName + index}
           name={props.groupName}
