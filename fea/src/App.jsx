@@ -6,7 +6,7 @@ import Dashboard from "./components/Dashboard";
 import Customer from "./components/Customer";
 import Product from "./components/Product";
 import Orders from "./components/Orders";
-// import Invoices from "./components/Invoices";
+import Invoices from "./components/Invoices";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
               <Route path="/customers" element={<Customer />} />
               <Route path="/products" element={<Product />} />
               <Route path="/orders" element={<Orders></Orders>} />
-              <Route path="/invoice" element={<h1>Invoices</h1>} />
+              <Route path="/invoice" element={<Invoices></Invoices>} />
               <Route path="/login" element={<h1>Login</h1>} />
             </Routes>
           </main>
