@@ -17,7 +17,7 @@ const ProductCard = ({ product }: ProductCardProps) => (
             {(product.discount ?? 0) * 100}%
           </p>
         </RenderIf>
-        <img className="w-full" src={`./img/${product.images[0]}`} alt={product.title} loading="lazy" />
+        <img className="w-full" src={`/img/${product.images[0]}`} alt={product.title} loading="lazy" />
         <RenderIf condition={!product.inStock}>
           <p className="absolute top-1/2 w-full bg-white/75 px-6 py-2 text-2xl font-bold text-red-600">HẾT HÀNG</p>
         </RenderIf>
