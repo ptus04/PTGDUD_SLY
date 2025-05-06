@@ -52,7 +52,7 @@ const StorePage = () => {
   }, [fetchProducts]);
 
   return (
-    <main className="container mx-auto gap-4 p-4">
+    <main className="container mx-auto flex flex-col gap-4 p-4">
       <BreadCrumbs />
 
       <div>

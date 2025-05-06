@@ -64,12 +64,12 @@ const Header = () => {
 
             <RenderIf condition={!!state.cart && state.cart?.items.length > 0}>
               {state.cart?.items.map((product) => (
-                <div key={product._id + product.size} className="flex items-center p-1">
-                  <Link to={`/products/${product._id}`}>
+                <div key={product.productId + product.size} className="flex items-center p-1">
+                  <Link to={`/products/${product.productId}`}>
                     <img className="h-14" src={`/img/${product.image}`} loading="lazy" alt={product.image} />
                   </Link>
                   <div className="ms-2 overflow-hidden">
-                    <Link to={`/products/${product._id}`}>
+                    <Link to={`/products/${product.productId}`}>
                       {product.title} {product.size ? `(${product.size})` : ""}
                     </Link>
                     <p>
@@ -80,7 +80,7 @@ const Header = () => {
                   <button
                     className="ms-auto cursor-pointer"
                     type="button"
-                    onClick={() => handleRemoveFromCart(product._id, product.size)}
+                    onClick={() => handleRemoveFromCart(product.productId, product.size)}
                     title="Xóa sản phẩm"
                   >
                     <i className="fa fa-remove"></i>

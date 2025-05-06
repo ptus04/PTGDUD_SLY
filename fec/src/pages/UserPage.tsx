@@ -139,7 +139,7 @@ const UserPage = () => {
         content="Bạn có chắc chắn muốn đăng xuất không?"
         open={showLogoutModal}
         cancelText="Hủy bỏ"
-        acceptText="Đăng xuất"
+        confirmText="Đăng xuất"
         onClose={() => setShowLogoutModal(false)}
         onCancel={() => setShowLogoutModal(false)}
         onConfirm={handleLogout}
@@ -152,10 +152,10 @@ const UserPage = () => {
           <NavLink className="flex items-center gap-2 px-4 py-2 hover:text-red-500" to="/user">
             <i className="fa fa-user"></i> Thông tin tài khoản
           </NavLink>
-          <NavLink className="flex items-center gap-2 px-4 py-2 hover:text-red-500" to="/order-history">
+          <NavLink className="flex items-center gap-2 px-4 py-2 hover:text-red-500" to="/user/order-history">
             <i className="fa fa-receipt"></i> Quản lý đơn hàng
           </NavLink>
-          <NavLink className="flex items-center gap-2 px-4 py-2 hover:text-red-500" to="/password-recovery">
+          <NavLink className="flex items-center gap-2 px-4 py-2 hover:text-red-500" to="/user/password-recovery">
             <i className="fa fa-key"></i> Đổi mật khẩu
           </NavLink>
           <Button className="w-full" type="button" preset="secondary" onClick={() => setShowLogoutModal(true)}>

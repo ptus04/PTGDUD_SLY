@@ -1,3 +1,4 @@
+import { OrderWithIdString } from "@be/src/models/Order.model";
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo, useEffect, useState } from "react";
 import { NavLink, useLocation, useSearchParams } from "react-router";
@@ -5,6 +6,7 @@ import RenderIf from "./RenderIf";
 
 type BreadCrumbsProps = {
   product?: ProductWithIdString;
+  order?: OrderWithIdString;
 };
 
 const Breadcrumbs = (props: BreadCrumbsProps) => {
@@ -79,9 +81,25 @@ const Breadcrumbs = (props: BreadCrumbsProps) => {
         </RenderIf>
 
         <RenderIf condition={/\/user/.test(location.pathname)}>
-          <li>
-            <NavLink to="/user">Thông tin tài khoản</NavLink>
+          <li className="after:text-gray-500 after:content-['_/_'] hover:text-red-500">
+            <NavLink to="/user" end>
+              Thông tin tài khoản
+            </NavLink>
           </li>
+
+          <RenderIf condition={/\/user\/order-history/.test(location.pathname)}>
+            <li className="after:text-gray-500 after:content-['_/_'] hover:text-red-500">
+              <NavLink to="/user/order-history" end>
+                Quản lý đơn hàng
+              </NavLink>
+            </li>
+          </RenderIf>
+
+          <RenderIf condition={/\/user\/order-history\/.+/.test(location.pathname)}>
+            <li>
+              <NavLink to={`/user/order-history/${props.order?._id}`}>Thông tin đơn hàng: {props.order?._id}</NavLink>
+            </li>
+          </RenderIf>
         </RenderIf>
 
         <RenderIf condition={/\/cart/.test(location.pathname)}>

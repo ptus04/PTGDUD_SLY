@@ -15,7 +15,7 @@ const CartPage = () => {
   const handleQuantityChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, productId: string) => {
       const newQuantity = parseInt(e.target.value);
-      const existingProduct = state.cart?.items.find((item) => item._id === productId);
+      const existingProduct = state.cart?.items.find((item) => item.productId === productId);
       existingProduct!.quantity = newQuantity;
       dispatch({
         type: "SET_CART",
@@ -54,9 +54,9 @@ const CartPage = () => {
 
               <RenderIf condition={!!state.cart?.items.length}>
                 {state.cart?.items.map((product) => (
-                  <tr key={product._id}>
+                  <tr key={product.productId + product.size}>
                     <td>
-                      <a className="flex flex-row items-center gap-2" href={`/products/${product._id}`}>
+                      <a className="flex flex-row items-center gap-2" href={`/products/${product.productId}`}>
                         <img
                           src={`/img/${product.image}`}
                           loading="lazy"
@@ -74,7 +74,7 @@ const CartPage = () => {
                         name="quantity"
                         id="quantity"
                         value={product.quantity}
-                        onChange={(e) => handleQuantityChange(e, product._id)}
+                        onChange={(e) => handleQuantityChange(e, product.productId)}
                         min="1"
                         title="Số lượng"
                       />

@@ -5,6 +5,8 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import OrderHistoryPage from "./pages/OrderHistoryPage";
+import OrderPage from "./pages/OrderPage";
 import PageNotFound from "./pages/PageNotFound";
 import PasswordRecoveryPage from "./pages/PasswordRecoveryPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="login" element={<LoginPage />} />
           <Route path="password-recovery" element={<PasswordRecoveryPage />} />
           <Route path="user" element={<UserPage />} />
+          <Route path="user/order-history" element={<OrderHistoryPage />} />
+          <Route path="user/order-history/:id" element={<OrderPage />} />
           <Route path="products" element={<StorePage />} />
           <Route path="products/:id" element={<ProductPage />} />
           <Route path="cart" element={<CartPage />} />

@@ -1,32 +1,92 @@
-import { memo, useEffect } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import BreadCrumbs from "../components/BreadCrumbs";
+import Button from "../components/Button";
+import ConfirmModal from "../components/ConfirmModal";
 import InputWithLabel from "../components/InputWithLabel";
+import RenderIf from "../components/RenderIf";
 import SelectWithLabel from "../components/SelectWithLabel";
 import useAddress from "../hooks/useAddress";
+import useCart from "../hooks/useCart";
 import useStore from "../store/useStore";
-import RenderIf from "../components/RenderIf";
 import { formatAsCurrency } from "../utils/formatters";
-import Button from "../components/Button";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
-  const { state } = useStore();
+  const { state, dispatch } = useStore();
   const addresses = useAddress();
+  const { handleClearCart } = useCart();
+
+  const handlePlaceOrder = useCallback(async () => {
+    const res = await fetch("/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        shippingAddress: {
+          name: state.user?.name,
+          phone: state.user?.phone,
+          city: state.user?.city,
+          district: state.user?.district,
+          ward: state.user?.ward,
+          address: state.user?.address,
+        },
+        paymentMethod: "cash",
+        items: state.cart?.items.map((item) => ({
+          productId: item.productId,
+          quantity: item.quantity,
+          size: item.size,
+          price: item.price,
+        })),
+      }),
+    });
+
+    const data = await res.json();
+    if (res.status === 201) {
+      handleClearCart();
+      navigate(`/order/${data.orderId}`, { replace: true });
+    } else {
+      dispatch({
+        type: "SET_ERROR",
+        payload: data.error ?? "Đặt hàng thất bại",
+      });
+    }
+  }, [
+    dispatch,
+    handleClearCart,
+    navigate,
+    state.cart?.items,
+    state.user?.address,
+    state.user?.city,
+    state.user?.district,
+    state.user?.name,
+    state.user?.phone,
+    state.user?.ward,
+  ]);
 
   useEffect(() => {
-    if (state.cart?.items.length === 0) {
-      navigate("/cart", { replace: true });
-    }
+    // if (state.cart?.items.length === 0) {
+    //   navigate("/cart", { replace: true });
+    // }
   }, [navigate, state.cart?.items.length]);
 
   return (
     <main className="container mx-auto flex flex-col gap-4 p-4">
+      <ConfirmModal
+        title="Không thể đặt hàng"
+        content="Bạn chưa cập nhật thông tin giao hàng. Vui lòng cập nhật thông tin trước khi đặt hàng."
+        onConfirm={() => navigate("/user")}
+        confirmText="Xem đơn hàng"
+        onClose={() => {}}
+        open={!state.user?.ward}
+      />
+
       <BreadCrumbs />
 
       <h1 className="my-2 text-center text-3xl font-bold">Thông tin đơn hàng</h1>
       <div className="flex flex-wrap justify-center gap-4">
-        <div className="basis-[50%] grow">
+        <div className="grow basis-[50%]">
           <h2 className="text-lg font-bold">Thông tin giao hàng</h2>
           <form className="vstack flex flex-col justify-between gap-3">
             <InputWithLabel id="name" label="Họ và tên" type="text" value={state.user?.name} readOnly />
@@ -120,7 +180,7 @@ const CheckoutPage = () => {
           </form>
         </div>
 
-        <div className="flex basis-[48%] flex-col gap-2 grow">
+        <div className="flex grow basis-[48%] flex-col gap-2">
           <table>
             <thead className="border-b border-gray-300">
               <tr>
@@ -133,9 +193,9 @@ const CheckoutPage = () => {
             <tbody className="align-middle">
               <RenderIf condition={!!state.cart?.items.length}>
                 {state.cart?.items.map((product) => (
-                  <tr key={product._id}>
+                  <tr key={product.productId + product.size}>
                     <td>
-                      <a className="flex flex-row items-center gap-2" href={`/products/${product._id}`}>
+                      <a className="flex flex-row items-center gap-2" href={`/products/${product.productId}`}>
                         <img
                           src={`/img/${product.image}`}
                           loading="lazy"
@@ -174,7 +234,7 @@ const CheckoutPage = () => {
             </p>
           </div>
 
-          <Button>
+          <Button onClick={handlePlaceOrder}>
             <i className="fa fa-truck-fast"></i>
             <span>Đặt hàng</span>
           </Button>

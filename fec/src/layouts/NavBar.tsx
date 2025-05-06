@@ -60,11 +60,6 @@ const NavBar = () => {
                 HỆ THỐNG CỬA HÀNG
               </Link>
             </li>
-            <li>
-              <Link className="hover:text-red-500" to="/sitemap">
-                SƠ ĐỒ WEBSITE
-              </Link>
-            </li>
           </ul>
           <div className="flex items-center justify-center gap-2">
             <Link className="hover:text-red-500" to="#" title="Facebook">

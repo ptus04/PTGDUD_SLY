@@ -20,7 +20,7 @@ export type Action =
   | { type: "SET_SUCCESS"; payload: string | undefined }
   | { type: "SET_WARNING"; payload: string | undefined }
   | { type: "SET_ERROR"; payload: string | undefined }
-  | { type: "SET_CART"; payload: Cart | undefined };
+  | { type: "SET_CART"; payload: (Cart & { _id?: string }) | undefined };
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {

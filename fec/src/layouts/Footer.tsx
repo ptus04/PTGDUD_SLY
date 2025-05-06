@@ -42,11 +42,6 @@ const Footer = () => (
           HỆ THỐNG CỬA HÀNG
         </Link>
       </li>
-      <li className="mx-auto p-2">
-        <Link className="hover:text-red-500" to="/sitemap">
-          SƠ ĐỒ WEBSITE
-        </Link>
-      </li>
     </ul>
 
     <address className="mt-3 text-sm">

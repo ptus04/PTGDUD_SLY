@@ -24,10 +24,10 @@ const useCart = () => {
           const serverTime = new Date(data["updatedAt"]).getTime();
           cart.items = localTime < serverTime ? [...data.items, ...cart.items] : [...cart.items, ...data.items];
 
-          const uniqueItems = new Set(cart.items.map((item) => JSON.stringify([item._id, item.size])));
+          const uniqueItems = new Set(cart.items.map((item) => JSON.stringify([item.productId, item.size])));
           const parsedItems = Array.from(uniqueItems).map((item) => JSON.parse(item));
           cart.items = parsedItems.map((item) =>
-            cart.items.find((i) => (i.size ? i._id === item[0] && i.size === item[1] : i._id === item[0])),
+            cart.items.find((i) => (i.size ? i.productId === item[0] && i.size === item[1] : i.productId === item[0])),
           ) as Cart["items"];
 
           cart["updatedAt"] = new Date();
@@ -44,8 +44,8 @@ const useCart = () => {
   );
 
   const syncCart = useCallback(async () => {
-    localStorage.setItem("cart", JSON.stringify(state.cart));
     dispatch({ type: "SET_CART", payload: state.cart });
+    localStorage.setItem("cart", JSON.stringify(state.cart));
 
     if (state.user) {
       try {
@@ -66,12 +66,12 @@ const useCart = () => {
 
   const handleUpdateCart = useCallback(
     async (product: ProductWithIdString, quantity: number, size?: string) => {
-      const existingProduct = state.cart?.items.find((item) => item._id === product._id && item.size === size);
+      const existingProduct = state.cart?.items.find((item) => item.productId === product._id && item.size === size);
       if (existingProduct) {
         existingProduct.quantity += quantity;
       } else {
         state.cart?.items.push({
-          _id: product._id,
+          productId: product._id,
           quantity,
           size,
           title: product.title,
@@ -92,12 +92,23 @@ const useCart = () => {
         return;
       }
 
-      cart.items = state.cart?.items.filter((item) => item._id !== productId || item.size !== size) ?? [];
+      cart.items = state.cart?.items.filter((item) => item.productId !== productId || item.size !== size) ?? [];
 
       syncCart();
     },
     [state.cart, syncCart],
   );
+
+  const handleClearCart = useCallback(() => {
+    const cart = state.cart;
+    if (!cart) {
+      return;
+    }
+
+    cart.items = [];
+
+    syncCart();
+  }, [state.cart, syncCart]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -106,7 +117,7 @@ const useCart = () => {
     return () => controller.abort();
   }, [getCart]);
 
-  return { handleUpdateCart, handleRemoveFromCart, syncCart };
+  return { handleUpdateCart, handleRemoveFromCart, syncCart, handleClearCart };
 };
 
 export default useCart;
