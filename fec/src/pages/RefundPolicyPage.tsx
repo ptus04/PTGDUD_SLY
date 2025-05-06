@@ -1,27 +1,15 @@
 import { memo } from "react";
-import { NavLink } from "react-router";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 const RefundPolicyPage = () => {
   return (
     <main className="container mx-auto p-4">
-      {/* Breadcrumbs navigation */}
-      <nav className="text-sm text-gray-500">
-        <ol className="flex gap-1">
-          <li>
-            <NavLink className="after:text-gray-500 after:content-['_/_'] hover:text-red-500" to="/">
-              Trang chủ
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/refund-policy">Chính sách đổi trả</NavLink>
-          </li>
-        </ol>
-      </nav>
+      <BreadCrumbs />
 
-      {/* Refund Policy content */}
       <div className="flex flex-col gap-2">
         <h1 className="text-center text-3xl font-bold">CHÍNH SÁCH ĐỔI &#8722; TRẢ HÀNG</h1>
-        <hr />
+        <hr className="text-gray-300" />
+
         <h2 className="text-xl font-bold">Các sản phẩm giảm giá</h2>
         <ul>
           <li>&#8722; Quý khách vui lòng kiểm tra sản phẩm trực tiếp trước khi thanh toán</li>

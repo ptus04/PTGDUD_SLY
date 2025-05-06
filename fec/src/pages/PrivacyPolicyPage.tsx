@@ -1,27 +1,16 @@
 import { memo } from "react";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 const PrivacyPolicyPage = () => {
   return (
     <main className="container mx-auto gap-4 p-4">
-      {/* Breadcrumbs navigation */}
-      <nav className="text-sm text-gray-500">
-        <ol className="flex gap-1">
-          <li>
-            <NavLink className="after:text-gray-500 after:content-['_/_'] hover:text-red-500" to="/">
-              Trang chủ
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/privacy-policy">Chính sách bảo mật</NavLink>
-          </li>
-        </ol>
-      </nav>
+      <BreadCrumbs />
 
-      {/* Privacy Policy content */}
       <div className="flex flex-col gap-2">
         <h1 className="text-center text-3xl font-bold">CHÍNH SÁCH BẢO MẬT</h1>
-        <hr />
+        <hr className="text-gray-300" />
+
         <h2 className="text-xl font-bold">Mục đích và phạm vi thu thập</h2>
         <p>
           &#8722; Việc thu thập dữ liệu chủ yếu trên website{" "}
