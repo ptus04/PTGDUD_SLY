@@ -48,16 +48,12 @@ export const cancelOrder = async (req: Request, res: Response) => {
   const orderId = data.orderId;
   const reason = data.reason;
   try {
-    const order = await orderService.getOrder(orderId);
-    if (!order) {
-      res.status(404).json({ error: "Order not found" });
+    const result = await orderService.cancelOrder(orderId, userId, reason);
+    if (result.matchedCount === 0) {
+      res.status(404).json({ error: "Order not found or already cancelled" });
       return;
     }
-    if (order.userId !== userId) {
-      res.status(403).json({ error: "Forbidden" });
-      return;
-    }
-    await orderService.cancelOrder(orderId, reason);
+
     res.status(200).json({ message: "Order cancelled successfully" });
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });

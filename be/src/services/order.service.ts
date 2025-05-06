@@ -19,15 +19,16 @@ const createOrder = (order: Order) => {
   return db().collection<Order>("orders").insertOne(order);
 };
 
-const cancelOrder = (orderId: string, reason: string) => {
+const cancelOrder = (orderId: string, userId: string, reason: string) => {
   return db()
     .collection<Order>("orders")
     .updateOne(
-      { _id: new ObjectId(orderId) },
+      { _id: new ObjectId(orderId), userId, status: "pending" },
       {
         $set: {
           status: "cancelled",
           cancelledReason: reason,
+          updatedAt: new Date(),
         },
       },
     );

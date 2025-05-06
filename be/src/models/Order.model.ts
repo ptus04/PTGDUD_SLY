@@ -25,3 +25,7 @@ type Order = {
 };
 
 export default Order;
+
+export type OrderWithIdString = Order & {
+  _id: string;
+};

@@ -1,9 +1,7 @@
-import { ObjectId } from "mongodb";
 
 type Cart = {
-  _id: ObjectId;
   items: {
-    _id: string;
+    productId: string;
     title: string;
     price: number;
     image: string;
@@ -11,6 +9,10 @@ type Cart = {
     size?: string;
   }[];
   updatedAt: Date;
+};
+
+export type CartWithIdString = Cart & {
+  _id: string;
 };
 
 export default Cart;

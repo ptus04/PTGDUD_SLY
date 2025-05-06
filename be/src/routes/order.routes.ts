@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body, param } from "express-validator";
-import { createOrder, getOrder, getOrders } from "../controllers/order.controller";
+import { cancelOrder, createOrder, getOrder, getOrders } from "../controllers/order.controller";
 import { auth } from "../middlewares/auth.middleware";
 import handleBadRequest from "../utils/handleBadRequest";
 
@@ -21,12 +21,18 @@ const createOrderValidator = [
   body("note").optional().isString().withMessage("Note must be a string"),
 ];
 
-const getOrderValidator = [param("orderId").notEmpty()];
+const getOrderValidator = [param("orderId").notEmpty().withMessage("Order ID is required")];
+
+const cancelOrderValidator = [
+  body("orderId").notEmpty().withMessage("Order ID is required"),
+  body("reason").notEmpty().withMessage("Reason is required"),
+];
 
 const router = Router();
 router.use(auth);
 router.get("/", getOrders);
 router.post("/", createOrderValidator, handleBadRequest, createOrder);
+router.delete("/", cancelOrderValidator, handleBadRequest, cancelOrder);
 router.get("/:orderId", getOrderValidator, handleBadRequest, getOrder);
 
 export default router;
