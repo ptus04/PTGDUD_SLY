@@ -45,7 +45,7 @@ const CheckoutPage = () => {
     const data = await res.json();
     if (res.status === 201) {
       handleClearCart();
-      navigate(`/order/${data.orderId}`, { replace: true });
+      navigate(`/user/order-history/${data.orderId}`, { replace: true });
     } else {
       dispatch({
         type: "SET_ERROR",
