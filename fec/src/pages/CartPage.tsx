@@ -13,7 +13,7 @@ const CartPage = () => {
   const { syncCart, handleRemoveFromCart } = useCart();
 
   const handleQuantityChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>, productId: string, size?: undefined) => {
+    (e: React.ChangeEvent<HTMLInputElement>, productId: string, size?: string) => {
       const newQuantity = parseInt(e.target.value);
       const existingProduct = state.cart?.items.find((item) => item.productId === productId && item.size === size);
       existingProduct!.quantity = newQuantity;
@@ -74,7 +74,7 @@ const CartPage = () => {
                         name="quantity"
                         id="quantity"
                         value={product.quantity}
-                        onChange={(e) => handleQuantityChange(e, product.productId)}
+                        onChange={(e) => handleQuantityChange(e, product.productId, product.size)}
                         min="1"
                         title="Số lượng"
                       />
