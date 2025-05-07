@@ -30,6 +30,7 @@ const cancelOrderValidator = [
     (0, express_validator_1.body)("reason").notEmpty().withMessage("Reason is required"),
 ];
 const router = (0, express_1.Router)();
+router.get("/", order_controller_1.getAllOrders);
 router.use(auth_middleware_1.auth);
 router.get("/", order_controller_1.getOrders);
 router.post("/", createOrderValidator, handleBadRequest_1.default, order_controller_1.createOrder);

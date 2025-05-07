@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cancelOrder = exports.createOrder = exports.getOrder = exports.getOrders = void 0;
+exports.cancelOrder = exports.createOrder = exports.getOrder = exports.getAllOrders = exports.getOrders = void 0;
 const order_service_1 = __importDefault(require("../services/order.service"));
 const express_validator_1 = require("express-validator");
 const getOrders = async (req, res) => {
@@ -17,6 +17,17 @@ const getOrders = async (req, res) => {
     }
 };
 exports.getOrders = getOrders;
+const getAllOrders = async (req, res) => {
+    // const userId = req._id;
+    try {
+        const orders = await order_service_1.default.getAllOrders();
+        res.status(200).json(orders);
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+exports.getAllOrders = getAllOrders;
 const getOrder = async (req, res) => {
     const userId = req._id;
     const data = (0, express_validator_1.matchedData)(req);
