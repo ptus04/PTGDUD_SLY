@@ -1,5 +1,5 @@
 import { memo, useCallback } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Button from "../components/Button";
 import RenderIf from "../components/RenderIf";
@@ -10,12 +10,12 @@ import { formatAsCurrency } from "../utils/formatters";
 const CartPage = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useStore();
-  const { syncCart } = useCart();
+  const { syncCart, handleRemoveFromCart } = useCart();
 
   const handleQuantityChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>, productId: string) => {
+    (e: React.ChangeEvent<HTMLInputElement>, productId: string, size?: string) => {
       const newQuantity = parseInt(e.target.value);
-      const existingProduct = state.cart?.items.find((item) => item.productId === productId);
+      const existingProduct = state.cart?.items.find((item) => item.productId === productId && item.size === size);
       existingProduct!.quantity = newQuantity;
       dispatch({
         type: "SET_CART",
@@ -74,7 +74,7 @@ const CartPage = () => {
                         name="quantity"
                         id="quantity"
                         value={product.quantity}
-                        onChange={(e) => handleQuantityChange(e, product.productId)}
+                        onChange={(e) => handleQuantityChange(e, product.productId, product.size)}
                         min="1"
                         title="Số lượng"
                       />
@@ -85,6 +85,7 @@ const CartPage = () => {
                         className="aspect-square w-6 cursor-pointer text-xs hover:bg-red-500 hover:text-white"
                         type="button"
                         title="Xóa sản phẩm"
+                        onClick={() => handleRemoveFromCart(product.productId, product.size)}
                       >
                         <i className="fa fa-remove"></i>
                       </button>

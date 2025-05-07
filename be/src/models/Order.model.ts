@@ -16,6 +16,8 @@ type Order = {
     quantity: number;
     size: string;
     price: number;
+    image?: string;
+    title?: string;
   }[];
   note?: string;
   status: "pending" | "accepted" | "shipping" | "delivered" | "cancelled";

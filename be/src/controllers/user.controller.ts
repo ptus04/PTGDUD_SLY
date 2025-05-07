@@ -57,6 +57,11 @@ export const getUser = async (req: Request, res: Response) => {
   res.status(200).json(user);
 };
 
+export const getUsers = async (req: Request, res: Response) => {
+  const user = await userService.getAllUser();
+  res.status(200).json(user);
+};
+
 export const updateUser = async (req: Request, res: Response) => {
   const data = matchedData<UserUpdateRequest>(req, { onlyValidData: true });
 

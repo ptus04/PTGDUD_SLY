@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
   <footer className="mt-5 px-3 text-center">
@@ -60,7 +60,7 @@ const Footer = () => (
       </Link>
     </address>
     <p>
-      Copyright 2024&copy;{" "}
+      Copyright {new Date().getFullYear()}&copy;{" "}
       <Link className="hover:text-red-500" to="/">
         SLY
       </Link>

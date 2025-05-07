@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import AboutUsPage from "./pages/AboutUsPage";
 import CartPage from "./pages/CartPage";
@@ -25,8 +25,8 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="password-recovery" element={<PasswordRecoveryPage />} />
           <Route path="user" element={<UserPage />} />
+          <Route path="user/password-recovery" element={<PasswordRecoveryPage />} />
           <Route path="user/order-history" element={<OrderHistoryPage />} />
           <Route path="user/order-history/:id" element={<OrderPage />} />
           <Route path="products" element={<StorePage />} />
