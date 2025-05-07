@@ -1,5 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "rewrites": [{ "source": "/api/:path(.*)", "destination": "https://ptgdud-sly.vercel.app/:path" }]
+  "rewrites": [
+    { "source": "/api/:path(.*)", "destination": "https://ptgdud-sly.vercel.app/:path" },
+    { "source": "/img/(.*)", "destination": "/img/" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
