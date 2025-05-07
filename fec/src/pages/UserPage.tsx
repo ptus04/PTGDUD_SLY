@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Button from "../components/Button";
 import ConfirmModal from "../components/ConfirmModal";

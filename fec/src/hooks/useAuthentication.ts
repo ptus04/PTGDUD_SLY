@@ -1,6 +1,6 @@
 import User from "@be/src/models/User.model";
 import { useCallback, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useStore from "../store/useStore";
 
 const useAuthentication = () => {

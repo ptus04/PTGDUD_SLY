@@ -1,6 +1,6 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo, useCallback, useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useParams } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Button from "../components/Button";
 import Loading from "../components/Loading";

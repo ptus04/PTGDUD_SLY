@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
 import RenderIf from "../components/RenderIf";
 import Loading from "../components/Loading";
