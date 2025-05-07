@@ -6,8 +6,9 @@ import Dashboard from "./components/Dashboard";
 import User from "./components/User";
 import Product from "./components/Product";
 import Orders from "./components/Orders";
-// import Invoices from "./components/Invoices";
-
+import Invoices from "./components/Invoices";
+import Logout from "./components/Logout";
+import Login from "./components/Login";
 function App() {
   return (
     <Router>
@@ -29,8 +30,8 @@ function App() {
               <Route path="/users" element={<User />} />
               <Route path="/products" element={<Product />} />
               <Route path="/orders" element={<Orders></Orders>} />
-              <Route path="/invoice" element={<h1>Invoices</h1>} />
-              <Route path="/login" element={<h1>Login</h1>} />
+              <Route path="/invoice" element={<Invoices></Invoices>} />
+              <Route path="/login" element={<Logout></Logout>} />
             </Routes>
           </main>
         </div>
