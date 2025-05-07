@@ -82,4 +82,11 @@ const resetPassword = async (phone: string, otp: string, newPassword: string) =>
   return { message: "Password reset successfully" };
 };
 
-export default { register, login, getUserById, updateUser, sendOtp, resetPassword } as const;
+const getAllUser = () => {
+  return db()
+    .collection<User>("users")
+    .find({}, { projection: { password: 0 } })
+    .toArray();
+};
+
+export default { register, login, getUserById, updateUser, sendOtp, resetPassword, getAllUser } as const;

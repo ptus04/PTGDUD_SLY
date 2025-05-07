@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import InputWithLabel from "../components/InputWithLabel";
 import useForm from "../hooks/useForm";

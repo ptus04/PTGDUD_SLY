@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Button from "../components/Button";
 import ConfirmModal from "../components/ConfirmModal";

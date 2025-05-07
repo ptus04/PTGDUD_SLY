@@ -1,11 +1,11 @@
 import { memo } from "react";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import GlobalNotification from "../components/GlobalNotification";
 import useAuthentication from "../hooks/useAuthentication";
+import useDocument from "../hooks/useDocument";
 import Footer from "./Footer";
 import Header from "./Header";
 import NavBar from "./NavBar";
-import useDocument from "../hooks/useDocument";
 
 const Layout = () => {
   useDocument();

@@ -1,6 +1,6 @@
 import { ProductWithIdString } from "@be/src/models/Product.model";
 import { memo } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { formatAsCurrency } from "../utils/formatters";
 import RenderIf from "./RenderIf";
 

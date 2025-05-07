@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import useNavBar from "../hooks/useNavBar";
 import useProductQuery from "../hooks/useProductQuery";
 import ItemCategory from "./ItemCategory";
@@ -72,7 +72,12 @@ const NavBar = () => {
               <i className="fa-brands fa-instagram"></i>
             </Link>
           </div>
-          <p className="text-center">Copyright 2025&copy; SLY</p>
+          <p className="text-center">
+            Copyright {new Date().getFullYear()}&copy;{" "}
+            <Link className="hover:text-red-500" to="/">
+              SLY
+            </Link>
+          </p>
         </div>
       </div>
     </nav>

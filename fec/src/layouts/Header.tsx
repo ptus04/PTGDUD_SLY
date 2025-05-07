@@ -1,12 +1,12 @@
 import { memo } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import RenderIf from "../components/RenderIf";
+import useCart from "../hooks/useCart";
 import useNavBar from "../hooks/useNavBar";
 import useProductQuery from "../hooks/useProductQuery";
 import useStore from "../store/useStore";
 import { formatAsCurrency } from "../utils/formatters";
 import CustomizedHeaderTag from "./CustomizedHeaderTag";
-import useCart from "../hooks/useCart";
 
 const Header = () => {
   const { state } = useStore();

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 type CategoryProps = {
   name: string;
@@ -15,10 +15,13 @@ const ItemCategory = ({ name, subCategories }: CategoryProps) => {
             {name} <i className="fa fa-caret-right"></i>
           </span>
         </summary>
-        <ul className="flex gap-4 ms-2">
+        <ul className="ms-2 flex gap-4">
           {subCategories.map((subCategory) => (
             <li key={subCategory} className="text-sm">
-              <Link className="duration-200 hover:text-red-500" to={`./products/?category=${subCategory.toLowerCase()}`}>
+              <Link
+                className="duration-200 hover:text-red-500"
+                to={`./products/?category=${subCategory.toLowerCase()}`}
+              >
                 {subCategory.toUpperCase()}
               </Link>
             </li>

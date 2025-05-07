@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import ConfirmModal from "../components/ConfirmModal";
 import InputWithLabel from "../components/InputWithLabel";
