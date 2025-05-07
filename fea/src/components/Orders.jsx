@@ -238,16 +238,20 @@ function Orders() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {filteredOrders.map((order) => (
-                    <tr key={order.id} className="hover:bg-gray-50">
+                    <tr key={order._id} className="hover:bg-gray-50">
                       <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-blue-600">
-                        {order.id}
+                        {order._id}
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                        {new Date(order.orderDate).toLocaleDateString("vi-VN")}
+                        {order.orderDate
+                          ? new Date(order.orderDate).toLocaleDateString(
+                              "vi-VN"
+                            )
+                          : "Không xác định"}
                       </td>
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="text-sm font-medium text-gray-900">
-                          {order.shippingAddress.name}
+                          {order.userName}
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
@@ -266,49 +270,12 @@ function Orders() {
                         {order.paymentMethod}
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                        <div className="flex justify-end space-x-2">
-                          <button
-                            className="text-blue-600 hover:text-blue-900"
-                            onClick={() => handleViewOrder(order)}
-                          >
-                            Xem
-                          </button>
-                          {order.status === "processing" && (
-                            <div className="relative">
-                              <button
-                                className="text-gray-600 hover:text-gray-900"
-                                onClick={() => toggleMenu(order.id)}
-                              >
-                                Trạng thái ▾
-                              </button>
-                              {openMenuId === order.id && (
-                                <div
-                                  className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg"
-                                  onMouseLeave={closeMenu}
-                                >
-                                  <div className="py-1">
-                                    <button
-                                      onClick={() =>
-                                        handleStatusChange(order.id, "shipped")
-                                      }
-                                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                      Xác nhận
-                                    </button>
-                                    <button
-                                      onClick={() =>
-                                        handleStatusChange(order.id, "canceled")
-                                      }
-                                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                      Hủy
-                                    </button>
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
+                        <button
+                          className="text-blue-600 hover:text-blue-900"
+                          onClick={() => handleViewOrder(order)}
+                        >
+                          Xem
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -404,11 +371,11 @@ function Orders() {
           <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-lg">
             <h2 className="mb-4 text-xl font-bold">Chi tiết đơn hàng</h2>
             <p className="mb-2 text-sm text-gray-600">
-              Mã đơn: <span className="font-medium">{selectedOrder.id}</span>
+              Mã đơn: <span className="font-medium">{selectedOrder._id}</span>
             </p>
-            <p className="mb-4 text-sm text-gray-600">
+            <p className="mb-2 text-sm text-gray-600">
               Khách hàng:{" "}
-              <span className="font-medium">{selectedOrder.customer}</span>
+              <span className="font-medium">{selectedOrder.userName}</span>
             </p>
             <table className="w-full table-auto border-collapse border border-gray-200">
               <thead>
@@ -428,7 +395,7 @@ function Orders() {
                 {selectedOrder.items.map((item, index) => (
                   <tr key={index}>
                     <td className="border border-gray-200 px-4 py-2 text-sm">
-                      {item.name}
+                      {item.productName}
                     </td>
                     <td className="border border-gray-200 px-4 py-2 text-sm">
                       {item.quantity}

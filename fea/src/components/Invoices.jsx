@@ -70,14 +70,12 @@ function Invoices() {
     const statusStyles = {
       pending: "bg-yellow-100 text-yellow-800",
       paid: "bg-green-100 text-green-800",
-      overdue: "bg-orange-100 text-orange-800",
       canceled: "bg-red-100 text-red-800",
     };
 
     const statusText = {
-      pending: "Chờ thanh toán",
-      paid: "Đã thanh toán",
-      overdue: "Quá hạn",
+      pending: "Chờ thanh toán (COD)",
+      paid: "Đã thanh toán (COD)",
       canceled: "Đã hủy",
     };
 
@@ -185,7 +183,7 @@ function Invoices() {
                   {calculateTotalRevenue().toLocaleString("vi-VN")} đ
                 </span>
               </div>
-              <div className="flex items-center justify-between">
+              {/* <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Đã thanh toán:</span>
                 <span className="font-bold text-green-600">
                   {calculateTotalRevenue("paid").toLocaleString("vi-VN")} đ
@@ -200,7 +198,7 @@ function Invoices() {
                   ).toLocaleString("vi-VN")}{" "}
                   đ
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -237,7 +235,7 @@ function Invoices() {
                 />
               </div>
               <div className="flex gap-2">
-                <button className="flex items-center space-x-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
+                {/* <button className="flex items-center space-x-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
                   <svg
                     className="h-4 w-4"
                     fill="currentColor"
@@ -251,8 +249,8 @@ function Invoices() {
                     ></path>
                   </svg>
                   <span>Tạo hóa đơn</span>
-                </button>
-                <button className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-100">
+                </button> */}
+                {/* <button className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-100">
                   <svg
                     className="h-4 w-4 text-gray-600"
                     fill="currentColor"
@@ -265,7 +263,7 @@ function Invoices() {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                </button>
+                </button> */}
               </div>
             </div>
 
@@ -368,6 +366,9 @@ function Invoices() {
                       <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                         Trạng thái
                       </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                        Phương thức thanh toán
+                      </th>
                       <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
                         Thao tác
                       </th>
@@ -406,6 +407,9 @@ function Invoices() {
                         <td className="whitespace-nowrap px-6 py-4">
                           {getStatusBadge(invoice.status)}
                         </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                          COD
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                           <div className="flex justify-end space-x-2">
                             <button
@@ -423,9 +427,9 @@ function Invoices() {
                               In
                             </button>
                             <div className="group relative">
-                              <button className="text-gray-600 hover:text-gray-900">
+                              {/* <button className="text-gray-600 hover:text-gray-900">
                                 Trạng thái ▾
-                              </button>
+                              </button> */}
                               <div className="absolute right-0 z-10 mt-2 hidden w-48 rounded-md bg-white shadow-lg group-hover:block">
                                 <div className="py-1">
                                   <button
