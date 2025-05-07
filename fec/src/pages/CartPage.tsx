@@ -10,12 +10,12 @@ import { formatAsCurrency } from "../utils/formatters";
 const CartPage = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useStore();
-  const { syncCart } = useCart();
+  const { syncCart, handleRemoveFromCart } = useCart();
 
   const handleQuantityChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>, productId: string) => {
+    (e: React.ChangeEvent<HTMLInputElement>, productId: string, size?: undefined) => {
       const newQuantity = parseInt(e.target.value);
-      const existingProduct = state.cart?.items.find((item) => item.productId === productId);
+      const existingProduct = state.cart?.items.find((item) => item.productId === productId && item.size === size);
       existingProduct!.quantity = newQuantity;
       dispatch({
         type: "SET_CART",
@@ -85,6 +85,7 @@ const CartPage = () => {
                         className="aspect-square w-6 cursor-pointer text-xs hover:bg-red-500 hover:text-white"
                         type="button"
                         title="Xóa sản phẩm"
+                        onClick={() => handleRemoveFromCart(product.productId, product.size)}
                       >
                         <i className="fa fa-remove"></i>
                       </button>
