@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "rewrites": [
-    { "source": "/api", "destination": "https://ptgdud-sly.vercel.app/api" },
+    { "source": "/api/(.*)", "destination": "https://ptgdud-sly.vercel.app/api/$1" },
     { "source": "/img/(.*)", "destination": "/img/" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
